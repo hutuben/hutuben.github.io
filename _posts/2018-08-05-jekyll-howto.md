@@ -3,7 +3,7 @@ layout: post
 title: How to build first github page with Jekyll
 ---
 
-* Installing Jekyll
+# Installing Jekyll
 
 The `Jekyll` depends on Ruby and Bundler. Here is the command to install dependecies.
 
@@ -18,7 +18,7 @@ Then to install Jekyll
 $ sudo gem install jekyll
 ```
 
-* Build first page with Jekyll
+# Build first page with Jekyll
 
 To create a page directory called gh-pages
 
@@ -33,7 +33,7 @@ To view the default page locally
 $ jekyll serve --watch
 ```
 
-Then go to http://localhost:4000. The `--watch` option will build the site every time you save the markdown file.
+Then go to [http://localhost:4000](http://localhost:4000). The `--watch` option will build the site every time you save the markdown file.
 
 The pages are located in `gh-pages/_posts`. Now we can build first page in markdown format. The file name must be `YYYY-MM-DD-title.md`, and the `layout : post` is suggested to be added in the header. Then we can edit the `_config.yaml` file to change some meta infomative for the pages.
 
@@ -50,4 +50,4 @@ $ git push -u origin master
 
 The first github page is ready! 
 
-https://hubentu.github.io/
+[https://hubentu.github.io/]()

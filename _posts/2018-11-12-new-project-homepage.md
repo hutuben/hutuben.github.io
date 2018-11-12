@@ -36,4 +36,4 @@ $ git push -u origin gh-pages
 
 The project github page is ready! 
 
-[https://hubentu.github.io/Rcwl]()
+[https://hubentu.github.io/Rcwl](https://hubentu.github.io/Rcwl)

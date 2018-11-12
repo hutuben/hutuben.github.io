@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to build firt project page with Jekyll
+title: How to build first project page with Jekyll
 ---
 
 # Build project `Rcwl` page with Jekyll

@@ -17,7 +17,7 @@ $ mkdir _bioinfo
 ```
 
 # Build collections index
-```
+{% highlight javascript %}
 ---
 layout: default
 title: Bioinfo
@@ -30,7 +30,8 @@ title: Bioinfo
     </a>
   </h2>
 {% endfor %}
-```
+
+{% endhighlight %}
 
 # Test
 ```
@@ -38,3 +39,4 @@ $ jekyll server -w
 ```
 
 [http://127.0.0.1:4000/bioinfo/](http://127.0.0.1:4000/bioinfo/)
+

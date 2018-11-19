@@ -331,7 +331,7 @@ div.section {
 </div>
 
 
-<p><strong>Last updated:</strong> 2018-11-18</p>
+<p><strong>Last updated:</strong> 2018-11-19</p>
 <strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
 <ul>
 <li>
@@ -438,6 +438,10 @@ Ignored files:
 Untracked files:
     Untracked:  analysis/RNASeq.Rmd
     Untracked:  analysis/RNASeq.Rmd~
+    Untracked:  analysis/Rcwl_RNASeq.Rmd
+    Untracked:  analysis/Rcwl_RNASeq.Rmd~
+    Untracked:  analysis/Rcwl_RNASeq.md
+    Untracked:  analysis/Rcwl_RNASeq_files/
     Untracked:  data/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz
     Untracked:  data/HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2.fastq.gz
     Untracked:  data/HBR_Rep2_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1.fastq.gz
@@ -496,7 +500,7 @@ untar(&quot;../data/HBR_UHR_ERCC_ds_5pc.tar&quot;, exdir = &quot;../data/&quot;)
 </div>
 <div id="rnaseq-pipelines" class="section level1">
 <h1>RNASeq Pipelines</h1>
-<p>The RNASeq pipeline was predefined in the <code>RcwlPipeline</code> package. All the dependent Bioinformatics tools have been deployed in docker repository (<a href="https://hub.docker.com/r/hubentu/rcwl-rnaseq/" class="uri">https://hub.docker.com/r/hubentu/rcwl-rnaseq/</a>). We don’t need to install the tools one by one. Thus, the pipeline is totally portable.</p>
+<p>The RNASeq pipeline was predefined in the <code>RcwlPipelines</code> package. All the dependent Bioinformatics tools have been deployed in a docker repository (<a href="https://hub.docker.com/r/hubentu/rcwl-rnaseq/" class="uri">https://hub.docker.com/r/hubentu/rcwl-rnaseq/</a>). We don’t need to install the tools one by one. Thus, the pipeline is totally portable.</p>
 <p>First, we need to load the packages and pipeline.</p>
 <pre class="r"><code>if(!require(Rcwl)) BiocManager::install(&quot;hubentu/Rcwl&quot;)
 if(!require(RcwlPipelines)) BiocManager::install(&quot;hubentu/RcwlPipelines&quot;)
@@ -529,8 +533,8 @@ steps:
 - RSeQC</code></pre>
 <p>The function <code>plotCWL</code> can be used to visualize the relationship of inputs, outputs and the analysis for a pipeline:</p>
 <pre class="r"><code>plotCWL(rnaseq_Sf)</code></pre>
-<div id="htmlwidget-6b8d66e73166a0c0a4a6" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6b8d66e73166a0c0a4a6">{"x":{"diagram":"graph TB\nA(in_seqfiles)-->N{fastqc}\nN{fastqc}-->F((out_fastqc))\nB(in_prefix)-->O{STAR}\nC(in_genomeDir)-->O{STAR}\nD(in_GTFfile)-->O{STAR}\nA(in_seqfiles)-->O{STAR}\nE(in_runThreadN)-->O{STAR}\nO{STAR}-->G((out_BAM))\nO{STAR}-->H((out_Log))\nO{STAR}-->I((out_Count))\nG((out_BAM))-->P{samtools_index}\nP{samtools_index}-->J((out_idx))\nG((out_BAM))-->Q{samtools_flagstat}\nQ{samtools_flagstat}-->K((out_stat))\nD(in_GTFfile)-->R{featureCounts}\nG((out_BAM))-->R{featureCounts}\nR{featureCounts}-->L((out_count))\nG((out_BAM))-->S{RSeQC}\nD(in_GTFfile)-->S{RSeQC}\nS{RSeQC}-->M((out_distribution))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9809ef280b1523bafe45" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9809ef280b1523bafe45">{"x":{"diagram":"graph TB\nA(in_seqfiles)-->N{fastqc}\nN{fastqc}-->F((out_fastqc))\nB(in_prefix)-->O{STAR}\nC(in_genomeDir)-->O{STAR}\nD(in_GTFfile)-->O{STAR}\nA(in_seqfiles)-->O{STAR}\nE(in_runThreadN)-->O{STAR}\nO{STAR}-->G((out_BAM))\nO{STAR}-->H((out_Log))\nO{STAR}-->I((out_Count))\nG((out_BAM))-->P{samtools_index}\nP{samtools_index}-->J((out_idx))\nG((out_BAM))-->Q{samtools_flagstat}\nQ{samtools_flagstat}-->K((out_stat))\nD(in_GTFfile)-->R{featureCounts}\nG((out_BAM))-->R{featureCounts}\nR{featureCounts}-->L((out_count))\nG((out_BAM))-->S{RSeQC}\nD(in_GTFfile)-->S{RSeQC}\nS{RSeQC}-->M((out_distribution))"},"evals":[],"jsHooks":[]}</script>
 <p>Only two steps to run the pipeline.</p>
 <ol style="list-style-type: decimal">
 <li><p>To prepare input sample data and reference/annotation data.</p></li>
@@ -546,14 +550,14 @@ names(5): in_seqfiles in_prefix in_genomeDir in_GTFfile in_runThreadN</code></pr
 <p>There are two different input lists, <code>inputList</code> and <code>paramList</code>. The <code>inputList</code> is used to define the inputs for each sample and will be submitted to different cluster nodes. The <code>paramList</code> is used to define parameters which are shared in all jobs.</p>
 <p>Two following inputs should be listed in <code>inputList</code>.</p>
 <ul>
-<li><p><code>in_seqfiles</code>: A list with the fastq files of each sample in each element. The names of the list are also required to be defined and can be the sample IDs. The length of the list will be the same as the number of samples, thus the list will be defined to <code>inputList</code> and assigned to different nodes for parallel computing.</p></li>
+<li><p><code>in_seqfiles</code>: A list with the fastq files of each sample in each element. The names of the list are also required to be defined and can be the sample IDs. The length of the list will be the same as the number of samples. The list should be contained in the <code>inputList</code> and each element of the list will be assigned to different nodes for parallel computing.</p></li>
 <li><p><code>in_prefix</code> The same as <code>in_seqfiles</code>, which define a list of sample IDs.</p></li>
 </ul>
 <pre class="r"><code>files &lt;- normalizePath(list.files(&quot;../data/&quot;, &quot;.gz&quot;, full.names = TRUE))
 files &lt;- tapply(files, substring(basename(files), 1, 8), c)
 inputList &lt;- list(in_seqfiles = files,
                   in_prefix = as.list(names(files)))</code></pre>
-<p>These 3 parameter will be defined in <code>paramList</code>.</p>
+<p>These 3 parameters need to be defined in <code>paramList</code>, which will be shared in all nodes.</p>
 <ul>
 <li><p><code>in_genomeDir</code>: The reference genome indexes for STAR.</p></li>
 <li><p><code>in_GTFfile</code>: The gene annotation file in GTF format.</p></li>
@@ -567,7 +571,7 @@ inputList &lt;- list(in_seqfiles = files,
 </div>
 <div id="submit-pipeline-with-sge" class="section level2">
 <h2>Submit pipeline with SGE</h2>
-<p>The function <code>runCWLBatch</code> is used to submit the pipeline to cluster server. In addition to defining <code>inputList</code> and <code>paramList</code>, we need to define parallel parameters from the <code>BiocParallel</code> package. Here, we use “sge” to submit the jobs. The “sge” template is a bash script with some predefined parameters for “qsub”. The nodes queue name and number of slots/threads are variables from the template and can be assigned by the <code>resources</code> list.</p>
+<p>The function <code>runCWLBatch</code> is used to submit the pipeline to a cluster server. In addition to defining <code>inputList</code> and <code>paramList</code>, we need to define parallel parameters from the <code>BiocParallel</code> package. Here, we use “sge” to submit the jobs. The “sge” template is a bash script with some predefined parameters for “qsub”. The nodes queue name and number of slots/threads are variables from the template and can be assigned by the <code>resources</code> list.</p>
 <pre class="r"><code>res &lt;- runCWLBatch(cwl = rnaseq_Sf, wdir = &quot;../output/&quot;,
                    inputList = inputList, paramList = paramList,
                    BPoptions = list(cluster = &quot;sge&quot;,
@@ -575,7 +579,7 @@ inputList &lt;- list(in_seqfiles = files,
                                     resources = list(queue = &quot;centos7.q&quot;,
                                                      threads = 4)))</code></pre>
 <p>That’s it! The fastqc files of each sample will be submitted to different nodes to run the whole pipeline automatically.</p>
-<p>All the results have been collected to output directory of each sample. For example,</p>
+<p>All the results will be collected to the output directory of each sample when it is done. For example,</p>
 <pre class="r"><code>dir(&quot;output/HBR_Rep1&quot;)</code></pre>
 <pre><code> [1] &quot;HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1_fastqc.zip&quot;
  [2] &quot;HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2_fastqc.zip&quot;
@@ -593,7 +597,7 @@ inputList &lt;- list(in_seqfiles = files,
 </div>
 <div id="summarize-qc" class="section level1">
 <h1>Summarize QC</h1>
-<p>The tool “multiqc” can aggregate results from the multiple outputs of the pipeline and generate a single page report, which also was implemented in the <code>RcwlPipelines</code> package.</p>
+<p>The tool “multiqc” can aggregate results from the multiple outputs of the pipeline and generate a single page report, which also has been implemented in the <code>RcwlPipelines</code> package.</p>
 <p>We can also run the tool using <code>Rcwl</code> locally by removing the <code>docker</code> requirement.</p>
 <pre class="r"><code>data(multiqc)
 requirements(multiqc) &lt;- list()

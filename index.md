@@ -4,3 +4,10 @@
 
 layout: home
 ---
+
+## Pipelines collection
+* [RNASeq pipeline](/others/Rcwl_RNASeq.html)
+
+* [DNASeq alignment](/others/Rcwl_DNASeq_Align.html)
+
+* [Somatic calling MC3 pipeline](/others/Rcwl_MC3.html)

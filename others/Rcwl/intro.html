@@ -6,20 +6,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Chapter 1 Introduction | Bioinformatics tools and pipelines using R and CWL</title>
-  <meta name="description" content="A manual to wrap Bioinformatics tools and pipeplines with Common Workflow Language using the Rcwl package.">
+  <meta name="description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Chapter 1 Introduction | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="A manual to wrap Bioinformatics tools and pipeplines with Common Workflow Language using the Rcwl package." />
+  <meta property="og:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Introduction | Bioinformatics tools and pipelines using R and CWL" />
   
-  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and pipeplines with Common Workflow Language using the Rcwl package." />
+  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
   
 
 <meta name="author" content="Qiang Hu">
@@ -277,26 +277,26 @@ echo</code></pre>
 ## names(3): command output logs</code></pre>
 <p>Here we can check the output to ensure the code did what we expected.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>output</code></pre>
-<pre><code>## [1] &quot;/tmp/RtmpsjsnTz/ee823aeaeb946fe45178c5911072a881bbe90b8a&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmpsjsnTz/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3&quot;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(r1<span class="op">$</span>output)</code></pre>
 <pre><code>## [1] &quot;Hello World!&quot;</code></pre>
 <p>The executed command was returned in the result list. It shows the command that we defined to run.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>command</code></pre>
-<pre><code>## [1] &quot;[job file29c92f30032c.cwl] /tmp/tmp3DdN7v$ echo \\&quot;                          
-## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmp3DdN7v/ee823aeaeb946fe45178c5911072a881bbe90b8a&quot;</code></pre>
+<pre><code>## [1] &quot;[job file29c926a051d4.cwl] /tmp/tmp6E_AMk$ echo \\&quot;                          
+## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmp6E_AMk/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3&quot;</code></pre>
 <p>The log shows the details of how the <code>cwltool</code> works with CWL scripts.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>log</code></pre>
 <pre><code>##  [1] &quot;/home/qhu/.local/bin/cwltool 1.0.20180721142728&quot;                                                 
-##  [2] &quot;Resolved &#39;/tmp/RtmpsjsnTz/file29c92f30032c.cwl&#39; to &#39;file:///tmp/RtmpsjsnTz/file29c92f30032c.cwl&#39;&quot;
-##  [3] &quot;[job file29c92f30032c.cwl] /tmp/tmp3DdN7v$ echo \\&quot;                                              
-##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmp3DdN7v/ee823aeaeb946fe45178c5911072a881bbe90b8a&quot;                    
-##  [5] &quot;[job file29c92f30032c.cwl] completed success&quot;                                                    
+##  [2] &quot;Resolved &#39;/tmp/RtmpsjsnTz/file29c926a051d4.cwl&#39; to &#39;file:///tmp/RtmpsjsnTz/file29c926a051d4.cwl&#39;&quot;
+##  [3] &quot;[job file29c926a051d4.cwl] /tmp/tmp6E_AMk$ echo \\&quot;                                              
+##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmp6E_AMk/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3&quot;                    
+##  [5] &quot;[job file29c926a051d4.cwl] completed success&quot;                                                    
 ##  [6] &quot;{&quot;                                                                                               
 ##  [7] &quot;    \&quot;output\&quot;: {&quot;                                                                               
 ##  [8] &quot;        \&quot;checksum\&quot;: \&quot;sha1$a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b\&quot;, &quot;                       
-##  [9] &quot;        \&quot;basename\&quot;: \&quot;ee823aeaeb946fe45178c5911072a881bbe90b8a\&quot;, &quot;                            
-## [10] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/RtmpsjsnTz/ee823aeaeb946fe45178c5911072a881bbe90b8a\&quot;, &quot;     
-## [11] &quot;        \&quot;path\&quot;: \&quot;/tmp/RtmpsjsnTz/ee823aeaeb946fe45178c5911072a881bbe90b8a\&quot;, &quot;                
+##  [9] &quot;        \&quot;basename\&quot;: \&quot;ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3\&quot;, &quot;                            
+## [10] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/RtmpsjsnTz/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3\&quot;, &quot;     
+## [11] &quot;        \&quot;path\&quot;: \&quot;/tmp/RtmpsjsnTz/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3\&quot;, &quot;                
 ## [12] &quot;        \&quot;class\&quot;: \&quot;File\&quot;, &quot;                                                                   
 ## [13] &quot;        \&quot;size\&quot;: 13&quot;                                                                            
 ## [14] &quot;    }&quot;                                                                                           

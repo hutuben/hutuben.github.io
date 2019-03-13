@@ -6,20 +6,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Chapter 2 Components | Bioinformatics tools and pipelines using R and CWL</title>
-  <meta name="description" content="A manual to wrap Bioinformatics tools and pipeplines with Common Workflow Language using the Rcwl package.">
+  <meta name="description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Chapter 2 Components | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="A manual to wrap Bioinformatics tools and pipeplines with Common Workflow Language using the Rcwl package." />
+  <meta property="og:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 2 Components | Bioinformatics tools and pipelines using R and CWL" />
   
-  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and pipeplines with Common Workflow Language using the Rcwl package." />
+  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
   
 
 <meta name="author" content="Qiang Hu">
@@ -245,13 +245,13 @@ echoA<span class="op">$</span>file &lt;-<span class="st"> </span>tmpfile
 r2 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoA, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r2<span class="op">$</span>command</code></pre>
-<pre><code>## [1] &quot;[job file29c94e6e996e.cwl] /tmp/tmpz2tcyI$ echo \\&quot;                                   
-## [2] &quot;    --file=/tmp/tmpIsLzNR/stg81302b45-0919-47b0-b902-c00bf07816fd/file29c954aab341 \\&quot;
+<pre><code>## [1] &quot;[job file29c96ccf36ad.cwl] /tmp/tmp6__5gg$ echo \\&quot;                                   
+## [2] &quot;    --file=/tmp/tmpwSTlRJ/stgaa05c0f2-400a-41f9-b7dd-fe94099aed9c/file29c959fa5096 \\&quot;
 ## [3] &quot;    -f \\&quot;                                                                            
 ## [4] &quot;    -i \\&quot;                                                                            
 ## [5] &quot;    1 \\&quot;                                                                             
 ## [6] &quot;    -s \\&quot;                                                                            
-## [7] &quot;    Hello &gt; /tmp/tmpz2tcyI/output.txt&quot;</code></pre>
+## [7] &quot;    Hello &gt; /tmp/tmp6__5gg/output.txt&quot;</code></pre>
 </div>
 <div id="array-inputs" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Array Inputs</h3>
@@ -286,7 +286,7 @@ echoB</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r3 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoB, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r3<span class="op">$</span>command</code></pre>
-<pre><code>## [1] &quot;[job file29c960d3d421.cwl] /tmp/tmpSlI9BD$ echo \\&quot;                    
+<pre><code>## [1] &quot;[job file29c9115a4b28.cwl] /tmp/tmp6fMp9l$ echo \\&quot;                    
 ## [2] &quot;    -A \\&quot;                                                             
 ## [3] &quot;    a \\&quot;                                                              
 ## [4] &quot;    b \\&quot;                                                              
@@ -294,7 +294,7 @@ echoB</code></pre>
 ## [6] &quot;    -B=d \\&quot;                                                           
 ## [7] &quot;    -B=e \\&quot;                                                           
 ## [8] &quot;    -B=f \\&quot;                                                           
-## [9] &quot;    -C=g,h,i &gt; /tmp/tmpSlI9BD/b09115318d8ae5029da0c9dcc8a63ad524aad514&quot;</code></pre>
+## [9] &quot;    -C=g,h,i &gt; /tmp/tmp6fMp9l/d519274a24f040970594e84403512dd500d9c853&quot;</code></pre>
 </div>
 </div>
 <div id="output-parameters" class="section level2">

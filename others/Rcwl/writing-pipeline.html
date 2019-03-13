@@ -6,20 +6,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL</title>
-  <meta name="description" content="A manual to wrap Bioinformatics tools and pipeplines with Common Workflow Language using the Rcwl package.">
+  <meta name="description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="A manual to wrap Bioinformatics tools and pipeplines with Common Workflow Language using the Rcwl package." />
+  <meta property="og:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL" />
   
-  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and pipeplines with Common Workflow Language using the Rcwl package." />
+  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
   
 
 <meta name="author" content="Qiang Hu">
@@ -240,7 +240,7 @@ Rs</code></pre>
 tres &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Rs, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(tres<span class="op">$</span>output)</code></pre>
-<pre><code>## [1] &quot;[1] 2 7 4 8 3&quot;</code></pre>
+<pre><code>## [1] &quot;[1] 8 4 1 6 5&quot;</code></pre>
 <p>The pipeline includes two steps, decompressed by <code>GZ</code> and compiled by <code>Rs</code>. The input file is a compressed file and the output would be the output <code>Rout</code> from <code>Rs</code>.</p>
 <p>First we need to define the direct inputs and outputs from <code>GZ</code> and <code>Rs</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">i1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)
@@ -278,7 +278,7 @@ cwl</code></pre>
 r7 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(r7<span class="op">$</span>output)</code></pre>
-<pre><code>## [1] &quot;[1] 5 2 3 4 9&quot;</code></pre>
+<pre><code>## [1] &quot;[1] 9 4 2 7 1&quot;</code></pre>
 <div id="scattering-pipeline" class="section level2">
 <h2><span class="header-section-number">3.1</span> Scattering pipeline</h2>
 <p>The scattering feature can specifies the associated workflow step or subworkflow to execute separately over a list of input elements. To use this feature, <code>ScatterFeatureRequirement</code> must be specified in the workflow requirements. Different <code>scatter</code> methods can be used in the associated step to decompose the input into a discrete set of jobs. More details can be found at: <a href="https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep" class="uri">https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep</a>.</p>
@@ -324,8 +324,8 @@ r8 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl2, <span clas
 <h2><span class="header-section-number">3.2</span> Pipeline plot</h2>
 <p>The function <code>plotCWL</code> can be used to visualize the relationship of inputs, outputs and the analysis for a tool or pipeline.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plotCWL</span>(cwl)</code></pre>
-<div id="htmlwidget-b7ae4e154c2461be1561" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b7ae4e154c2461be1561">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-788a9e6340da65e8171c" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-788a9e6340da65e8171c">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>

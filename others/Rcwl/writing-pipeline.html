@@ -6,26 +6,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL</title>
-  <meta name="description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package.">
+  <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
+  <meta property="og:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL" />
   
-  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
+  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   
 
 <meta name="author" content="Qiang Hu">
+<meta name="author" content="Song Liu">
 
 
-<meta name="date" content="2019-03-13">
+<meta name="date" content="2019-05-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -55,7 +56,7 @@
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -179,16 +180,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="application.html"><a href="application.html#rcwlpipelines-summary"><i class="fa fa-check"></i><b>5.2</b> RcwlPipelines summary</a></li>
 <li class="chapter" data-level="5.3" data-path="application.html"><a href="application.html#dnaseq-alignment-pipeline"><i class="fa fa-check"></i><b>5.3</b> DNASeq alignment pipeline</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="application.html"><a href="application.html#prepara-data"><i class="fa fa-check"></i><b>5.3.1</b> Prepara data</a></li>
+<li class="chapter" data-level="5.3.1" data-path="application.html"><a href="application.html#prepare-data"><i class="fa fa-check"></i><b>5.3.1</b> Prepare data</a></li>
 <li class="chapter" data-level="5.3.2" data-path="application.html"><a href="application.html#run-in-cluster"><i class="fa fa-check"></i><b>5.3.2</b> Run in cluster</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="application.html"><a href="application.html#rnaseq-pipeline"><i class="fa fa-check"></i><b>5.4</b> RNASeq pipeline</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="application.html"><a href="application.html#prepare-data"><i class="fa fa-check"></i><b>5.4.1</b> Prepare data</a></li>
+<li class="chapter" data-level="5.4.1" data-path="application.html"><a href="application.html#prepare-data-1"><i class="fa fa-check"></i><b>5.4.1</b> Prepare data</a></li>
 <li class="chapter" data-level="5.4.2" data-path="application.html"><a href="application.html#submit-pipeline-with-sge"><i class="fa fa-check"></i><b>5.4.2</b> Submit pipeline with SGE</a></li>
 <li class="chapter" data-level="5.4.3" data-path="application.html"><a href="application.html#summarize-qc"><i class="fa fa-check"></i><b>5.4.3</b> Summarize QC</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="application.html"><a href="application.html#mc3-somatic-variant-calling-pipeline"><i class="fa fa-check"></i><b>5.5</b> MC3 somatic variant calling pipeline</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="application.html"><a href="application.html#prepare-data-1"><i class="fa fa-check"></i><b>5.5.1</b> Prepare data</a></li>
+<li class="chapter" data-level="5.5.1" data-path="application.html"><a href="application.html#prepare-data-2"><i class="fa fa-check"></i><b>5.5.1</b> Prepare data</a></li>
 <li class="chapter" data-level="5.5.2" data-path="application.html"><a href="application.html#run-mc3-pipeline"><i class="fa fa-check"></i><b>5.5.2</b> Run MC3 pipeline</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="application.html"><a href="application.html#gatk4-germline-variant-calling-pipeline"><i class="fa fa-check"></i><b>5.6</b> GATK4 germline variant calling pipeline</a><ul>
@@ -240,13 +241,13 @@ Rs</code></pre>
 tres &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Rs, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(tres<span class="op">$</span>output)</code></pre>
-<pre><code>## [1] &quot;[1] 8 4 1 6 5&quot;</code></pre>
+<pre><code>## [1] &quot;[1] 2 6 9 7 3&quot;</code></pre>
 <p>The pipeline includes two steps, decompressed by <code>GZ</code> and compiled by <code>Rs</code>. The input file is a compressed file and the output would be the output <code>Rout</code> from <code>Rs</code>.</p>
 <p>First we need to define the direct inputs and outputs from <code>GZ</code> and <code>Rs</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">i1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)
 o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_cout&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;Compile/output&quot;</span>)</code></pre>
-<p>For the input cwl_zifle, it refers to the <code>GZ</code> input <code>zfile</code>. The output “cwl_cout” will be the outcome of <code>Rs</code> output <code>Rout</code>.</p>
-<p>The pipeline contains two steps, “Uncomp” to uncompress file with <code>GZ</code> and “Compile” to run script with <code>Rs</code>. First, we use <code>cwlStepParam</code> to define <code>inputs</code> and <code>outputs</code> from previous step. Then it connects with the two steps with <code>Step</code> function. The <code>run</code> option refer to the corresponding <code>cwlParam</code> object and the <code>In</code> option in steps should be linked to the input parameters defined by <code>cwlStepParam</code>. In the end, we use <code>+</code> to connect all steps.</p>
+<p>For the input “cwl_zifle”, it refers to the <code>GZ</code> input <code>zfile</code>. The output “cwl_cout” will be the outcome of <code>Rs</code> output <code>Rout</code>.</p>
+<p>The <code>cwlStepParam</code> is used to define <code>inputs</code> and <code>outputs</code> from previous step. Then it connects with the two steps with <code>Step</code> function. The <code>run</code> option refer to the corresponding <code>cwlParam</code> object and the <code>In</code> option in steps should be linked to the input parameters defined by <code>cwlStepParam</code>. In the end, we use <code>+</code> to connect all steps.</p>
 <pre class="sourceCode r"><code class="sourceCode r">cwl &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">inputs =</span> <span class="kw">InputParamList</span>(i1),
                     <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1))
 s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Uncomp&quot;</span>, <span class="dt">run =</span> GZ,
@@ -278,7 +279,7 @@ cwl</code></pre>
 r7 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(r7<span class="op">$</span>output)</code></pre>
-<pre><code>## [1] &quot;[1] 9 4 2 7 1&quot;</code></pre>
+<pre><code>## [1] &quot;[1]  8  2 10  3  5&quot;</code></pre>
 <div id="scattering-pipeline" class="section level2">
 <h2><span class="header-section-number">3.1</span> Scattering pipeline</h2>
 <p>The scattering feature can specifies the associated workflow step or subworkflow to execute separately over a list of input elements. To use this feature, <code>ScatterFeatureRequirement</code> must be specified in the workflow requirements. Different <code>scatter</code> methods can be used in the associated step to decompose the input into a discrete set of jobs. More details can be found at: <a href="https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep" class="uri">https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep</a>.</p>
@@ -317,15 +318,15 @@ cwl2</code></pre>
 r8 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl2, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r8<span class="op">$</span>output</code></pre>
-<pre><code>## [1] &quot;/tmp/RtmpsjsnTz/b04b9a3d55f6cb2d6851c45d9f44d1c9175132c7&quot;
-## [2] &quot;/tmp/RtmpsjsnTz/b04b9a3d55f6cb2d6851c45d9f44d1c9175132c7&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/Rtmp5Ny5vP/20a09d98ee7d55e5f2d3987b7a3ea06b784304de&quot;
+## [2] &quot;/tmp/Rtmp5Ny5vP/20a09d98ee7d55e5f2d3987b7a3ea06b784304de&quot;</code></pre>
 </div>
 <div id="pipeline-plot" class="section level2">
 <h2><span class="header-section-number">3.2</span> Pipeline plot</h2>
 <p>The function <code>plotCWL</code> can be used to visualize the relationship of inputs, outputs and the analysis for a tool or pipeline.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plotCWL</span>(cwl)</code></pre>
-<div id="htmlwidget-788a9e6340da65e8171c" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-788a9e6340da65e8171c">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0a8759b8281bebce2a87" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0a8759b8281bebce2a87">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>

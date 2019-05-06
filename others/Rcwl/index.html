@@ -6,26 +6,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Bioinformatics tools and pipelines using R and CWL</title>
-  <meta name="description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package.">
+  <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
+  <meta property="og:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Bioinformatics tools and pipelines using R and CWL" />
   
-  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
+  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   
 
 <meta name="author" content="Qiang Hu">
+<meta name="author" content="Song Liu">
 
 
-<meta name="date" content="2019-03-13">
+<meta name="date" content="2019-05-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -55,7 +56,7 @@
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -179,16 +180,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="application.html"><a href="application.html#rcwlpipelines-summary"><i class="fa fa-check"></i><b>5.2</b> RcwlPipelines summary</a></li>
 <li class="chapter" data-level="5.3" data-path="application.html"><a href="application.html#dnaseq-alignment-pipeline"><i class="fa fa-check"></i><b>5.3</b> DNASeq alignment pipeline</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="application.html"><a href="application.html#prepara-data"><i class="fa fa-check"></i><b>5.3.1</b> Prepara data</a></li>
+<li class="chapter" data-level="5.3.1" data-path="application.html"><a href="application.html#prepare-data"><i class="fa fa-check"></i><b>5.3.1</b> Prepare data</a></li>
 <li class="chapter" data-level="5.3.2" data-path="application.html"><a href="application.html#run-in-cluster"><i class="fa fa-check"></i><b>5.3.2</b> Run in cluster</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="application.html"><a href="application.html#rnaseq-pipeline"><i class="fa fa-check"></i><b>5.4</b> RNASeq pipeline</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="application.html"><a href="application.html#prepare-data"><i class="fa fa-check"></i><b>5.4.1</b> Prepare data</a></li>
+<li class="chapter" data-level="5.4.1" data-path="application.html"><a href="application.html#prepare-data-1"><i class="fa fa-check"></i><b>5.4.1</b> Prepare data</a></li>
 <li class="chapter" data-level="5.4.2" data-path="application.html"><a href="application.html#submit-pipeline-with-sge"><i class="fa fa-check"></i><b>5.4.2</b> Submit pipeline with SGE</a></li>
 <li class="chapter" data-level="5.4.3" data-path="application.html"><a href="application.html#summarize-qc"><i class="fa fa-check"></i><b>5.4.3</b> Summarize QC</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="application.html"><a href="application.html#mc3-somatic-variant-calling-pipeline"><i class="fa fa-check"></i><b>5.5</b> MC3 somatic variant calling pipeline</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="application.html"><a href="application.html#prepare-data-1"><i class="fa fa-check"></i><b>5.5.1</b> Prepare data</a></li>
+<li class="chapter" data-level="5.5.1" data-path="application.html"><a href="application.html#prepare-data-2"><i class="fa fa-check"></i><b>5.5.1</b> Prepare data</a></li>
 <li class="chapter" data-level="5.5.2" data-path="application.html"><a href="application.html#run-mc3-pipeline"><i class="fa fa-check"></i><b>5.5.2</b> Run MC3 pipeline</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="application.html"><a href="application.html#gatk4-germline-variant-calling-pipeline"><i class="fa fa-check"></i><b>5.6</b> GATK4 germline variant calling pipeline</a><ul>
@@ -221,31 +222,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Bioinformatics tools and pipelines using R and CWL</h1>
 <p class="author"><em>Qiang Hu</em></p>
-<p class="date"><em>2019-03-13</em></p>
+<p class="author"><em>Song Liu</em></p>
+<p class="date"><em>2019-05-06</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
-<p>This short book introduces the R packages, <strong>Rcwl</strong> and <strong>RcwlPipelines</strong>, to improve your way to build, manage and run a Bioinformatics tools and pipeline.</p>
-<p>The <strong>Rcwl</strong> package is built on top of the Common Workflow Language (CWL), and it provides a simple and user-friendly way to wrap command line tools and build data analysis pipelines in R using CWL. The <strong>RcwlPipelines</strong> package is a collection of Bioinformatics tool and pipeline recipes based on <strong>Rcwl</strong>.</p>
+<p>This short book introduces the R packages, <strong>Rcwl</strong> and <strong>RcwlPipelines</strong>, to improve the way of building, managing and running Bioinformatics tools and pipelines.</p>
+<p>The <strong>Rcwl</strong> package is built on top of the Common Workflow Language (CWL), and provides a simple and user-friendly way to wrap command line tools into data analysis pipelines in R. The <strong>RcwlPipelines</strong> package is a collection of Bioinformatics tools and pipelines based on <strong>Rcwl</strong>.</p>
 <div id="r-package-installation" class="section level2">
 <h2><span class="header-section-number">0.1</span> R package installation</h2>
 <p>The <strong>Rcwl</strong> and <strong>RcwlPipelines</strong> packages can be installed from Bioconductor or Github:</p>
 <pre class="sourceCode r"><code class="sourceCode r">BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="kw">c</span>(<span class="st">&quot;Rcwl&quot;</span>, <span class="st">&quot;RcwlPipelines&quot;</span>))
 <span class="co"># or the development version</span>
 BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="kw">c</span>(<span class="st">&quot;hubentu/Rcwl&quot;</span>, <span class="st">&quot;hubentu/RcwlPipelines&quot;</span>))</code></pre>
-<p>Load the packages into R session.</p>
+<p>To load the packages into R session:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Rcwl)
 <span class="kw">library</span>(RcwlPipelines)</code></pre>
 </div>
 <div id="system-requirements" class="section level2">
 <h2><span class="header-section-number">0.2</span> System requirements</h2>
-<p>Besides the depedencies of the R packages, the following tools are required to be installed to run the examples in this book.</p>
+<p>In addition to the R packages, the following tools are required to be installed to run the examples in this book.</p>
 <ul>
 <li>python (&gt;= 2.7)</li>
 <li>cwltool (&gt;= 1.0.2018)</li>
 <li>nodejs</li>
 </ul>
-<p>The <strong>cwltool</strong> is the reference implementation of the Common Workflow Language, which is used to run the CWL scripts. The <strong>nodejs</strong> is required when the CWL scripts used JavaScript. Here you can find instruction to install these tools.</p>
+<p>The <strong>cwltool</strong> is the reference implementation of the Common Workflow Language, which is used to run the CWL scripts. The <strong>nodejs</strong> is required when the CWL scripts use JavaScript. You can find instructions to install these tools here:</p>
 <ul>
 <li><a href="https://github.com/common-workflow-language/cwltool#install" class="uri">https://github.com/common-workflow-language/cwltool#install</a></li>
 <li><a href="https://nodejs.org" class="uri">https://nodejs.org</a></li>
@@ -253,7 +255,8 @@ BiocManager<span class="op">::</span><span class="kw">install</span>(<span class
 </div>
 <div id="docker" class="section level2">
 <h2><span class="header-section-number">0.3</span> Docker</h2>
-<p>The Docker containers simplify software installation and management. Especially for bioinformatics tools, such toolos often require different runtime environments and library dependcies. For the build workflow, the software required for the installation itself is a big challenge. A CWL runner can perform this work automatically by pulling the Docker containers and adjusting the paths of input files. However, the Docker requirements are optional. CWL scripts can also be run locally with all the dependencies installed.</p>
+<p>The Docker container simplifies software installation and management, especially for bioinformatics tools/pipelines requiring different runtime environments and library dependencies. A CWL runner can perform this work automatically by pulling the Docker containers and mounting the paths of input files.</p>
+<p>The Docker requirement is optional, as CWL scripts can also be run locally with all the dependencies pre-installed.</p>
 </div>
 <div id="structure-of-the-book" class="section level2">
 <h2><span class="header-section-number">0.4</span> Structure of the book</h2>
@@ -267,15 +270,15 @@ BiocManager<span class="op">::</span><span class="kw">install</span>(<span class
 </div>
 <div id="r-session-information" class="section level2">
 <h2><span class="header-section-number">0.5</span> R session information</h2>
-<p>The R session information when compiling this mannual is shown below:</p>
+<p>The R session information for compiling this mannual is shown below:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre>
-<pre><code>## R version 3.5.2 Patched (2018-12-31 r75935)
+<pre><code>## R version 3.6.0 (2019-04-26)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: CentOS release 6.4 (Final)
 ## 
 ## Matrix products: default
-## BLAS: /home/qhu/usr/R-3.5/lib64/R/lib/libRblas.so
-## LAPACK: /home/qhu/usr/R-3.5/lib64/R/lib/libRlapack.so
+## BLAS:   /home/qhu/usr/R-3.6/lib64/R/lib/libRblas.so
+## LAPACK: /home/qhu/usr/R-3.6/lib64/R/lib/libRlapack.so
 ## 
 ## locale:
 ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -290,37 +293,37 @@ BiocManager<span class="op">::</span><span class="kw">install</span>(<span class
 ## [8] methods   base     
 ## 
 ## other attached packages:
-## [1] dplyr_0.8.0.1        RcwlPipelines_0.99.4 BiocFileCache_1.6.0 
-## [4] dbplyr_1.3.0         Rcwl_0.99.16         S4Vectors_0.20.1    
-## [7] BiocGenerics_0.28.0  yaml_2.2.0           bookdown_0.9        
+## [1] dplyr_0.8.0.1         RcwlPipelines_0.99.13 BiocFileCache_1.7.10 
+## [4] dbplyr_1.4.0          Rcwl_0.99.17          S4Vectors_0.21.24    
+## [7] BiocGenerics_0.29.2   yaml_2.2.0            bookdown_0.9         
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] httr_1.4.0          viridis_0.5.1       tidyr_0.8.3        
-##  [4] bit64_0.9-7         jsonlite_1.6        viridisLite_0.3.0  
-##  [7] shiny_1.2.0         assertthat_0.2.0    blob_1.1.1         
-## [10] base64url_1.4       progress_1.2.0      pillar_1.3.1       
-## [13] RSQLite_2.1.1       backports_1.1.3     glue_1.3.0         
-## [16] downloader_0.4      digest_0.6.18       RColorBrewer_1.1-2 
-## [19] promises_1.0.1      checkmate_1.9.1     colorspace_1.4-0   
-## [22] htmltools_0.3.6     httpuv_1.4.5.1      plyr_1.8.4         
-## [25] XML_3.98-1.19       pkgconfig_2.0.2     DiagrammeR_1.0.0   
-## [28] purrr_0.3.1         xtable_1.8-3        scales_1.0.0       
-## [31] brew_1.0-6          later_0.8.0         BiocParallel_1.16.6
-## [34] tibble_2.0.1        ggplot2_3.1.0       influenceR_0.1.0   
-## [37] withr_2.1.2         lazyeval_0.2.1      cli_1.0.1          
-## [40] rgexf_0.15.3        magrittr_1.5        crayon_1.3.4       
-## [43] mime_0.6            memoise_1.1.0       evaluate_0.13      
-## [46] fansi_0.4.0         Rook_1.1-1          tools_3.5.2        
-## [49] data.table_1.12.0   prettyunits_1.0.2   hms_0.4.2          
-## [52] stringr_1.4.0       munsell_0.5.0       compiler_3.5.2     
-## [55] rlang_0.3.1         debugme_1.1.0       grid_3.5.2         
-## [58] rstudioapi_0.9.0    rappdirs_0.3.1      htmlwidgets_1.3    
-## [61] visNetwork_2.0.5    igraph_1.2.4        rmarkdown_1.11     
-## [64] gtable_0.2.0        curl_3.3            DBI_1.0.0          
-## [67] R6_2.4.0            gridExtra_2.3       knitr_1.21         
-## [70] utf8_1.1.4          bit_1.1-14          readr_1.3.1        
-## [73] stringi_1.3.1       Rcpp_1.0.0          batchtools_0.9.11  
-## [76] tidyselect_0.2.5    xfun_0.5</code></pre>
+##  [1] httr_1.4.0           viridis_0.5.1        tidyr_0.8.3         
+##  [4] bit64_0.9-7          jsonlite_1.6         viridisLite_0.3.0   
+##  [7] shiny_1.3.2          assertthat_0.2.1     BiocManager_1.30.4  
+## [10] base64url_1.4        blob_1.1.1           progress_1.2.0      
+## [13] pillar_1.3.1         RSQLite_2.1.1        backports_1.1.4     
+## [16] glue_1.3.1           downloader_0.4       digest_0.6.18       
+## [19] RColorBrewer_1.1-2   promises_1.0.1       checkmate_1.9.1     
+## [22] colorspace_1.4-1     htmltools_0.3.6      httpuv_1.5.1        
+## [25] plyr_1.8.4           XML_3.98-1.19        pkgconfig_2.0.2     
+## [28] DiagrammeR_1.0.1     purrr_0.3.2          xtable_1.8-4        
+## [31] scales_1.0.0         brew_1.0-6           later_0.8.0         
+## [34] BiocParallel_1.17.19 tibble_2.1.1         ggplot2_3.1.1       
+## [37] influenceR_0.1.0     withr_2.1.2          lazyeval_0.2.2      
+## [40] cli_1.1.0            rgexf_0.15.3         magrittr_1.5        
+## [43] crayon_1.3.4         mime_0.6             memoise_1.1.0       
+## [46] evaluate_0.13        fansi_0.4.0          Rook_1.1-1          
+## [49] tools_3.6.0          data.table_1.12.2    prettyunits_1.0.2   
+## [52] hms_0.4.2            stringr_1.4.0        munsell_0.5.0       
+## [55] compiler_3.6.0       rlang_0.3.4          grid_3.6.0          
+## [58] rstudioapi_0.10      rappdirs_0.3.1       htmlwidgets_1.3     
+## [61] visNetwork_2.0.6     igraph_1.2.4.1       rmarkdown_1.12      
+## [64] gtable_0.3.0         curl_3.3             DBI_1.0.0           
+## [67] R6_2.4.0             gridExtra_2.3        knitr_1.22          
+## [70] utf8_1.1.4           bit_1.1-14           readr_1.3.1         
+## [73] stringi_1.4.3        Rcpp_1.0.1           batchtools_0.9.11   
+## [76] tidyselect_0.2.5     xfun_0.6</code></pre>
 
 
 </div>

@@ -6,26 +6,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Chapter 1 Introduction | Bioinformatics tools and pipelines using R and CWL</title>
-  <meta name="description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package.">
+  <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="Chapter 1 Introduction | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
+  <meta property="og:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Introduction | Bioinformatics tools and pipelines using R and CWL" />
   
-  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and pipelines with Common Workflow Language using the Rcwl package." />
+  <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   
 
 <meta name="author" content="Qiang Hu">
+<meta name="author" content="Song Liu">
 
 
-<meta name="date" content="2019-03-13">
+<meta name="date" content="2019-05-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -55,7 +56,7 @@
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.0/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -179,16 +180,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="application.html"><a href="application.html#rcwlpipelines-summary"><i class="fa fa-check"></i><b>5.2</b> RcwlPipelines summary</a></li>
 <li class="chapter" data-level="5.3" data-path="application.html"><a href="application.html#dnaseq-alignment-pipeline"><i class="fa fa-check"></i><b>5.3</b> DNASeq alignment pipeline</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="application.html"><a href="application.html#prepara-data"><i class="fa fa-check"></i><b>5.3.1</b> Prepara data</a></li>
+<li class="chapter" data-level="5.3.1" data-path="application.html"><a href="application.html#prepare-data"><i class="fa fa-check"></i><b>5.3.1</b> Prepare data</a></li>
 <li class="chapter" data-level="5.3.2" data-path="application.html"><a href="application.html#run-in-cluster"><i class="fa fa-check"></i><b>5.3.2</b> Run in cluster</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="application.html"><a href="application.html#rnaseq-pipeline"><i class="fa fa-check"></i><b>5.4</b> RNASeq pipeline</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="application.html"><a href="application.html#prepare-data"><i class="fa fa-check"></i><b>5.4.1</b> Prepare data</a></li>
+<li class="chapter" data-level="5.4.1" data-path="application.html"><a href="application.html#prepare-data-1"><i class="fa fa-check"></i><b>5.4.1</b> Prepare data</a></li>
 <li class="chapter" data-level="5.4.2" data-path="application.html"><a href="application.html#submit-pipeline-with-sge"><i class="fa fa-check"></i><b>5.4.2</b> Submit pipeline with SGE</a></li>
 <li class="chapter" data-level="5.4.3" data-path="application.html"><a href="application.html#summarize-qc"><i class="fa fa-check"></i><b>5.4.3</b> Summarize QC</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="application.html"><a href="application.html#mc3-somatic-variant-calling-pipeline"><i class="fa fa-check"></i><b>5.5</b> MC3 somatic variant calling pipeline</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="application.html"><a href="application.html#prepare-data-1"><i class="fa fa-check"></i><b>5.5.1</b> Prepare data</a></li>
+<li class="chapter" data-level="5.5.1" data-path="application.html"><a href="application.html#prepare-data-2"><i class="fa fa-check"></i><b>5.5.1</b> Prepare data</a></li>
 <li class="chapter" data-level="5.5.2" data-path="application.html"><a href="application.html#run-mc3-pipeline"><i class="fa fa-check"></i><b>5.5.2</b> Run MC3 pipeline</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="application.html"><a href="application.html#gatk4-germline-variant-calling-pipeline"><i class="fa fa-check"></i><b>5.6</b> GATK4 germline variant calling pipeline</a><ul>
@@ -227,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li>Tools to build pipelines and generate reproducible reports are required
 <ul>
-<li>Standardization BioInfo Pipelines for best practice</li>
+<li>Standardization of BioInfo Pipelines for best practice</li>
 <li>Portable pipelines</li>
 <li>Reproducible analysis and report</li>
 <li>Easy to use in different platforms</li>
@@ -242,17 +243,17 @@ workstations to <strong>cluster, cloud, and high performance computing (HPC)</st
 environments.”</p>
 <p><a href="https://www.commonwl.org/" class="uri">https://www.commonwl.org/</a></p>
 <ul>
-<li><p>To wrap tool and workflows parameters in a standard format</p></li>
+<li><p>To wrap tool and workflow parameters in a standard format</p></li>
 <li><p>Capable of invoking tools from Docker containers</p></li>
-<li><p>Used by Broad Institute, TCGA, Galaxy Project, DNAnexus…</p></li>
+<li><p>Widely used…</p></li>
 </ul>
 </div>
 <div id="first-example" class="section level2">
 <h2><span class="header-section-number">1.2</span> First example</h2>
-<p>The main class and constructor function is <code>cwlParam</code>, which wrap a command line tool and its parameters in a <code>cwlParam</code> object. Let’s start with a simple example, <code>echo hello world</code>.</p>
-<p>First, we load the package and then define the input parameter for “echo”, a string without a prefix. Just an <code>id</code> option required.</p>
+<p>The main class and constructor function is <code>cwlParam</code>, which wraps a command line tool and its parameters in a <code>cwlParam</code> object. Let’s start with a simple example, <code>echo hello world</code>.</p>
+<p>First, we load the package and define the input parameter for “echo”, a string without a prefix. Just an <code>id</code> option required here:</p>
 <pre class="sourceCode r"><code class="sourceCode r">input1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;sth&quot;</span>)</code></pre>
-<p>Second, create a <code>cwlParam</code> object with <code>baseCommand</code> for the command to execute and <code>InputParamList</code> for the input parameters.</p>
+<p>Second, we create a <code>cwlParam</code> object with <code>baseCommand</code> for the command to execute and <code>InputParamList</code> for the input parameters.</p>
 <pre class="sourceCode r"><code class="sourceCode r">echo &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>, <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(input1))</code></pre>
 <p>Now we have a command object to run. Let’s send a string “Hello World!” to the object. Without defining the outputs, it will stream standard output to a temporary file by default.</p>
 <pre class="sourceCode r"><code class="sourceCode r">echo<span class="op">$</span>sth &lt;-<span class="st"> &quot;Hello World!&quot;</span>
@@ -269,7 +270,7 @@ echo</code></pre>
 </div>
 <div id="test-run" class="section level2">
 <h2><span class="header-section-number">1.3</span> Test run</h2>
-<p>The function <code>runCWL</code> is used to run the CWL object by invoking the python tool <code>cwltool</code>. The return will be a list including the command executed, temporary output and logs. The output directory is the current folder by default, but it can be changed by setting <code>outdir</code> option. All standard out and standard error stream can also be printed by setting <code>stderr = ""</code>.</p>
+<p>The function <code>runCWL</code> is used to run the CWL object by invoking the python tool <code>cwltool</code>. The return will be a list including the command executed, temporary output and logs. The output directory is the current folder by default, but it can be changed by setting <code>outdir</code> option. All standard out and standard error streams can also be printed by setting <code>stderr = ""</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echo, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r1</code></pre>
@@ -277,32 +278,32 @@ echo</code></pre>
 ## names(3): command output logs</code></pre>
 <p>Here we can check the output to ensure the code did what we expected.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>output</code></pre>
-<pre><code>## [1] &quot;/tmp/RtmpsjsnTz/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/Rtmp5Ny5vP/61488d6364be766635fda463adb9f93e88907020&quot;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(r1<span class="op">$</span>output)</code></pre>
 <pre><code>## [1] &quot;Hello World!&quot;</code></pre>
-<p>The executed command was returned in the result list. It shows the command that we defined to run.</p>
+<p>The executed command was returned in the result list. It shows the command that we have defined to execute.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>command</code></pre>
-<pre><code>## [1] &quot;[job file29c926a051d4.cwl] /tmp/tmp6E_AMk$ echo \\&quot;                          
-## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmp6E_AMk/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3&quot;</code></pre>
+<pre><code>## [1] &quot;[job file102e156f18880.cwl] /tmp/tmpUeC0Sc$ echo \\&quot;                         
+## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmpUeC0Sc/61488d6364be766635fda463adb9f93e88907020&quot;</code></pre>
 <p>The log shows the details of how the <code>cwltool</code> works with CWL scripts.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>log</code></pre>
-<pre><code>##  [1] &quot;/home/qhu/.local/bin/cwltool 1.0.20180721142728&quot;                                                 
-##  [2] &quot;Resolved &#39;/tmp/RtmpsjsnTz/file29c926a051d4.cwl&#39; to &#39;file:///tmp/RtmpsjsnTz/file29c926a051d4.cwl&#39;&quot;
-##  [3] &quot;[job file29c926a051d4.cwl] /tmp/tmp6E_AMk$ echo \\&quot;                                              
-##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmp6E_AMk/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3&quot;                    
-##  [5] &quot;[job file29c926a051d4.cwl] completed success&quot;                                                    
-##  [6] &quot;{&quot;                                                                                               
-##  [7] &quot;    \&quot;output\&quot;: {&quot;                                                                               
-##  [8] &quot;        \&quot;checksum\&quot;: \&quot;sha1$a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b\&quot;, &quot;                       
-##  [9] &quot;        \&quot;basename\&quot;: \&quot;ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3\&quot;, &quot;                            
-## [10] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/RtmpsjsnTz/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3\&quot;, &quot;     
-## [11] &quot;        \&quot;path\&quot;: \&quot;/tmp/RtmpsjsnTz/ac1b2f6370b150f1a4b0b744a5b5d84c2c8028f3\&quot;, &quot;                
-## [12] &quot;        \&quot;class\&quot;: \&quot;File\&quot;, &quot;                                                                   
-## [13] &quot;        \&quot;size\&quot;: 13&quot;                                                                            
-## [14] &quot;    }&quot;                                                                                           
-## [15] &quot;}&quot;                                                                                               
+<pre><code>##  [1] &quot;/home/qhu/.local/bin/cwltool 1.0.20180721142728&quot;                                                   
+##  [2] &quot;Resolved &#39;/tmp/Rtmp5Ny5vP/file102e156f18880.cwl&#39; to &#39;file:///tmp/Rtmp5Ny5vP/file102e156f18880.cwl&#39;&quot;
+##  [3] &quot;[job file102e156f18880.cwl] /tmp/tmpUeC0Sc$ echo \\&quot;                                               
+##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmpUeC0Sc/61488d6364be766635fda463adb9f93e88907020&quot;                      
+##  [5] &quot;[job file102e156f18880.cwl] completed success&quot;                                                     
+##  [6] &quot;{&quot;                                                                                                 
+##  [7] &quot;    \&quot;output\&quot;: {&quot;                                                                                 
+##  [8] &quot;        \&quot;checksum\&quot;: \&quot;sha1$a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b\&quot;, &quot;                         
+##  [9] &quot;        \&quot;basename\&quot;: \&quot;61488d6364be766635fda463adb9f93e88907020\&quot;, &quot;                              
+## [10] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/Rtmp5Ny5vP/61488d6364be766635fda463adb9f93e88907020\&quot;, &quot;       
+## [11] &quot;        \&quot;path\&quot;: \&quot;/tmp/Rtmp5Ny5vP/61488d6364be766635fda463adb9f93e88907020\&quot;, &quot;                  
+## [12] &quot;        \&quot;class\&quot;: \&quot;File\&quot;, &quot;                                                                     
+## [13] &quot;        \&quot;size\&quot;: 13&quot;                                                                              
+## [14] &quot;    }&quot;                                                                                             
+## [15] &quot;}&quot;                                                                                                 
 ## [16] &quot;Final process status is success&quot;</code></pre>
-<p>The <code>runCWL</code> generated two scripts with the default <code>tempfile</code> prefix, the tool wrapper CWL file and the input YML file. The <code>cwltool</code> parse the two scripts and translate them to the command shown before. The output is not defined in the <code>cwlParam</code> object, so the command output was returned to <strong>stdout</strong> by default.</p>
+<p>The <code>runCWL</code> generated two scripts with the default <code>tempfile</code> prefix, the tool wrapper CWL file and the input YML file. The <code>cwltool</code> parses the two scripts and translates them into the command shown before. The output is not defined in the <code>cwlParam</code> object, so the command output was returned to <strong>stdout</strong> by default.</p>
 
 </div>
 </div>

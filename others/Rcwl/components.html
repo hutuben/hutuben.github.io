@@ -23,10 +23,10 @@
   
 
 <meta name="author" content="Qiang Hu">
-<meta name="author" content="Song Liu">
+<meta name="author" content="Qian Liu">
 
 
-<meta name="date" content="2019-05-06">
+<meta name="date" content="2019-05-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="components.html"><a href="components.html#output-parameters"><i class="fa fa-check"></i><b>2.2</b> Output Parameters</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="components.html"><a href="components.html#capturing-output"><i class="fa fa-check"></i><b>2.2.1</b> Capturing Output</a></li>
 <li class="chapter" data-level="2.2.2" data-path="components.html"><a href="components.html#array-outputs"><i class="fa fa-check"></i><b>2.2.2</b> Array Outputs</a></li>
+<li class="chapter" data-level="2.2.3" data-path="components.html"><a href="components.html#standard-output"><i class="fa fa-check"></i><b>2.2.3</b> Standard output</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="writing-pipeline.html"><a href="writing-pipeline.html"><i class="fa fa-check"></i><b>3</b> Writing Pipeline</a><ul>
@@ -225,8 +226,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.1</span> Input Parameters</h2>
 <div id="essential-input-parameters" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Essential Input parameters</h3>
-<p>For the input parameters, three options need to be defined usually, <em>id</em>, <em>type</em>, and <em>prefix</em>. The type can be <em>string</em>, <em>int</em>, <em>long</em>, <em>float</em>, <em>double</em>, and so on. More detail can be found at: <a href="https://www.commonwl.org/v1.0/CommandLineTool.html#CWLType" class="uri">https://www.commonwl.org/v1.0/CommandLineTool.html#CWLType</a>.</p>
-<p>Here is an example from <a href="http://www.commonwl.org/user_guide/03-input/">CWL user guide</a>. Here we defined an <code>echo</code> with different type of input parameters by <code>InputParam</code>. The <code>stdout</code> option can be used to caputre the standard output stream to a file.</p>
+<p>For the input parameters, we usually need to define three options, <em>id</em>, <em>type</em>, and <em>prefix</em>. The type can be <em>string</em>, <em>int</em>, <em>long</em>, <em>float</em>, <em>double</em>, and so on. More detail can be found at: <a href="https://www.commonwl.org/v1.0/CommandLineTool.html#CWLType" class="uri">https://www.commonwl.org/v1.0/CommandLineTool.html#CWLType</a>.</p>
+<p>A <code>InputParam</code> constructor is used to define a list of input objects for the command tool, such as “prefix” for the parameter flags and “position” for the paramter orders. More descriptions are available in the CWL specification <a href="https://www.commonwl.org/v1.0/CommandLineTool.html#CommandLineBinding" class="uri">https://www.commonwl.org/v1.0/CommandLineTool.html#CommandLineBinding</a>.</p>
+<p>Here is an example from the CWL user guide(<a href="http://www.commonwl.org/user_guide/03-input/" class="uri">http://www.commonwl.org/user_guide/03-input/</a>). We defined the <code>echo</code> with different type of input parameters by <code>InputParam</code>, and the <code>stdout</code> option can be used to caputre the standard output stream into a file:</p>
 <pre class="sourceCode r"><code class="sourceCode r">e1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;flag&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-f&quot;</span>)
 e2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-s&quot;</span>)
 e3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-i&quot;</span>)
@@ -234,7 +236,7 @@ e4 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class=
 echoA &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>,
                   <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(e1, e2, e3, e4),
                   <span class="dt">stdout =</span> <span class="st">&quot;output.txt&quot;</span>)</code></pre>
-<p>Then we give it a try by setting values for the inputs.</p>
+<p>Then we give it a try by setting values for the inputs:</p>
 <pre class="sourceCode r"><code class="sourceCode r">echoA<span class="op">$</span>flag &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 echoA<span class="op">$</span>string &lt;-<span class="st"> &quot;Hello&quot;</span>
 echoA<span class="op">$</span>int &lt;-<span class="st"> </span><span class="dv">1</span>
@@ -246,17 +248,17 @@ echoA<span class="op">$</span>file &lt;-<span class="st"> </span>tmpfile
 r2 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoA, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r2<span class="op">$</span>command</code></pre>
-<pre><code>## [1] &quot;[job file102e12150c362.cwl] /tmp/tmpA5qVrf$ echo \\&quot;                                   
-## [2] &quot;    --file=/tmp/tmp6kXAe5/stg590fc79d-5342-419d-8faa-c81e53edc931/file102e1210405ac \\&quot;
+<pre><code>## [1] &quot;[job file11ec859a60c6a.cwl] /tmp/tmp9UR3oF$ echo \\&quot;                                   
+## [2] &quot;    --file=/tmp/tmphnXPHW/stg24c23e3a-091b-488d-a9e6-00aa72403c82/file11ec85bfd402c \\&quot;
 ## [3] &quot;    -f \\&quot;                                                                             
 ## [4] &quot;    -i \\&quot;                                                                             
 ## [5] &quot;    1 \\&quot;                                                                              
 ## [6] &quot;    -s \\&quot;                                                                             
-## [7] &quot;    Hello &gt; /tmp/tmpA5qVrf/output.txt&quot;</code></pre>
+## [7] &quot;    Hello &gt; /tmp/tmp9UR3oF/output.txt&quot;</code></pre>
 </div>
 <div id="array-inputs" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Array Inputs</h3>
-<p>A similar example to CWL user guide. We can define three different type of array as inputs.</p>
+<p>Taking a similar example to the CWL user guide described above, we can define three different type of array as inputs:</p>
 <pre class="sourceCode r"><code class="sourceCode r">a1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string[]&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-A&quot;</span>)
 a2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;B&quot;</span>,
                  <span class="dt">type =</span> <span class="kw">InputArrayParam</span>(<span class="dt">items =</span> <span class="st">&quot;string&quot;</span>,
@@ -265,7 +267,7 @@ a3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class=
                  <span class="dt">itemSeparator =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">separate =</span> <span class="ot">FALSE</span>)
 echoB &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>,
                  <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(a1, a2, a3))</code></pre>
-<p>Then set values for the three inputs.</p>
+<p>We then set values for the three inputs:</p>
 <pre class="sourceCode r"><code class="sourceCode r">echoB<span class="op">$</span>A &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]
 echoB<span class="op">$</span>B &lt;-<span class="st"> </span>letters[<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>]
 echoB<span class="op">$</span>C &lt;-<span class="st"> </span>letters[<span class="dv">7</span><span class="op">:</span><span class="dv">9</span>]
@@ -283,11 +285,11 @@ echoB</code></pre>
 ## outputs:
 ##   output:
 ##     type: stdout</code></pre>
-<p>Now we can check whether the command behaves as we expected.</p>
+<p>Now we can check whether the command behaves as we expected:</p>
 <pre class="sourceCode r"><code class="sourceCode r">r3 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoB, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r3<span class="op">$</span>command</code></pre>
-<pre><code>## [1] &quot;[job file102e165b24ec9.cwl] /tmp/tmp4YYUCY$ echo \\&quot;                   
+<pre><code>## [1] &quot;[job file11ec81dc4fe78.cwl] /tmp/tmpLNIjk_$ echo \\&quot;                   
 ## [2] &quot;    -A \\&quot;                                                             
 ## [3] &quot;    a \\&quot;                                                              
 ## [4] &quot;    b \\&quot;                                                              
@@ -295,20 +297,20 @@ echoB</code></pre>
 ## [6] &quot;    -B=d \\&quot;                                                           
 ## [7] &quot;    -B=e \\&quot;                                                           
 ## [8] &quot;    -B=f \\&quot;                                                           
-## [9] &quot;    -C=g,h,i &gt; /tmp/tmp4YYUCY/518c571ec43707607e97beba30b86c0678601865&quot;</code></pre>
+## [9] &quot;    -C=g,h,i &gt; /tmp/tmpLNIjk_/e0f64915a4e821f6b14c2c5cf319532c3260ac65&quot;</code></pre>
 </div>
 </div>
 <div id="output-parameters" class="section level2">
 <h2><span class="header-section-number">2.2</span> Output Parameters</h2>
 <div id="capturing-output" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Capturing Output</h3>
-<p>The outputs, similar to the inputs, is a list of output parameters. Three options <em>id</em>, <em>type</em> and <em>glob</em> can be defined. The glob option is used to define a pattern to find files relative to the output directory.</p>
-<p>Here is an example to unzip a compressed <code>gz</code> file. First, we generate a compressed R script file.</p>
+<p>The outputs, similar to the inputs, is a list of output parameters. Three options, <em>id</em>, <em>type</em> and <em>glob</em>, can be defined. The <em>glob</em> option is used to define a pattern to find files relative to the output directory.</p>
+<p>Here is an example to unzip a compressed <code>gz</code> file. First, we generate a compressed R script file:</p>
 <pre class="sourceCode r"><code class="sourceCode r">zzfil &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">&quot;sample.R.gz&quot;</span>)
 zz &lt;-<span class="st"> </span><span class="kw">gzfile</span>(zzfil, <span class="st">&quot;w&quot;</span>)
 <span class="kw">cat</span>(<span class="st">&quot;sample(1:10, 5)&quot;</span>, <span class="dt">file =</span> zz, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
 <span class="kw">close</span>(zz)</code></pre>
-<p>We define a <code>cwlParam</code> object to use “gzip” to uncompress a input file.</p>
+<p>We then define a <code>cwlParam</code> object to use “gzip” to uncompress an input file:</p>
 <pre class="sourceCode r"><code class="sourceCode r">ofile &lt;-<span class="st"> &quot;sample.R&quot;</span>
 z1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;uncomp&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-d&quot;</span>)
 z2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;out&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-c&quot;</span>)
@@ -318,15 +320,15 @@ gz &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="d
                <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(z1, z2, z3),
                <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1),
                <span class="dt">stdout =</span> ofile)</code></pre>
-<p>Now the <code>gz</code> object can be used to uncompress the previous generated compressed file.</p>
+<p>Now the <code>gz</code> object can be used to uncompress the previously generated compressed file:</p>
 <pre class="sourceCode r"><code class="sourceCode r">gz<span class="op">$</span>uncomp &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 gz<span class="op">$</span>out &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 gz<span class="op">$</span>zfile &lt;-<span class="st"> </span>zzfil
 r4 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(gz, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r4<span class="op">$</span>output</code></pre>
-<pre><code>## [1] &quot;/tmp/Rtmp5Ny5vP/sample.R&quot;</code></pre>
-<p>Or we can use <code>arguments</code> to set some default parameters.</p>
+<pre><code>## [1] &quot;/tmp/RtmptiiapL/sample.R&quot;</code></pre>
+<p>Or we can use <code>arguments</code> to set some default parameters:</p>
 <pre class="sourceCode r"><code class="sourceCode r">z1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)
 o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> ofile)
 Gz &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;gzip&quot;</span>,
@@ -350,9 +352,9 @@ Gz</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">Gz<span class="op">$</span>zfile &lt;-<span class="st"> </span>zzfil
 r4a &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Gz, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
-<p>To make it for general usage, we can define a pattern with javascript to glob the output, which require <code>node</code> to be installed in your system PATH.</p>
+<p>To make it for general usage, we can define a pattern with javascript to <em>glob</em> the output, which requires <code>node</code> to be installed in your system PATH:</p>
 <pre class="sourceCode r"><code class="sourceCode r">pfile &lt;-<span class="st"> &quot;$(inputs.zfile.path.split(&#39;/&#39;).slice(-1)[0].split(&#39;.&#39;).slice(0,-1).join(&#39;.&#39;))&quot;</span></code></pre>
-<p>Or we can use the CWL built in file property, <code>nameroot</code>, directly.</p>
+<p>Or we can directly use the CWL built in file property, <code>nameroot</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">pfile &lt;-<span class="st"> &quot;$(inputs.zfile.nameroot)&quot;</span>
 o2 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> pfile)
 req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;InlineJavascriptRequirement&quot;</span>)
@@ -367,7 +369,7 @@ r4b &lt;-<span class="st"> </span><span class="kw">runCWL</span>(GZ, <span class
 </div>
 <div id="array-outputs" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Array Outputs</h3>
-<p>We can also capture multiple output files with <code>glob</code> pattern.</p>
+<p>We can also capture multiple output files with the <code>glob</code> pattern:</p>
 <pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;a&quot;</span>, <span class="dt">type =</span> <span class="kw">InputArrayParam</span>(<span class="dt">items =</span> <span class="st">&quot;string&quot;</span>))
 b &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">type =</span> <span class="kw">OutputArrayParam</span>(<span class="dt">items =</span> <span class="st">&quot;File&quot;</span>), <span class="dt">glob =</span> <span class="st">&quot;*.txt&quot;</span>)
 touch &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;touch&quot;</span>, <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(a), <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(b))
@@ -375,7 +377,48 @@ touch<span class="op">$</span>a &lt;-<span class="st"> </span><span class="kw">c
 r5 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(touch, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r5<span class="op">$</span>output</code></pre>
-<pre><code>## [1] &quot;/tmp/Rtmp5Ny5vP/a.txt&quot; &quot;/tmp/Rtmp5Ny5vP/c.txt&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmptiiapL/a.txt&quot; &quot;/tmp/RtmptiiapL/c.txt&quot;</code></pre>
+</div>
+<div id="standard-output" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Standard output</h3>
+<p>Usually, the <code>stdout</code> option is a string or an expression of output
+file name from the command tool. The command’s standard output stream
+will be captured into a file written to the designated output
+directory. When the <code>stdout</code> field is defined, an output parameter
+with the type of “stdout” should be also assigned with no
+“outputBinding” set.</p>
+<p>An example for command tool “cat” is defined with <code>stdout</code> field in
+the output, with the name passed from the input parameter “p2”:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## define Cat</span>
+p1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;infiles&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>)
+p2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;outfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>,
+                 <span class="dt">default =</span> <span class="st">&quot;catout.txt&quot;</span>, <span class="dt">position =</span> <span class="dv">-1</span>)
+Cat &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;cat&quot;</span>,
+                <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(p1, p2),
+                <span class="dt">stdout =</span> <span class="st">&quot;$(inputs.outfile)&quot;</span>)
+<span class="co">## assign inputs</span>
+afile &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">&quot;a.txt&quot;</span>)
+bfile &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">&quot;b.txt&quot;</span>)
+<span class="kw">write</span>(<span class="st">&quot;a&quot;</span>, afile)
+<span class="kw">write</span>(<span class="st">&quot;b&quot;</span>, bfile)
+Cat<span class="op">$</span>infiles &lt;-<span class="st"> </span><span class="kw">list</span>(afile, bfile)
+<span class="co">## run</span>
+r6 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Cat, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
+<pre><code>## Final process status is success</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">r6<span class="op">$</span>command</code></pre>
+<pre><code>## [1] &quot;[job file11ec83f64de8c.cwl] /tmp/tmp0HtXR2$ cat \\&quot;                                          
+## [2] &quot;    /tmp/tmpQaej3I/stg4b7cc907-eb3f-4c5d-a93f-c1fafb798ce8/a.txt \\&quot;                         
+## [3] &quot;    /tmp/tmpQaej3I/stga54d178a-bc97-41b2-8493-b49ca60a5fc5/b.txt &gt; /tmp/tmp0HtXR2/catout.txt&quot;</code></pre>
+
+<div class="tips">
+<p>In this example, we used the parameter “p2” to pass the name to the
+standard output.</p>
+<p>In the <code>InputParam</code> of “p2”, the position is assigned to a negative
+value (-1), which means the parameters will not be used in the command
+and only uses for passing variable. To write the “Cat” tool to a CWL
+file, the “inputBinding” field will be skipped for this parameter.</p>
+</div>
+
 
 </div>
 </div>

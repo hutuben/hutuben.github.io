@@ -23,10 +23,10 @@
   
 
 <meta name="author" content="Qiang Hu">
-<meta name="author" content="Song Liu">
+<meta name="author" content="Qian Liu">
 
 
-<meta name="date" content="2019-05-06">
+<meta name="date" content="2019-05-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="components.html"><a href="components.html#output-parameters"><i class="fa fa-check"></i><b>2.2</b> Output Parameters</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="components.html"><a href="components.html#capturing-output"><i class="fa fa-check"></i><b>2.2.1</b> Capturing Output</a></li>
 <li class="chapter" data-level="2.2.2" data-path="components.html"><a href="components.html#array-outputs"><i class="fa fa-check"></i><b>2.2.2</b> Array Outputs</a></li>
+<li class="chapter" data-level="2.2.3" data-path="components.html"><a href="components.html#standard-output"><i class="fa fa-check"></i><b>2.2.3</b> Standard output</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="writing-pipeline.html"><a href="writing-pipeline.html"><i class="fa fa-check"></i><b>3</b> Writing Pipeline</a><ul>
@@ -221,19 +222,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<ul>
-<li>Gap between BioInfo and BioC
-<ul>
-<li>Heavy BioInfo tools and Pipelines beyond BioC</li>
-</ul></li>
-<li>Tools to build pipelines and generate reproducible reports are required
-<ul>
-<li>Standardization of BioInfo Pipelines for best practice</li>
-<li>Portable pipelines</li>
-<li>Reproducible analysis and report</li>
-<li>Easy to use in different platforms</li>
-</ul></li>
-</ul>
+<!-- - Gap between BioInfo and BioC -->
+<!--   + Heavy BioInfo tools and Pipelines beyond BioC -->
+<!-- - Tools to build pipelines and generate reproducible reports are required  -->
+<!--   + Standardization of BioInfo Pipelines for best practice -->
+<!--   + Portable pipelines -->
+<!--   + Reproducible analysis and report -->
+<!--   + Easy to use in different platforms -->
 <div id="common-workflow-language" class="section level2">
 <h2><span class="header-section-number">1.1</span> Common Workflow Language</h2>
 <p>“The Common Workflow Language (CWL) is a specification for describing
@@ -278,26 +273,26 @@ echo</code></pre>
 ## names(3): command output logs</code></pre>
 <p>Here we can check the output to ensure the code did what we expected.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>output</code></pre>
-<pre><code>## [1] &quot;/tmp/Rtmp5Ny5vP/61488d6364be766635fda463adb9f93e88907020&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmptiiapL/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad&quot;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(r1<span class="op">$</span>output)</code></pre>
 <pre><code>## [1] &quot;Hello World!&quot;</code></pre>
 <p>The executed command was returned in the result list. It shows the command that we have defined to execute.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>command</code></pre>
-<pre><code>## [1] &quot;[job file102e156f18880.cwl] /tmp/tmpUeC0Sc$ echo \\&quot;                         
-## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmpUeC0Sc/61488d6364be766635fda463adb9f93e88907020&quot;</code></pre>
+<pre><code>## [1] &quot;[job file11ec86a164732.cwl] /tmp/tmpVnQd35$ echo \\&quot;                         
+## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmpVnQd35/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad&quot;</code></pre>
 <p>The log shows the details of how the <code>cwltool</code> works with CWL scripts.</p>
 <pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>log</code></pre>
 <pre><code>##  [1] &quot;/home/qhu/.local/bin/cwltool 1.0.20180721142728&quot;                                                   
-##  [2] &quot;Resolved &#39;/tmp/Rtmp5Ny5vP/file102e156f18880.cwl&#39; to &#39;file:///tmp/Rtmp5Ny5vP/file102e156f18880.cwl&#39;&quot;
-##  [3] &quot;[job file102e156f18880.cwl] /tmp/tmpUeC0Sc$ echo \\&quot;                                               
-##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmpUeC0Sc/61488d6364be766635fda463adb9f93e88907020&quot;                      
-##  [5] &quot;[job file102e156f18880.cwl] completed success&quot;                                                     
+##  [2] &quot;Resolved &#39;/tmp/RtmptiiapL/file11ec86a164732.cwl&#39; to &#39;file:///tmp/RtmptiiapL/file11ec86a164732.cwl&#39;&quot;
+##  [3] &quot;[job file11ec86a164732.cwl] /tmp/tmpVnQd35$ echo \\&quot;                                               
+##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmpVnQd35/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad&quot;                      
+##  [5] &quot;[job file11ec86a164732.cwl] completed success&quot;                                                     
 ##  [6] &quot;{&quot;                                                                                                 
 ##  [7] &quot;    \&quot;output\&quot;: {&quot;                                                                                 
 ##  [8] &quot;        \&quot;checksum\&quot;: \&quot;sha1$a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b\&quot;, &quot;                         
-##  [9] &quot;        \&quot;basename\&quot;: \&quot;61488d6364be766635fda463adb9f93e88907020\&quot;, &quot;                              
-## [10] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/Rtmp5Ny5vP/61488d6364be766635fda463adb9f93e88907020\&quot;, &quot;       
-## [11] &quot;        \&quot;path\&quot;: \&quot;/tmp/Rtmp5Ny5vP/61488d6364be766635fda463adb9f93e88907020\&quot;, &quot;                  
+##  [9] &quot;        \&quot;basename\&quot;: \&quot;eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad\&quot;, &quot;                              
+## [10] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/RtmptiiapL/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad\&quot;, &quot;       
+## [11] &quot;        \&quot;path\&quot;: \&quot;/tmp/RtmptiiapL/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad\&quot;, &quot;                  
 ## [12] &quot;        \&quot;class\&quot;: \&quot;File\&quot;, &quot;                                                                     
 ## [13] &quot;        \&quot;size\&quot;: 13&quot;                                                                              
 ## [14] &quot;    }&quot;                                                                                             

@@ -23,10 +23,10 @@
   
 
 <meta name="author" content="Qiang Hu">
-<meta name="author" content="Song Liu">
+<meta name="author" content="Qian Liu">
 
 
-<meta name="date" content="2019-05-06">
+<meta name="date" content="2019-05-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="components.html"><a href="components.html#output-parameters"><i class="fa fa-check"></i><b>2.2</b> Output Parameters</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="components.html"><a href="components.html#capturing-output"><i class="fa fa-check"></i><b>2.2.1</b> Capturing Output</a></li>
 <li class="chapter" data-level="2.2.2" data-path="components.html"><a href="components.html#array-outputs"><i class="fa fa-check"></i><b>2.2.2</b> Array Outputs</a></li>
+<li class="chapter" data-level="2.2.3" data-path="components.html"><a href="components.html#standard-output"><i class="fa fa-check"></i><b>2.2.3</b> Standard output</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="writing-pipeline.html"><a href="writing-pipeline.html"><i class="fa fa-check"></i><b>3</b> Writing Pipeline</a><ul>
@@ -221,8 +222,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="writing-pipeline" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Writing Pipeline</h1>
-<p>We can connect multiple tools together into a pipeline. Here is an example to uncompress an R script and execute it with <code>Rscript</code>.</p>
-<p>Here we define a simple <code>Rscript</code> tool without using docker.</p>
+<p>We can connect multiple tools into a pipeline. Here is an example to uncompress an R script and execute it with <code>Rscript</code>.</p>
+<p>We first define a simple <code>Rscript</code> tool without using docker:</p>
 <pre class="sourceCode r"><code class="sourceCode r">d1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)
 Rs &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;/usr/bin/Rscript&quot;</span>,
                <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(d1))
@@ -236,18 +237,18 @@ Rs</code></pre>
 ## outputs:
 ##   output:
 ##     type: stdout</code></pre>
-<p>Test run:</p>
+<p>Here is the test run:</p>
 <pre class="sourceCode r"><code class="sourceCode r">Rs<span class="op">$</span>rfile &lt;-<span class="st"> </span>r4<span class="op">$</span>output
 tres &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Rs, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(tres<span class="op">$</span>output)</code></pre>
-<pre><code>## [1] &quot;[1] 2 6 9 7 3&quot;</code></pre>
-<p>The pipeline includes two steps, decompressed by <code>GZ</code> and compiled by <code>Rs</code>. The input file is a compressed file and the output would be the output <code>Rout</code> from <code>Rs</code>.</p>
-<p>First we need to define the direct inputs and outputs from <code>GZ</code> and <code>Rs</code>.</p>
+<pre><code>## [1] &quot;[1] 2 7 4 3 9&quot;</code></pre>
+<p>The pipeline includes two steps, decompressed by <code>GZ</code> and compiled by <code>Rs</code>. The input file is a compressed file and the output file would be the output <code>Rout</code> from <code>Rs</code>.</p>
+<p>First we need to define the direct inputs and outputs from <code>GZ</code> and <code>Rs</code>, respectively:</p>
 <pre class="sourceCode r"><code class="sourceCode r">i1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)
 o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_cout&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;Compile/output&quot;</span>)</code></pre>
 <p>For the input “cwl_zifle”, it refers to the <code>GZ</code> input <code>zfile</code>. The output “cwl_cout” will be the outcome of <code>Rs</code> output <code>Rout</code>.</p>
-<p>The <code>cwlStepParam</code> is used to define <code>inputs</code> and <code>outputs</code> from previous step. Then it connects with the two steps with <code>Step</code> function. The <code>run</code> option refer to the corresponding <code>cwlParam</code> object and the <code>In</code> option in steps should be linked to the input parameters defined by <code>cwlStepParam</code>. In the end, we use <code>+</code> to connect all steps.</p>
+<p>The <code>cwlStepParam</code> is used to define <code>inputs</code> and <code>outputs</code>, and the <code>Step</code> function is used to define the two steps. The <code>run</code> option refers to the corresponding <code>cwlParam</code> object and the <code>In</code> option should be linked to the input parameters defined by <code>cwlStepParam</code>. At the end, we use <code>+</code> to connect all steps:</p>
 <pre class="sourceCode r"><code class="sourceCode r">cwl &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">inputs =</span> <span class="kw">InputParamList</span>(i1),
                     <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1))
 s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Uncomp&quot;</span>, <span class="dt">run =</span> GZ,
@@ -274,16 +275,16 @@ cwl</code></pre>
 ##     run: Compile.cwl
 ##     rfile: Uncomp/rfile
 ##     out: output</code></pre>
-<p>Let’s run the pipeline.</p>
+<p>Let’s run the pipeline:</p>
 <pre class="sourceCode r"><code class="sourceCode r">cwl<span class="op">$</span>cwl_zfile &lt;-<span class="st"> </span>zzfil
 r7 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(r7<span class="op">$</span>output)</code></pre>
-<pre><code>## [1] &quot;[1]  8  2 10  3  5&quot;</code></pre>
+<pre><code>## [1] &quot;[1] 10  5  1  8  2&quot;</code></pre>
 <div id="scattering-pipeline" class="section level2">
 <h2><span class="header-section-number">3.1</span> Scattering pipeline</h2>
-<p>The scattering feature can specifies the associated workflow step or subworkflow to execute separately over a list of input elements. To use this feature, <code>ScatterFeatureRequirement</code> must be specified in the workflow requirements. Different <code>scatter</code> methods can be used in the associated step to decompose the input into a discrete set of jobs. More details can be found at: <a href="https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep" class="uri">https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep</a>.</p>
-<p>Here is an example to execute multiple R scripts. First, we need to set the input and output types to be array of “File”, and add the requirments. In the “Compile” step, the scattering input is required to be set with the <code>scatter</code> option.</p>
+<p>The scattering feature can specify the associated workflow steps or subworkflows to execute separately over a list of input elements. To use this feature, <code>ScatterFeatureRequirement</code> must be specified in the workflow requirement. Different <code>scatter</code> methods can be used in the associated steps to decompose the input into a discrete set of jobs. More details can be found at: <a href="https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep" class="uri">https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep</a>.</p>
+<p>Here is an example to execute multiple R scripts. First, we need to set the input and output types to be an array of “File”, and add the requirments. In the “Compile” step, the scattering input is required to be set with the <code>scatter</code> option:</p>
 <pre class="sourceCode r"><code class="sourceCode r">i2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_rfiles&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>)
 o2 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_couts&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;Compile/output&quot;</span>)
 req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;ScatterFeatureRequirement&quot;</span>)
@@ -313,20 +314,20 @@ cwl2</code></pre>
 ##     rfile: cwl_rfiles
 ##     out: output
 ##     scatter: rfile</code></pre>
-<p>Multiple R scripts can be assigned to the workflow inputs and executed.</p>
+<p>Now multiple R scripts can be assigned to the workflow inputs and executed:</p>
 <pre class="sourceCode r"><code class="sourceCode r">cwl2<span class="op">$</span>cwl_rfiles &lt;-<span class="st"> </span><span class="kw">c</span>(r4b<span class="op">$</span>output, r4b<span class="op">$</span>output)
 r8 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl2, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
 <pre><code>## Final process status is success</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">r8<span class="op">$</span>output</code></pre>
-<pre><code>## [1] &quot;/tmp/Rtmp5Ny5vP/20a09d98ee7d55e5f2d3987b7a3ea06b784304de&quot;
-## [2] &quot;/tmp/Rtmp5Ny5vP/20a09d98ee7d55e5f2d3987b7a3ea06b784304de&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmptiiapL/7ad51e3662ad61d30a8d646578de58856acdd94c&quot;
+## [2] &quot;/tmp/RtmptiiapL/7ad51e3662ad61d30a8d646578de58856acdd94c&quot;</code></pre>
 </div>
 <div id="pipeline-plot" class="section level2">
 <h2><span class="header-section-number">3.2</span> Pipeline plot</h2>
-<p>The function <code>plotCWL</code> can be used to visualize the relationship of inputs, outputs and the analysis for a tool or pipeline.</p>
+<p>The function <code>plotCWL</code> can be used to visualize the relationship of inputs, outputs and the components for a tool or pipeline:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plotCWL</span>(cwl)</code></pre>
-<div id="htmlwidget-0a8759b8281bebce2a87" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0a8759b8281bebce2a87">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-62279e6b3b5b893baa4a" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-62279e6b3b5b893baa4a">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>

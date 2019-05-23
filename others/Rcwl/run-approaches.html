@@ -23,10 +23,10 @@
   
 
 <meta name="author" content="Qiang Hu">
-<meta name="author" content="Song Liu">
+<meta name="author" content="Qian Liu">
 
 
-<meta name="date" content="2019-05-06">
+<meta name="date" content="2019-05-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -159,6 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="components.html"><a href="components.html#output-parameters"><i class="fa fa-check"></i><b>2.2</b> Output Parameters</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="components.html"><a href="components.html#capturing-output"><i class="fa fa-check"></i><b>2.2.1</b> Capturing Output</a></li>
 <li class="chapter" data-level="2.2.2" data-path="components.html"><a href="components.html#array-outputs"><i class="fa fa-check"></i><b>2.2.2</b> Array Outputs</a></li>
+<li class="chapter" data-level="2.2.3" data-path="components.html"><a href="components.html#standard-output"><i class="fa fa-check"></i><b>2.2.3</b> Standard output</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="writing-pipeline.html"><a href="writing-pipeline.html"><i class="fa fa-check"></i><b>3</b> Writing Pipeline</a><ul>
@@ -223,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 4</span> Run approaches</h1>
 <div id="running-tools-in-docker" class="section level2">
 <h2><span class="header-section-number">4.1</span> Running Tools in Docker</h2>
-<p>The CWL can work with docker to simplify your software management and communicate files between host and container. The docker container can be defined by the <code>hints</code> or <code>requirements</code> option.</p>
+<p>The CWL can work with docker to simplify your software management and communicate files between host and container. The docker container can be defined by the <code>hints</code> or <code>requirements</code> option:</p>
 <pre class="sourceCode r"><code class="sourceCode r">d1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)
 req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;DockerRequirement&quot;</span>,
              <span class="dt">dockerPull =</span> <span class="st">&quot;r-base&quot;</span>)
@@ -240,7 +241,7 @@ doc<span class="op">$</span>rfile &lt;-<span class="st"> </span>r4<span class="o
 </div>
 <div id="running-tools-in-cluster-server" class="section level2">
 <h2><span class="header-section-number">4.2</span> Running Tools in Cluster server</h2>
-<p>The CWL also can work in high performance clusters with batch-queuing system, such as SGE, PBS, SLURM and so on, using the Bioconductor package <code>BiocParallel</code>. Here is an example to submit jobs with “Multiicore” and “SGE”. A more detailed example can be found (<a href="https://hubentu.github.io/others/Rcwl_RNASeq.html" class="uri">https://hubentu.github.io/others/Rcwl_RNASeq.html</a>).</p>
+<p>The CWL can also work in high performance clusters with batch-queuing system, such as SGE, PBS, SLURM and so on, using the Bioconductor package <code>BiocParallel</code>. Here is an example to submit jobs with “Multiicore” and “SGE”, seperately:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(BiocParallel)
 sth.list &lt;-<span class="st"> </span><span class="kw">as.list</span>(LETTERS)
 <span class="kw">names</span>(sth.list) &lt;-<span class="st"> </span>LETTERS
@@ -253,12 +254,13 @@ result1 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(<span 
 result2 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(<span class="dt">cwl =</span> echo, <span class="dt">outdir =</span> <span class="kw">tempdir</span>(), <span class="dt">inputList =</span> <span class="kw">list</span>(<span class="dt">sth =</span> sth.list),
                        <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">26</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,
                                                  <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">queue =</span> <span class="st">&quot;all.q&quot;</span>)))</code></pre>
+<p>A more detailed example can be found (<a href="https://hubentu.github.io/others/Rcwl_RNASeq.html" class="uri">https://hubentu.github.io/others/Rcwl_RNASeq.html</a>).</p>
 </div>
 <div id="web-application" class="section level2">
 <h2><span class="header-section-number">4.3</span> Web Application</h2>
 <div id="cwlparam-example" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> cwlParam example</h3>
-<p>Here we build a tool with different types of input parameters.</p>
+<p>Here we build a tool with different types of input parameters:</p>
 <pre class="sourceCode r"><code class="sourceCode r">e1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;flag&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>,
                  <span class="dt">prefix =</span> <span class="st">&quot;-f&quot;</span>, <span class="dt">doc =</span> <span class="st">&quot;boolean flag&quot;</span>)
 e2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-s&quot;</span>)
@@ -291,7 +293,7 @@ mulEcho</code></pre>
 </div>
 <div id="cwlparam-to-shiny-app" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> cwlParam to Shiny App</h3>
-<p>Some input parameters can be predefined in a list, which will be converted to select options in the webapp. An <code>upload</code> parameter can be used to defined wether to generate an upload interface for the file type option. If FALSE, the upload field will be text input (file path) instead of file input.</p>
+<p>Some input parameters can be predefined in a list, which will be converted to selected options in the webapp. An <code>upload</code> parameter can be used to generate an upload interface for the file type option. If <code>FALSE</code> is set for <code>upload</code>, the upload field will be text input (file path) instead of file input.</p>
 <pre class="sourceCode r"><code class="sourceCode r">inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">option =</span> <span class="kw">c</span>(<span class="st">&quot;option1&quot;</span>, <span class="st">&quot;option2&quot;</span>))
 app &lt;-<span class="st"> </span><span class="kw">cwlShiny</span>(mulEcho, inputList, <span class="dt">upload =</span> <span class="ot">TRUE</span>)
 <span class="kw">runApp</span>(app)</code></pre>

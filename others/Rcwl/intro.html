@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | Bioinformatics tools and pipelines using R and CWL</title>
-  <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -22,15 +21,15 @@
   <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   
 
-<meta name="author" content="Qiang Hu">
-<meta name="author" content="Qian Liu">
+<meta name="author" content="Qiang Hu" />
+<meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-05-23">
+<meta name="date" content="2019-08-15" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="index.html">
@@ -65,7 +64,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -247,12 +245,12 @@ environments.”</p>
 <h2><span class="header-section-number">1.2</span> First example</h2>
 <p>The main class and constructor function is <code>cwlParam</code>, which wraps a command line tool and its parameters in a <code>cwlParam</code> object. Let’s start with a simple example, <code>echo hello world</code>.</p>
 <p>First, we load the package and define the input parameter for “echo”, a string without a prefix. Just an <code>id</code> option required here:</p>
-<pre class="sourceCode r"><code class="sourceCode r">input1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;sth&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">input1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;sth&quot;</span>)</a></code></pre></div>
 <p>Second, we create a <code>cwlParam</code> object with <code>baseCommand</code> for the command to execute and <code>InputParamList</code> for the input parameters.</p>
-<pre class="sourceCode r"><code class="sourceCode r">echo &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>, <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(input1))</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">echo &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>, <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(input1))</a></code></pre></div>
 <p>Now we have a command object to run. Let’s send a string “Hello World!” to the object. Without defining the outputs, it will stream standard output to a temporary file by default.</p>
-<pre class="sourceCode r"><code class="sourceCode r">echo<span class="op">$</span>sth &lt;-<span class="st"> &quot;Hello World!&quot;</span>
-echo</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">echo<span class="op">$</span>sth &lt;-<span class="st"> &quot;Hello World!&quot;</span></a>
+<a class="sourceLine" id="cb7-2" title="2">echo</a></code></pre></div>
 <pre><code>## class: cwlParam 
 ##  cwlClass: CommandLineTool 
 ##  cwlVersion: v1.0 
@@ -260,44 +258,46 @@ echo</code></pre>
 ## inputs:
 ##   sth (string):  Hello World!
 ## outputs:
-##   output:
-##     type: stdout</code></pre>
+## output:
+##   type: stdout</code></pre>
 </div>
 <div id="test-run" class="section level2">
 <h2><span class="header-section-number">1.3</span> Test run</h2>
 <p>The function <code>runCWL</code> is used to run the CWL object by invoking the python tool <code>cwltool</code>. The return will be a list including the command executed, temporary output and logs. The output directory is the current folder by default, but it can be changed by setting <code>outdir</code> option. All standard out and standard error streams can also be printed by setting <code>stderr = ""</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">r1 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echo, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
-<pre><code>## Final process status is success</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">r1</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">r1 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echo, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">r1</a></code></pre></div>
 <pre><code>## List of length 3
 ## names(3): command output logs</code></pre>
 <p>Here we can check the output to ensure the code did what we expected.</p>
-<pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>output</code></pre>
-<pre><code>## [1] &quot;/tmp/RtmptiiapL/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(r1<span class="op">$</span>output)</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">r1<span class="op">$</span>output</a></code></pre></div>
+<pre><code>## [1] &quot;/tmp/Rtmp7YFNaP/ab41c49b97ac69be60faf31af864ffb0e265fdc1&quot;</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">readLines</span>(r1<span class="op">$</span>output)</a></code></pre></div>
 <pre><code>## [1] &quot;Hello World!&quot;</code></pre>
 <p>The executed command was returned in the result list. It shows the command that we have defined to execute.</p>
-<pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>command</code></pre>
-<pre><code>## [1] &quot;[job file11ec86a164732.cwl] /tmp/tmpVnQd35$ echo \\&quot;                         
-## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmpVnQd35/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad&quot;</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">r1<span class="op">$</span>command</a></code></pre></div>
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file8229116f2212.cwl] /tmp/BMk6Fp$ echo \\&quot;                   
+## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/BMk6Fp/ab41c49b97ac69be60faf31af864ffb0e265fdc1&quot;               
+## [3] &quot;\033[1;30mINFO\033[0m Could not collect memory usage, job ended before monitoring began.&quot;</code></pre>
 <p>The log shows the details of how the <code>cwltool</code> works with CWL scripts.</p>
-<pre class="sourceCode r"><code class="sourceCode r">r1<span class="op">$</span>log</code></pre>
-<pre><code>##  [1] &quot;/home/qhu/.local/bin/cwltool 1.0.20180721142728&quot;                                                   
-##  [2] &quot;Resolved &#39;/tmp/RtmptiiapL/file11ec86a164732.cwl&#39; to &#39;file:///tmp/RtmptiiapL/file11ec86a164732.cwl&#39;&quot;
-##  [3] &quot;[job file11ec86a164732.cwl] /tmp/tmpVnQd35$ echo \\&quot;                                               
-##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/tmpVnQd35/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad&quot;                      
-##  [5] &quot;[job file11ec86a164732.cwl] completed success&quot;                                                     
-##  [6] &quot;{&quot;                                                                                                 
-##  [7] &quot;    \&quot;output\&quot;: {&quot;                                                                                 
-##  [8] &quot;        \&quot;checksum\&quot;: \&quot;sha1$a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b\&quot;, &quot;                         
-##  [9] &quot;        \&quot;basename\&quot;: \&quot;eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad\&quot;, &quot;                              
-## [10] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/RtmptiiapL/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad\&quot;, &quot;       
-## [11] &quot;        \&quot;path\&quot;: \&quot;/tmp/RtmptiiapL/eaaeeefce184fc7c6de720cea9b40e3bd9bbd7ad\&quot;, &quot;                  
-## [12] &quot;        \&quot;class\&quot;: \&quot;File\&quot;, &quot;                                                                     
-## [13] &quot;        \&quot;size\&quot;: 13&quot;                                                                              
-## [14] &quot;    }&quot;                                                                                             
-## [15] &quot;}&quot;                                                                                                 
-## [16] &quot;Final process status is success&quot;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">r1<span class="op">$</span>log</a></code></pre></div>
+<pre><code>##  [1] &quot;\033[1;30mINFO\033[0m /home/qhu/.linuxbrew/bin/cwltool 1.0.20190621234233&quot;                                             
+##  [2] &quot;\033[1;30mINFO\033[0m Resolved &#39;/tmp/Rtmp7YFNaP/file8229116f2212.cwl&#39; to &#39;file:///tmp/Rtmp7YFNaP/file8229116f2212.cwl&#39;&quot;
+##  [3] &quot;\033[1;30mINFO\033[0m [job file8229116f2212.cwl] /tmp/BMk6Fp$ echo \\&quot;                                                 
+##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/BMk6Fp/ab41c49b97ac69be60faf31af864ffb0e265fdc1&quot;                                             
+##  [5] &quot;\033[1;30mINFO\033[0m Could not collect memory usage, job ended before monitoring began.&quot;                              
+##  [6] &quot;\033[1;30mINFO\033[0m [job file8229116f2212.cwl] completed success&quot;                                                    
+##  [7] &quot;{&quot;                                                                                                                     
+##  [8] &quot;    \&quot;output\&quot;: {&quot;                                                                                                     
+##  [9] &quot;        \&quot;checksum\&quot;: \&quot;sha1$a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b\&quot;, &quot;                                             
+## [10] &quot;        \&quot;basename\&quot;: \&quot;ab41c49b97ac69be60faf31af864ffb0e265fdc1\&quot;, &quot;                                                  
+## [11] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/Rtmp7YFNaP/ab41c49b97ac69be60faf31af864ffb0e265fdc1\&quot;, &quot;                           
+## [12] &quot;        \&quot;path\&quot;: \&quot;/tmp/Rtmp7YFNaP/ab41c49b97ac69be60faf31af864ffb0e265fdc1\&quot;, &quot;                                      
+## [13] &quot;        \&quot;class\&quot;: \&quot;File\&quot;, &quot;                                                                                         
+## [14] &quot;        \&quot;size\&quot;: 13&quot;                                                                                                  
+## [15] &quot;    }&quot;                                                                                                                 
+## [16] &quot;}&quot;                                                                                                                     
+## [17] &quot;\033[1;30mINFO\033[0m Final process status is success&quot;</code></pre>
 <p>The <code>runCWL</code> generated two scripts with the default <code>tempfile</code> prefix, the tool wrapper CWL file and the input YML file. The <code>cwltool</code> parses the two scripts and translates them into the command shown before. The output is not defined in the <code>cwlParam</code> object, so the command output was returned to <strong>stdout</strong> by default.</p>
 
 </div>

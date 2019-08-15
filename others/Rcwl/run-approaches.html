@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Run approaches | Bioinformatics tools and pipelines using R and CWL</title>
-  <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Run approaches | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -22,15 +21,15 @@
   <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   
 
-<meta name="author" content="Qiang Hu">
-<meta name="author" content="Qian Liu">
+<meta name="author" content="Qiang Hu" />
+<meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-05-23">
+<meta name="date" content="2019-08-15" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="writing-pipeline.html">
@@ -65,7 +64,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -225,35 +223,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="running-tools-in-docker" class="section level2">
 <h2><span class="header-section-number">4.1</span> Running Tools in Docker</h2>
 <p>The CWL can work with docker to simplify your software management and communicate files between host and container. The docker container can be defined by the <code>hints</code> or <code>requirements</code> option:</p>
-<pre class="sourceCode r"><code class="sourceCode r">d1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)
-req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;DockerRequirement&quot;</span>,
-             <span class="dt">dockerPull =</span> <span class="st">&quot;r-base&quot;</span>)
-doc &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;Rscript&quot;</span>,
-                <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(d1),
-                <span class="dt">stdout =</span> <span class="st">&quot;output.txt&quot;</span>,
-                <span class="dt">hints =</span> <span class="kw">list</span>(req1))
-doc<span class="op">$</span>rfile &lt;-<span class="st"> </span>r4<span class="op">$</span>output</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">r6 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(doc)</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">d1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</a>
+<a class="sourceLine" id="cb74-2" title="2">req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;DockerRequirement&quot;</span>,</a>
+<a class="sourceLine" id="cb74-3" title="3">             <span class="dt">dockerPull =</span> <span class="st">&quot;r-base&quot;</span>)</a>
+<a class="sourceLine" id="cb74-4" title="4">doc &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;Rscript&quot;</span>,</a>
+<a class="sourceLine" id="cb74-5" title="5">                <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(d1),</a>
+<a class="sourceLine" id="cb74-6" title="6">                <span class="dt">stdout =</span> <span class="st">&quot;output.txt&quot;</span>,</a>
+<a class="sourceLine" id="cb74-7" title="7">                <span class="dt">hints =</span> <span class="kw">list</span>(req1))</a>
+<a class="sourceLine" id="cb74-8" title="8">doc<span class="op">$</span>rfile &lt;-<span class="st"> </span>r4<span class="op">$</span>output</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">r6 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(doc)</a></code></pre></div>
 <p>The tools defined with docker requirements can also be run locally by disabling the docker option. In case your <code>Rscript</code> depends some local libraries to run, an option from <code>cwltools</code>, “–preserve-entire-environment”, can be used to pass all environment variables.</p>
-<pre class="sourceCode r"><code class="sourceCode r">r6a &lt;-<span class="st"> </span><span class="kw">runCWL</span>(doc, <span class="dt">docker =</span> <span class="ot">FALSE</span>, <span class="dt">outdir =</span> <span class="kw">tempdir</span>(),
-              <span class="dt">Args =</span> <span class="st">&quot;--preserve-entire-environment&quot;</span>)</code></pre>
-<pre><code>## Final process status is success</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">r6a &lt;-<span class="st"> </span><span class="kw">runCWL</span>(doc, <span class="dt">docker =</span> <span class="ot">FALSE</span>, <span class="dt">outdir =</span> <span class="kw">tempdir</span>(),</a>
+<a class="sourceLine" id="cb76-2" title="2">              <span class="dt">Args =</span> <span class="st">&quot;--preserve-entire-environment&quot;</span>)</a></code></pre></div>
+<pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 </div>
 <div id="running-tools-in-cluster-server" class="section level2">
 <h2><span class="header-section-number">4.2</span> Running Tools in Cluster server</h2>
 <p>The CWL can also work in high performance clusters with batch-queuing system, such as SGE, PBS, SLURM and so on, using the Bioconductor package <code>BiocParallel</code>. Here is an example to submit jobs with “Multiicore” and “SGE”, seperately:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(BiocParallel)
-sth.list &lt;-<span class="st"> </span><span class="kw">as.list</span>(LETTERS)
-<span class="kw">names</span>(sth.list) &lt;-<span class="st"> </span>LETTERS
-
-<span class="co">## submit with mutlicore</span>
-result1 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(<span class="dt">cwl =</span> echo, <span class="dt">outdir =</span> <span class="kw">tempdir</span>(), <span class="dt">inputList =</span> <span class="kw">list</span>(<span class="dt">sth =</span> sth.list),
-                       <span class="dt">BPPARAM =</span> <span class="kw">MulticoreParam</span>(<span class="dv">26</span>))
-
-<span class="co">## submit with SGE</span>
-result2 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(<span class="dt">cwl =</span> echo, <span class="dt">outdir =</span> <span class="kw">tempdir</span>(), <span class="dt">inputList =</span> <span class="kw">list</span>(<span class="dt">sth =</span> sth.list),
-                       <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">26</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,
-                                                 <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">queue =</span> <span class="st">&quot;all.q&quot;</span>)))</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">library</span>(BiocParallel)</a>
+<a class="sourceLine" id="cb78-2" title="2">sth.list &lt;-<span class="st"> </span><span class="kw">as.list</span>(LETTERS)</a>
+<a class="sourceLine" id="cb78-3" title="3"><span class="kw">names</span>(sth.list) &lt;-<span class="st"> </span>LETTERS</a>
+<a class="sourceLine" id="cb78-4" title="4"></a>
+<a class="sourceLine" id="cb78-5" title="5"><span class="co">## submit with mutlicore</span></a>
+<a class="sourceLine" id="cb78-6" title="6">result1 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(<span class="dt">cwl =</span> echo, <span class="dt">outdir =</span> <span class="kw">tempdir</span>(), <span class="dt">inputList =</span> <span class="kw">list</span>(<span class="dt">sth =</span> sth.list),</a>
+<a class="sourceLine" id="cb78-7" title="7">                       <span class="dt">BPPARAM =</span> <span class="kw">MulticoreParam</span>(<span class="dv">26</span>))</a>
+<a class="sourceLine" id="cb78-8" title="8"></a>
+<a class="sourceLine" id="cb78-9" title="9"><span class="co">## submit with SGE</span></a>
+<a class="sourceLine" id="cb78-10" title="10">result2 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(<span class="dt">cwl =</span> echo, <span class="dt">outdir =</span> <span class="kw">tempdir</span>(), <span class="dt">inputList =</span> <span class="kw">list</span>(<span class="dt">sth =</span> sth.list),</a>
+<a class="sourceLine" id="cb78-11" title="11">                       <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">26</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</a>
+<a class="sourceLine" id="cb78-12" title="12">                                                 <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">queue =</span> <span class="st">&quot;all.q&quot;</span>)))</a></code></pre></div>
 <p>A more detailed example can be found (<a href="https://hubentu.github.io/others/Rcwl_RNASeq.html" class="uri">https://hubentu.github.io/others/Rcwl_RNASeq.html</a>).</p>
 </div>
 <div id="web-application" class="section level2">
@@ -261,20 +259,20 @@ result2 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(<span 
 <div id="cwlparam-example" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> cwlParam example</h3>
 <p>Here we build a tool with different types of input parameters:</p>
-<pre class="sourceCode r"><code class="sourceCode r">e1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;flag&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>,
-                 <span class="dt">prefix =</span> <span class="st">&quot;-f&quot;</span>, <span class="dt">doc =</span> <span class="st">&quot;boolean flag&quot;</span>)
-e2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-s&quot;</span>)
-e3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;option&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-o&quot;</span>)
-e4 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-i&quot;</span>, <span class="dt">default =</span> <span class="dv">123</span>)
-e5 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;file&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>,
-                 <span class="dt">prefix =</span> <span class="st">&quot;--file=&quot;</span>, <span class="dt">separate =</span> <span class="ot">FALSE</span>)
-e6 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;array&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string[]&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-A&quot;</span>,
-                 <span class="dt">doc =</span> <span class="st">&quot;separated by comma&quot;</span>)
-mulEcho &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>, <span class="dt">id =</span> <span class="st">&quot;mulEcho&quot;</span>,
-                 <span class="dt">label =</span> <span class="st">&quot;Test parameter types&quot;</span>,
-                 <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(e1, e2, e3, e4, e5, e6),
-                 <span class="dt">stdout =</span> <span class="st">&quot;output.txt&quot;</span>)
-mulEcho</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">e1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;flag&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>,</a>
+<a class="sourceLine" id="cb79-2" title="2">                 <span class="dt">prefix =</span> <span class="st">&quot;-f&quot;</span>, <span class="dt">doc =</span> <span class="st">&quot;boolean flag&quot;</span>)</a>
+<a class="sourceLine" id="cb79-3" title="3">e2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-s&quot;</span>)</a>
+<a class="sourceLine" id="cb79-4" title="4">e3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;option&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-o&quot;</span>)</a>
+<a class="sourceLine" id="cb79-5" title="5">e4 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-i&quot;</span>, <span class="dt">default =</span> <span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb79-6" title="6">e5 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;file&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>,</a>
+<a class="sourceLine" id="cb79-7" title="7">                 <span class="dt">prefix =</span> <span class="st">&quot;--file=&quot;</span>, <span class="dt">separate =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb79-8" title="8">e6 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;array&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string[]&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-A&quot;</span>,</a>
+<a class="sourceLine" id="cb79-9" title="9">                 <span class="dt">doc =</span> <span class="st">&quot;separated by comma&quot;</span>)</a>
+<a class="sourceLine" id="cb79-10" title="10">mulEcho &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>, <span class="dt">id =</span> <span class="st">&quot;mulEcho&quot;</span>,</a>
+<a class="sourceLine" id="cb79-11" title="11">                 <span class="dt">label =</span> <span class="st">&quot;Test parameter types&quot;</span>,</a>
+<a class="sourceLine" id="cb79-12" title="12">                 <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(e1, e2, e3, e4, e5, e6),</a>
+<a class="sourceLine" id="cb79-13" title="13">                 <span class="dt">stdout =</span> <span class="st">&quot;output.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb79-14" title="14">mulEcho</a></code></pre></div>
 <pre><code>## class: cwlParam 
 ##  cwlClass: CommandLineTool 
 ##  cwlVersion: v1.0 
@@ -287,16 +285,16 @@ mulEcho</code></pre>
 ##   file (File): --file= 
 ##   array (string[]): -A 
 ## outputs:
-##   output:
-##     type: stdout
+## output:
+##   type: stdout
 ## stdout: output.txt</code></pre>
 </div>
 <div id="cwlparam-to-shiny-app" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> cwlParam to Shiny App</h3>
 <p>Some input parameters can be predefined in a list, which will be converted to selected options in the webapp. An <code>upload</code> parameter can be used to generate an upload interface for the file type option. If <code>FALSE</code> is set for <code>upload</code>, the upload field will be text input (file path) instead of file input.</p>
-<pre class="sourceCode r"><code class="sourceCode r">inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">option =</span> <span class="kw">c</span>(<span class="st">&quot;option1&quot;</span>, <span class="st">&quot;option2&quot;</span>))
-app &lt;-<span class="st"> </span><span class="kw">cwlShiny</span>(mulEcho, inputList, <span class="dt">upload =</span> <span class="ot">TRUE</span>)
-<span class="kw">runApp</span>(app)</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">option =</span> <span class="kw">c</span>(<span class="st">&quot;option1&quot;</span>, <span class="st">&quot;option2&quot;</span>))</a>
+<a class="sourceLine" id="cb81-2" title="2">app &lt;-<span class="st"> </span><span class="kw">cwlShiny</span>(mulEcho, inputList, <span class="dt">upload =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb81-3" title="3"><span class="kw">runApp</span>(app)</a></code></pre></div>
 <div class="figure">
 <img src="images/cwlShiny.png" alt="shinyApp" />
 <p class="caption">shinyApp</p>

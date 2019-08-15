@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL</title>
-  <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -22,15 +21,15 @@
   <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   
 
-<meta name="author" content="Qiang Hu">
-<meta name="author" content="Qian Liu">
+<meta name="author" content="Qiang Hu" />
+<meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-05-23">
+<meta name="date" content="2019-08-15" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="components.html">
@@ -65,7 +64,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -224,10 +222,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 3</span> Writing Pipeline</h1>
 <p>We can connect multiple tools into a pipeline. Here is an example to uncompress an R script and execute it with <code>Rscript</code>.</p>
 <p>We first define a simple <code>Rscript</code> tool without using docker:</p>
-<pre class="sourceCode r"><code class="sourceCode r">d1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)
-Rs &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;/usr/bin/Rscript&quot;</span>,
-               <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(d1))
-Rs</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">d1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</a>
+<a class="sourceLine" id="cb54-2" title="2">Rs &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;/usr/bin/Rscript&quot;</span>,</a>
+<a class="sourceLine" id="cb54-3" title="3">               <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(d1))</a>
+<a class="sourceLine" id="cb54-4" title="4">Rs</a></code></pre></div>
 <pre><code>## class: cwlParam 
 ##  cwlClass: CommandLineTool 
 ##  cwlVersion: v1.0 
@@ -235,37 +233,38 @@ Rs</code></pre>
 ## inputs:
 ##   rfile (File):  
 ## outputs:
-##   output:
-##     type: stdout</code></pre>
+## output:
+##   type: stdout</code></pre>
 <p>Here is the test run:</p>
-<pre class="sourceCode r"><code class="sourceCode r">Rs<span class="op">$</span>rfile &lt;-<span class="st"> </span>r4<span class="op">$</span>output
-tres &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Rs, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
-<pre><code>## Final process status is success</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(tres<span class="op">$</span>output)</code></pre>
-<pre><code>## [1] &quot;[1] 2 7 4 3 9&quot;</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">Rs<span class="op">$</span>rfile &lt;-<span class="st"> </span>r4<span class="op">$</span>output</a>
+<a class="sourceLine" id="cb56-2" title="2">tres &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Rs, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">readLines</span>(tres<span class="op">$</span>output)</a></code></pre></div>
+<pre><code>## [1] &quot;WARNING: ignoring environment value of R_HOME&quot;
+## [2] &quot;[1] 6 2 8 3 9&quot;</code></pre>
 <p>The pipeline includes two steps, decompressed by <code>GZ</code> and compiled by <code>Rs</code>. The input file is a compressed file and the output file would be the output <code>Rout</code> from <code>Rs</code>.</p>
 <p>First we need to define the direct inputs and outputs from <code>GZ</code> and <code>Rs</code>, respectively:</p>
-<pre class="sourceCode r"><code class="sourceCode r">i1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)
-o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_cout&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;Compile/output&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">i1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</a>
+<a class="sourceLine" id="cb60-2" title="2">o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_cout&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;Compile/output&quot;</span>)</a></code></pre></div>
 <p>For the input “cwl_zifle”, it refers to the <code>GZ</code> input <code>zfile</code>. The output “cwl_cout” will be the outcome of <code>Rs</code> output <code>Rout</code>.</p>
 <p>The <code>cwlStepParam</code> is used to define <code>inputs</code> and <code>outputs</code>, and the <code>Step</code> function is used to define the two steps. The <code>run</code> option refers to the corresponding <code>cwlParam</code> object and the <code>In</code> option should be linked to the input parameters defined by <code>cwlStepParam</code>. At the end, we use <code>+</code> to connect all steps:</p>
-<pre class="sourceCode r"><code class="sourceCode r">cwl &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">inputs =</span> <span class="kw">InputParamList</span>(i1),
-                    <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1))
-s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Uncomp&quot;</span>, <span class="dt">run =</span> GZ,
-           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">zfile =</span> <span class="st">&quot;cwl_zfile&quot;</span>))
-s2 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Compile&quot;</span>, <span class="dt">run =</span> Rs,
-           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">rfile =</span> <span class="st">&quot;Uncomp/rfile&quot;</span>))
-cwl &lt;-<span class="st"> </span>cwl <span class="op">+</span><span class="st"> </span>s1 <span class="op">+</span><span class="st"> </span>s2
-cwl</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1">cwl &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">inputs =</span> <span class="kw">InputParamList</span>(i1),</a>
+<a class="sourceLine" id="cb61-2" title="2">                    <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1))</a>
+<a class="sourceLine" id="cb61-3" title="3">s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Uncomp&quot;</span>, <span class="dt">run =</span> GZ,</a>
+<a class="sourceLine" id="cb61-4" title="4">           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">zfile =</span> <span class="st">&quot;cwl_zfile&quot;</span>))</a>
+<a class="sourceLine" id="cb61-5" title="5">s2 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Compile&quot;</span>, <span class="dt">run =</span> Rs,</a>
+<a class="sourceLine" id="cb61-6" title="6">           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">rfile =</span> <span class="st">&quot;Uncomp/rfile&quot;</span>))</a>
+<a class="sourceLine" id="cb61-7" title="7">cwl &lt;-<span class="st"> </span>cwl <span class="op">+</span><span class="st"> </span>s1 <span class="op">+</span><span class="st"> </span>s2</a>
+<a class="sourceLine" id="cb61-8" title="8">cwl</a></code></pre></div>
 <pre><code>## class: cwlStepParam 
 ##  cwlClass: Workflow 
 ##  cwlVersion: v1.0 
 ## inputs:
 ##   cwl_zfile (File):  
 ## outputs:
-##   cwl_cout:
-##     type: File
-##     outputSource: Compile/output
+## cwl_cout:
+##   type: File
+##   outputSource: Compile/output
 ## steps:
 ##   Uncomp:
 ##     run: Uncomp.cwl
@@ -276,27 +275,28 @@ cwl</code></pre>
 ##     rfile: Uncomp/rfile
 ##     out: output</code></pre>
 <p>Let’s run the pipeline:</p>
-<pre class="sourceCode r"><code class="sourceCode r">cwl<span class="op">$</span>cwl_zfile &lt;-<span class="st"> </span>zzfil
-r7 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
-<pre><code>## Final process status is success</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(r7<span class="op">$</span>output)</code></pre>
-<pre><code>## [1] &quot;[1] 10  5  1  8  2&quot;</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">cwl<span class="op">$</span>cwl_zfile &lt;-<span class="st"> </span>zzfil</a>
+<a class="sourceLine" id="cb63-2" title="2">r7 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">readLines</span>(r7<span class="op">$</span>output)</a></code></pre></div>
+<pre><code>## [1] &quot;WARNING: ignoring environment value of R_HOME&quot;
+## [2] &quot;[1] 7 2 4 5 1&quot;</code></pre>
 <div id="scattering-pipeline" class="section level2">
 <h2><span class="header-section-number">3.1</span> Scattering pipeline</h2>
 <p>The scattering feature can specify the associated workflow steps or subworkflows to execute separately over a list of input elements. To use this feature, <code>ScatterFeatureRequirement</code> must be specified in the workflow requirement. Different <code>scatter</code> methods can be used in the associated steps to decompose the input into a discrete set of jobs. More details can be found at: <a href="https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep" class="uri">https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep</a>.</p>
 <p>Here is an example to execute multiple R scripts. First, we need to set the input and output types to be an array of “File”, and add the requirments. In the “Compile” step, the scattering input is required to be set with the <code>scatter</code> option:</p>
-<pre class="sourceCode r"><code class="sourceCode r">i2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_rfiles&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>)
-o2 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_couts&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;Compile/output&quot;</span>)
-req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;ScatterFeatureRequirement&quot;</span>)
-
-cwl2 &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">requirements =</span> <span class="kw">list</span>(req1),
-                     <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(i2),
-                     <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o2))
-s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Compile&quot;</span>, <span class="dt">run =</span> Rs,
-           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">rfile =</span> <span class="st">&quot;cwl_rfiles&quot;</span>),
-           <span class="dt">scatter =</span> <span class="st">&quot;rfile&quot;</span>)
-cwl2 &lt;-<span class="st"> </span>cwl2 <span class="op">+</span><span class="st"> </span>s1
-cwl2</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">i2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_rfiles&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>)</a>
+<a class="sourceLine" id="cb67-2" title="2">o2 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_couts&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;Compile/output&quot;</span>)</a>
+<a class="sourceLine" id="cb67-3" title="3">req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;ScatterFeatureRequirement&quot;</span>)</a>
+<a class="sourceLine" id="cb67-4" title="4"></a>
+<a class="sourceLine" id="cb67-5" title="5">cwl2 &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">requirements =</span> <span class="kw">list</span>(req1),</a>
+<a class="sourceLine" id="cb67-6" title="6">                     <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(i2),</a>
+<a class="sourceLine" id="cb67-7" title="7">                     <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o2))</a>
+<a class="sourceLine" id="cb67-8" title="8">s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Compile&quot;</span>, <span class="dt">run =</span> Rs,</a>
+<a class="sourceLine" id="cb67-9" title="9">           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">rfile =</span> <span class="st">&quot;cwl_rfiles&quot;</span>),</a>
+<a class="sourceLine" id="cb67-10" title="10">           <span class="dt">scatter =</span> <span class="st">&quot;rfile&quot;</span>)</a>
+<a class="sourceLine" id="cb67-11" title="11">cwl2 &lt;-<span class="st"> </span>cwl2 <span class="op">+</span><span class="st"> </span>s1</a>
+<a class="sourceLine" id="cb67-12" title="12">cwl2</a></code></pre></div>
 <pre><code>## class: cwlStepParam 
 ##  cwlClass: Workflow 
 ##  cwlVersion: v1.0 
@@ -305,9 +305,9 @@ cwl2</code></pre>
 ## inputs:
 ##   cwl_rfiles (File[]):  
 ## outputs:
-##   cwl_couts:
-##     type: File[]
-##     outputSource: Compile/output
+## cwl_couts:
+##   type: File[]
+##   outputSource: Compile/output
 ## steps:
 ##   Compile:
 ##     run: Compile.cwl
@@ -315,19 +315,19 @@ cwl2</code></pre>
 ##     out: output
 ##     scatter: rfile</code></pre>
 <p>Now multiple R scripts can be assigned to the workflow inputs and executed:</p>
-<pre class="sourceCode r"><code class="sourceCode r">cwl2<span class="op">$</span>cwl_rfiles &lt;-<span class="st"> </span><span class="kw">c</span>(r4b<span class="op">$</span>output, r4b<span class="op">$</span>output)
-r8 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl2, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</code></pre>
-<pre><code>## Final process status is success</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">r8<span class="op">$</span>output</code></pre>
-<pre><code>## [1] &quot;/tmp/RtmptiiapL/7ad51e3662ad61d30a8d646578de58856acdd94c&quot;
-## [2] &quot;/tmp/RtmptiiapL/7ad51e3662ad61d30a8d646578de58856acdd94c&quot;</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">cwl2<span class="op">$</span>cwl_rfiles &lt;-<span class="st"> </span><span class="kw">c</span>(r4b<span class="op">$</span>output, r4b<span class="op">$</span>output)</a>
+<a class="sourceLine" id="cb69-2" title="2">r8 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl2, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">r8<span class="op">$</span>output</a></code></pre></div>
+<pre><code>## [1] &quot;/tmp/Rtmp7YFNaP/4b5d83beea92ecc82f83f92f012868ca8d5aa1b4&quot;
+## [2] &quot;/tmp/Rtmp7YFNaP/4b5d83beea92ecc82f83f92f012868ca8d5aa1b4&quot;</code></pre>
 </div>
 <div id="pipeline-plot" class="section level2">
 <h2><span class="header-section-number">3.2</span> Pipeline plot</h2>
 <p>The function <code>plotCWL</code> can be used to visualize the relationship of inputs, outputs and the components for a tool or pipeline:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plotCWL</span>(cwl)</code></pre>
-<div id="htmlwidget-62279e6b3b5b893baa4a" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-62279e6b3b5b893baa4a">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">plotCWL</span>(cwl)</a></code></pre></div>
+<div id="htmlwidget-9c48d45b92db4e6bc25e" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9c48d45b92db4e6bc25e">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>

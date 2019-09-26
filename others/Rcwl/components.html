@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Components | Bioinformatics tools and pipelines using R and CWL</title>
   <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Components | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -25,15 +25,15 @@
 <meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html">
-<link rel="next" href="writing-pipeline.html">
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="writing-pipeline.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -59,9 +59,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -70,14 +70,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -86,9 +88,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -197,6 +199,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.3" data-path="application.html"><a href="application.html#joint-discovery"><i class="fa fa-check"></i><b>5.6.3</b> Joint Discovery</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="variant-calling.html"><a href="variant-calling.html"><i class="fa fa-check"></i><b>6</b> Variant calling</a><ul>
+<li class="chapter" data-level="6.1" data-path="variant-calling.html"><a href="variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="variant-calling.html"><a href="variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
+<li class="chapter" data-level="6.3" data-path="variant-calling.html"><a href="variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="variant-calling.html"><a href="variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
+<li class="chapter" data-level="6.3.2" data-path="variant-calling.html"><a href="variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
+<li class="chapter" data-level="6.3.3" data-path="variant-calling.html"><a href="variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
+<li class="chapter" data-level="6.3.4" data-path="variant-calling.html"><a href="variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
+<li class="chapter" data-level="6.3.5" data-path="variant-calling.html"><a href="variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
+<li class="chapter" data-level="6.3.6" data-path="variant-calling.html"><a href="variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
+<li class="chapter" data-level="6.3.7" data-path="variant-calling.html"><a href="variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
+<li class="chapter" data-level="6.3.8" data-path="variant-calling.html"><a href="variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
+<li class="chapter" data-level="6.3.9" data-path="variant-calling.html"><a href="variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html"><i class="fa fa-check"></i><b>7</b> RNA-Seq alignment and quantification</a><ul>
+<li class="chapter" data-level="7.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#bulk-mrna"><i class="fa fa-check"></i><b>7.1</b> bulk mRNA</a></li>
+<li class="chapter" data-level="7.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#transcriptome-quantification"><i class="fa fa-check"></i><b>7.2</b> transcriptome quantification</a></li>
+<li class="chapter" data-level="7.3" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#single-cell-rnaseq"><i class="fa fa-check"></i><b>7.3</b> single cell RNAseq</a></li>
+<li class="chapter" data-level="7.4" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#mirna"><i class="fa fa-check"></i><b>7.4</b> miRNA</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#prepare-reference"><i class="fa fa-check"></i><b>7.4.1</b> Prepare reference</a></li>
+<li class="chapter" data-level="7.4.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#run-mirdeep2-pipeline"><i class="fa fa-check"></i><b>7.4.2</b> Run miRDeep2 pipeline</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -227,50 +253,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For the input parameters, we usually need to define three options, <em>id</em>, <em>type</em>, and <em>prefix</em>. The type can be <em>string</em>, <em>int</em>, <em>long</em>, <em>float</em>, <em>double</em>, and so on. More detail can be found at: <a href="https://www.commonwl.org/v1.0/CommandLineTool.html#CWLType" class="uri">https://www.commonwl.org/v1.0/CommandLineTool.html#CWLType</a>.</p>
 <p>A <code>InputParam</code> constructor is used to define a list of input objects for the command tool, such as “prefix” for the parameter flags and “position” for the paramter orders. More descriptions are available in the CWL specification <a href="https://www.commonwl.org/v1.0/CommandLineTool.html#CommandLineBinding" class="uri">https://www.commonwl.org/v1.0/CommandLineTool.html#CommandLineBinding</a>.</p>
 <p>Here is an example from the CWL user guide(<a href="http://www.commonwl.org/user_guide/03-input/" class="uri">http://www.commonwl.org/user_guide/03-input/</a>). We defined the <code>echo</code> with different type of input parameters by <code>InputParam</code>, and the <code>stdout</code> option can be used to caputre the standard output stream into a file:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">e1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;flag&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-f&quot;</span>)</a>
-<a class="sourceLine" id="cb21-2" title="2">e2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-s&quot;</span>)</a>
-<a class="sourceLine" id="cb21-3" title="3">e3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-i&quot;</span>)</a>
-<a class="sourceLine" id="cb21-4" title="4">e4 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;file&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;--file=&quot;</span>, <span class="dt">separate =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb21-5" title="5">echoA &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>,</a>
-<a class="sourceLine" id="cb21-6" title="6">                  <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(e1, e2, e3, e4),</a>
-<a class="sourceLine" id="cb21-7" title="7">                  <span class="dt">stdout =</span> <span class="st">&quot;output.txt&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="components.html#cb21-1"></a>e1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;flag&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-f&quot;</span>)</span>
+<span id="cb21-2"><a href="components.html#cb21-2"></a>e2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-s&quot;</span>)</span>
+<span id="cb21-3"><a href="components.html#cb21-3"></a>e3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;int&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-i&quot;</span>)</span>
+<span id="cb21-4"><a href="components.html#cb21-4"></a>e4 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;file&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;--file=&quot;</span>, <span class="dt">separate =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb21-5"><a href="components.html#cb21-5"></a>echoA &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>,</span>
+<span id="cb21-6"><a href="components.html#cb21-6"></a>                  <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(e1, e2, e3, e4),</span>
+<span id="cb21-7"><a href="components.html#cb21-7"></a>                  <span class="dt">stdout =</span> <span class="st">&quot;output.txt&quot;</span>)</span></code></pre></div>
 <p>Then we give it a try by setting values for the inputs:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">echoA<span class="op">$</span>flag &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb22-2" title="2">echoA<span class="op">$</span>string &lt;-<span class="st"> &quot;Hello&quot;</span></a>
-<a class="sourceLine" id="cb22-3" title="3">echoA<span class="op">$</span>int &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb22-4" title="4"></a>
-<a class="sourceLine" id="cb22-5" title="5">tmpfile &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</a>
-<a class="sourceLine" id="cb22-6" title="6"><span class="kw">write</span>(<span class="st">&quot;World&quot;</span>, tmpfile)</a>
-<a class="sourceLine" id="cb22-7" title="7">echoA<span class="op">$</span>file &lt;-<span class="st"> </span>tmpfile</a>
-<a class="sourceLine" id="cb22-8" title="8"></a>
-<a class="sourceLine" id="cb22-9" title="9">r2 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoA, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="components.html#cb22-1"></a>echoA<span class="op">$</span>flag &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb22-2"><a href="components.html#cb22-2"></a>echoA<span class="op">$</span>string &lt;-<span class="st"> &quot;Hello&quot;</span></span>
+<span id="cb22-3"><a href="components.html#cb22-3"></a>echoA<span class="op">$</span>int &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb22-4"><a href="components.html#cb22-4"></a></span>
+<span id="cb22-5"><a href="components.html#cb22-5"></a>tmpfile &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</span>
+<span id="cb22-6"><a href="components.html#cb22-6"></a><span class="kw">write</span>(<span class="st">&quot;World&quot;</span>, tmpfile)</span>
+<span id="cb22-7"><a href="components.html#cb22-7"></a>echoA<span class="op">$</span>file &lt;-<span class="st"> </span>tmpfile</span>
+<span id="cb22-8"><a href="components.html#cb22-8"></a></span>
+<span id="cb22-9"><a href="components.html#cb22-9"></a>r2 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoA, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">r2<span class="op">$</span>command</a></code></pre></div>
-<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file82291e177768.cwl] /tmp/tL4qVs$ echo \\&quot;                   
-## [2] &quot;    --file=/tmp/tmpVwWr8m/stg59734624-6c38-4095-b72e-f4db492c60c4/file82297933495f \\&quot;   
-## [3] &quot;    -f \\&quot;                                                                               
-## [4] &quot;    -i \\&quot;                                                                               
-## [5] &quot;    1 \\&quot;                                                                                
-## [6] &quot;    -s \\&quot;                                                                               
-## [7] &quot;    Hello &gt; /tmp/tL4qVs/output.txt&quot;                                                      
-## [8] &quot;\033[1;30mINFO\033[0m Could not collect memory usage, job ended before monitoring began.&quot;</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="components.html#cb24-1"></a>r2<span class="op">$</span>command</span></code></pre></div>
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file9ec64c0fe693.cwl] /tmp/xu0wuxpu$ echo \\&quot;                
+## [2] &quot;    --file=/tmp/tmp9ryojtfo/stg93b9e7b2-7292-4e60-adca-7a3ed1bcbf92/file9ec66fe8ba62 \\&quot;
+## [3] &quot;    -f \\&quot;                                                                              
+## [4] &quot;    -i \\&quot;                                                                              
+## [5] &quot;    1 \\&quot;                                                                               
+## [6] &quot;    -s \\&quot;                                                                              
+## [7] &quot;    Hello &gt; /tmp/xu0wuxpu/output.txt&quot;</code></pre>
 </div>
 <div id="array-inputs" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Array Inputs</h3>
 <p>Taking a similar example to the CWL user guide described above, we can define three different type of array as inputs:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">a1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string[]&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-A&quot;</span>)</a>
-<a class="sourceLine" id="cb26-2" title="2">a2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;B&quot;</span>,</a>
-<a class="sourceLine" id="cb26-3" title="3">                 <span class="dt">type =</span> <span class="kw">InputArrayParam</span>(<span class="dt">items =</span> <span class="st">&quot;string&quot;</span>,</a>
-<a class="sourceLine" id="cb26-4" title="4">                                        <span class="dt">prefix=</span><span class="st">&quot;-B=&quot;</span>, <span class="dt">separate =</span> <span class="ot">FALSE</span>))</a>
-<a class="sourceLine" id="cb26-5" title="5">a3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;C&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string[]&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-C=&quot;</span>,</a>
-<a class="sourceLine" id="cb26-6" title="6">                 <span class="dt">itemSeparator =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">separate =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb26-7" title="7">echoB &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>,</a>
-<a class="sourceLine" id="cb26-8" title="8">                 <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(a1, a2, a3))</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="components.html#cb26-1"></a>a1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string[]&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-A&quot;</span>)</span>
+<span id="cb26-2"><a href="components.html#cb26-2"></a>a2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;B&quot;</span>,</span>
+<span id="cb26-3"><a href="components.html#cb26-3"></a>                 <span class="dt">type =</span> <span class="kw">InputArrayParam</span>(<span class="dt">items =</span> <span class="st">&quot;string&quot;</span>,</span>
+<span id="cb26-4"><a href="components.html#cb26-4"></a>                                        <span class="dt">prefix=</span><span class="st">&quot;-B=&quot;</span>, <span class="dt">separate =</span> <span class="ot">FALSE</span>))</span>
+<span id="cb26-5"><a href="components.html#cb26-5"></a>a3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;C&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string[]&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-C=&quot;</span>,</span>
+<span id="cb26-6"><a href="components.html#cb26-6"></a>                 <span class="dt">itemSeparator =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">separate =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb26-7"><a href="components.html#cb26-7"></a>echoB &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;echo&quot;</span>,</span>
+<span id="cb26-8"><a href="components.html#cb26-8"></a>                 <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(a1, a2, a3))</span></code></pre></div>
 <p>We then set values for the three inputs:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">echoB<span class="op">$</span>A &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb27-2" title="2">echoB<span class="op">$</span>B &lt;-<span class="st"> </span>letters[<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>]</a>
-<a class="sourceLine" id="cb27-3" title="3">echoB<span class="op">$</span>C &lt;-<span class="st"> </span>letters[<span class="dv">7</span><span class="op">:</span><span class="dv">9</span>]</a>
-<a class="sourceLine" id="cb27-4" title="4">echoB</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="components.html#cb27-1"></a>echoB<span class="op">$</span>A &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</span>
+<span id="cb27-2"><a href="components.html#cb27-2"></a>echoB<span class="op">$</span>B &lt;-<span class="st"> </span>letters[<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>]</span>
+<span id="cb27-3"><a href="components.html#cb27-3"></a>echoB<span class="op">$</span>C &lt;-<span class="st"> </span>letters[<span class="dv">7</span><span class="op">:</span><span class="dv">9</span>]</span>
+<span id="cb27-4"><a href="components.html#cb27-4"></a>echoB</span></code></pre></div>
 <pre><code>## class: cwlParam 
 ##  cwlClass: CommandLineTool 
 ##  cwlVersion: v1.0 
@@ -285,19 +310,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## output:
 ##   type: stdout</code></pre>
 <p>Now we can check whether the command behaves as we expected:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">r3 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoB, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="components.html#cb29-1"></a>r3 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoB, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">r3<span class="op">$</span>command</a></code></pre></div>
-<pre><code>##  [1] &quot;\033[1;30mINFO\033[0m [job file82295c137e58.cwl] /tmp/O5WP6x$ echo \\&quot;                   
-##  [2] &quot;    -A \\&quot;                                                                               
-##  [3] &quot;    a \\&quot;                                                                                
-##  [4] &quot;    b \\&quot;                                                                                
-##  [5] &quot;    c \\&quot;                                                                                
-##  [6] &quot;    -B=d \\&quot;                                                                             
-##  [7] &quot;    -B=e \\&quot;                                                                             
-##  [8] &quot;    -B=f \\&quot;                                                                             
-##  [9] &quot;    -C=g,h,i &gt; /tmp/O5WP6x/3760975be2db7f3eb05ca54185130e05306c69a4&quot;                     
-## [10] &quot;\033[1;30mINFO\033[0m Could not collect memory usage, job ended before monitoring began.&quot;</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="components.html#cb31-1"></a>r3<span class="op">$</span>command</span></code></pre></div>
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file9ec615883ce9.cwl] /tmp/u3b6uz3x$ echo \\&quot;
+## [2] &quot;    -A \\&quot;                                                              
+## [3] &quot;    a \\&quot;                                                               
+## [4] &quot;    b \\&quot;                                                               
+## [5] &quot;    c \\&quot;                                                               
+## [6] &quot;    -B=d \\&quot;                                                            
+## [7] &quot;    -B=e \\&quot;                                                            
+## [8] &quot;    -B=f \\&quot;                                                            
+## [9] &quot;    -C=g,h,i &gt; /tmp/u3b6uz3x/f9d8da775ce6fc6c567d2b6d5922a11cd41a3d9b&quot;</code></pre>
 </div>
 </div>
 <div id="output-parameters" class="section level2">
@@ -306,37 +330,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.2.1</span> Capturing Output</h3>
 <p>The outputs, similar to the inputs, is a list of output parameters. Three options, <em>id</em>, <em>type</em> and <em>glob</em>, can be defined. The <em>glob</em> option is used to define a pattern to find files relative to the output directory.</p>
 <p>Here is an example to unzip a compressed <code>gz</code> file. First, we generate a compressed R script file:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">zzfil &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">&quot;sample.R.gz&quot;</span>)</a>
-<a class="sourceLine" id="cb33-2" title="2">zz &lt;-<span class="st"> </span><span class="kw">gzfile</span>(zzfil, <span class="st">&quot;w&quot;</span>)</a>
-<a class="sourceLine" id="cb33-3" title="3"><span class="kw">cat</span>(<span class="st">&quot;sample(1:10, 5)&quot;</span>, <span class="dt">file =</span> zz, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
-<a class="sourceLine" id="cb33-4" title="4"><span class="kw">close</span>(zz)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="components.html#cb33-1"></a>zzfil &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">&quot;sample.R.gz&quot;</span>)</span>
+<span id="cb33-2"><a href="components.html#cb33-2"></a>zz &lt;-<span class="st"> </span><span class="kw">gzfile</span>(zzfil, <span class="st">&quot;w&quot;</span>)</span>
+<span id="cb33-3"><a href="components.html#cb33-3"></a><span class="kw">cat</span>(<span class="st">&quot;sample(1:10, 5)&quot;</span>, <span class="dt">file =</span> zz, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb33-4"><a href="components.html#cb33-4"></a><span class="kw">close</span>(zz)</span></code></pre></div>
 <p>We then define a <code>cwlParam</code> object to use “gzip” to uncompress an input file:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">ofile &lt;-<span class="st"> &quot;sample.R&quot;</span></a>
-<a class="sourceLine" id="cb34-2" title="2">z1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;uncomp&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-d&quot;</span>)</a>
-<a class="sourceLine" id="cb34-3" title="3">z2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;out&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-c&quot;</span>)</a>
-<a class="sourceLine" id="cb34-4" title="4">z3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</a>
-<a class="sourceLine" id="cb34-5" title="5">o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> ofile)</a>
-<a class="sourceLine" id="cb34-6" title="6">gz &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;gzip&quot;</span>,</a>
-<a class="sourceLine" id="cb34-7" title="7">               <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(z1, z2, z3),</a>
-<a class="sourceLine" id="cb34-8" title="8">               <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1),</a>
-<a class="sourceLine" id="cb34-9" title="9">               <span class="dt">stdout =</span> ofile)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="components.html#cb34-1"></a>ofile &lt;-<span class="st"> &quot;sample.R&quot;</span></span>
+<span id="cb34-2"><a href="components.html#cb34-2"></a>z1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;uncomp&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-d&quot;</span>)</span>
+<span id="cb34-3"><a href="components.html#cb34-3"></a>z2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;out&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;boolean&quot;</span>, <span class="dt">prefix =</span> <span class="st">&quot;-c&quot;</span>)</span>
+<span id="cb34-4"><a href="components.html#cb34-4"></a>z3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</span>
+<span id="cb34-5"><a href="components.html#cb34-5"></a>o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> ofile)</span>
+<span id="cb34-6"><a href="components.html#cb34-6"></a>gz &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;gzip&quot;</span>,</span>
+<span id="cb34-7"><a href="components.html#cb34-7"></a>               <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(z1, z2, z3),</span>
+<span id="cb34-8"><a href="components.html#cb34-8"></a>               <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1),</span>
+<span id="cb34-9"><a href="components.html#cb34-9"></a>               <span class="dt">stdout =</span> ofile)</span></code></pre></div>
 <p>Now the <code>gz</code> object can be used to uncompress the previously generated compressed file:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">gz<span class="op">$</span>uncomp &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb35-2" title="2">gz<span class="op">$</span>out &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb35-3" title="3">gz<span class="op">$</span>zfile &lt;-<span class="st"> </span>zzfil</a>
-<a class="sourceLine" id="cb35-4" title="4">r4 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(gz, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="components.html#cb35-1"></a>gz<span class="op">$</span>uncomp &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb35-2"><a href="components.html#cb35-2"></a>gz<span class="op">$</span>out &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb35-3"><a href="components.html#cb35-3"></a>gz<span class="op">$</span>zfile &lt;-<span class="st"> </span>zzfil</span>
+<span id="cb35-4"><a href="components.html#cb35-4"></a>r4 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(gz, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">r4<span class="op">$</span>output</a></code></pre></div>
-<pre><code>## [1] &quot;/tmp/Rtmp7YFNaP/sample.R&quot;</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="components.html#cb37-1"></a>r4<span class="op">$</span>output</span></code></pre></div>
+<pre><code>## [1] &quot;/tmp/RtmpWSwswQ/sample.R&quot;</code></pre>
 <p>Or we can use <code>arguments</code> to set some default parameters:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">z1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</a>
-<a class="sourceLine" id="cb39-2" title="2">o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> ofile)</a>
-<a class="sourceLine" id="cb39-3" title="3">Gz &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;gzip&quot;</span>,</a>
-<a class="sourceLine" id="cb39-4" title="4">               <span class="dt">arguments =</span> <span class="kw">list</span>(<span class="st">&quot;-d&quot;</span>, <span class="st">&quot;-c&quot;</span>),</a>
-<a class="sourceLine" id="cb39-5" title="5">               <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(z1),</a>
-<a class="sourceLine" id="cb39-6" title="6">               <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1),</a>
-<a class="sourceLine" id="cb39-7" title="7">               <span class="dt">stdout =</span> ofile)</a>
-<a class="sourceLine" id="cb39-8" title="8">Gz</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="components.html#cb39-1"></a>z1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</span>
+<span id="cb39-2"><a href="components.html#cb39-2"></a>o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> ofile)</span>
+<span id="cb39-3"><a href="components.html#cb39-3"></a>Gz &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;gzip&quot;</span>,</span>
+<span id="cb39-4"><a href="components.html#cb39-4"></a>               <span class="dt">arguments =</span> <span class="kw">list</span>(<span class="st">&quot;-d&quot;</span>, <span class="st">&quot;-c&quot;</span>),</span>
+<span id="cb39-5"><a href="components.html#cb39-5"></a>               <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(z1),</span>
+<span id="cb39-6"><a href="components.html#cb39-6"></a>               <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1),</span>
+<span id="cb39-7"><a href="components.html#cb39-7"></a>               <span class="dt">stdout =</span> ofile)</span>
+<span id="cb39-8"><a href="components.html#cb39-8"></a>Gz</span></code></pre></div>
 <pre><code>## class: cwlParam 
 ##  cwlClass: CommandLineTool 
 ##  cwlVersion: v1.0 
@@ -350,35 +374,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   outputBinding:
 ##     glob: sample.R
 ## stdout: sample.R</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">Gz<span class="op">$</span>zfile &lt;-<span class="st"> </span>zzfil</a>
-<a class="sourceLine" id="cb41-2" title="2">r4a &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Gz, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="components.html#cb41-1"></a>Gz<span class="op">$</span>zfile &lt;-<span class="st"> </span>zzfil</span>
+<span id="cb41-2"><a href="components.html#cb41-2"></a>r4a &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Gz, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <p>To make it for general usage, we can define a pattern with javascript to <em>glob</em> the output, which requires <code>node</code> to be installed in your system PATH:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">pfile &lt;-<span class="st"> &quot;$(inputs.zfile.path.split(&#39;/&#39;).slice(-1)[0].split(&#39;.&#39;).slice(0,-1).join(&#39;.&#39;))&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="components.html#cb43-1"></a>pfile &lt;-<span class="st"> &quot;$(inputs.zfile.path.split(&#39;/&#39;).slice(-1)[0].split(&#39;.&#39;).slice(0,-1).join(&#39;.&#39;))&quot;</span></span></code></pre></div>
 <p>Or we can directly use the CWL built in file property, <code>nameroot</code>:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">pfile &lt;-<span class="st"> &quot;$(inputs.zfile.nameroot)&quot;</span></a>
-<a class="sourceLine" id="cb44-2" title="2">o2 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> pfile)</a>
-<a class="sourceLine" id="cb44-3" title="3">req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;InlineJavascriptRequirement&quot;</span>)</a>
-<a class="sourceLine" id="cb44-4" title="4">GZ &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="kw">c</span>(<span class="st">&quot;gzip&quot;</span>, <span class="st">&quot;-d&quot;</span>, <span class="st">&quot;-c&quot;</span>),</a>
-<a class="sourceLine" id="cb44-5" title="5">               <span class="dt">requirements =</span> <span class="kw">list</span>(), <span class="co">## assign list(req1) if node installed.</span></a>
-<a class="sourceLine" id="cb44-6" title="6">               <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(z1),</a>
-<a class="sourceLine" id="cb44-7" title="7">               <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o2),</a>
-<a class="sourceLine" id="cb44-8" title="8">               <span class="dt">stdout =</span> pfile)</a>
-<a class="sourceLine" id="cb44-9" title="9">GZ<span class="op">$</span>zfile &lt;-<span class="st"> </span>zzfil</a>
-<a class="sourceLine" id="cb44-10" title="10">r4b &lt;-<span class="st"> </span><span class="kw">runCWL</span>(GZ, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="components.html#cb44-1"></a>pfile &lt;-<span class="st"> &quot;$(inputs.zfile.nameroot)&quot;</span></span>
+<span id="cb44-2"><a href="components.html#cb44-2"></a>o2 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> pfile)</span>
+<span id="cb44-3"><a href="components.html#cb44-3"></a>req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;InlineJavascriptRequirement&quot;</span>)</span>
+<span id="cb44-4"><a href="components.html#cb44-4"></a>GZ &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="kw">c</span>(<span class="st">&quot;gzip&quot;</span>, <span class="st">&quot;-d&quot;</span>, <span class="st">&quot;-c&quot;</span>),</span>
+<span id="cb44-5"><a href="components.html#cb44-5"></a>               <span class="dt">requirements =</span> <span class="kw">list</span>(), <span class="co">## assign list(req1) if node installed.</span></span>
+<span id="cb44-6"><a href="components.html#cb44-6"></a>               <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(z1),</span>
+<span id="cb44-7"><a href="components.html#cb44-7"></a>               <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o2),</span>
+<span id="cb44-8"><a href="components.html#cb44-8"></a>               <span class="dt">stdout =</span> pfile)</span>
+<span id="cb44-9"><a href="components.html#cb44-9"></a>GZ<span class="op">$</span>zfile &lt;-<span class="st"> </span>zzfil</span>
+<span id="cb44-10"><a href="components.html#cb44-10"></a>r4b &lt;-<span class="st"> </span><span class="kw">runCWL</span>(GZ, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 </div>
 <div id="array-outputs" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Array Outputs</h3>
 <p>We can also capture multiple output files with the <code>glob</code> pattern:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">a &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;a&quot;</span>, <span class="dt">type =</span> <span class="kw">InputArrayParam</span>(<span class="dt">items =</span> <span class="st">&quot;string&quot;</span>))</a>
-<a class="sourceLine" id="cb46-2" title="2">b &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">type =</span> <span class="kw">OutputArrayParam</span>(<span class="dt">items =</span> <span class="st">&quot;File&quot;</span>), <span class="dt">glob =</span> <span class="st">&quot;*.txt&quot;</span>)</a>
-<a class="sourceLine" id="cb46-3" title="3">touch &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;touch&quot;</span>, <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(a), <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(b))</a>
-<a class="sourceLine" id="cb46-4" title="4">touch<span class="op">$</span>a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a.txt&quot;</span>, <span class="st">&quot;b.gz&quot;</span>, <span class="st">&quot;c.txt&quot;</span>)</a>
-<a class="sourceLine" id="cb46-5" title="5">r5 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(touch, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="components.html#cb46-1"></a>a &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;a&quot;</span>, <span class="dt">type =</span> <span class="kw">InputArrayParam</span>(<span class="dt">items =</span> <span class="st">&quot;string&quot;</span>))</span>
+<span id="cb46-2"><a href="components.html#cb46-2"></a>b &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">type =</span> <span class="kw">OutputArrayParam</span>(<span class="dt">items =</span> <span class="st">&quot;File&quot;</span>), <span class="dt">glob =</span> <span class="st">&quot;*.txt&quot;</span>)</span>
+<span id="cb46-3"><a href="components.html#cb46-3"></a>touch &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;touch&quot;</span>, <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(a), <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(b))</span>
+<span id="cb46-4"><a href="components.html#cb46-4"></a>touch<span class="op">$</span>a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a.txt&quot;</span>, <span class="st">&quot;b.gz&quot;</span>, <span class="st">&quot;c.txt&quot;</span>)</span>
+<span id="cb46-5"><a href="components.html#cb46-5"></a>r5 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(touch, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">r5<span class="op">$</span>output</a></code></pre></div>
-<pre><code>## [1] &quot;/tmp/Rtmp7YFNaP/a.txt&quot; &quot;/tmp/Rtmp7YFNaP/c.txt&quot;</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="components.html#cb48-1"></a>r5<span class="op">$</span>output</span></code></pre></div>
+<pre><code>## [1] &quot;/tmp/RtmpWSwswQ/a.txt&quot; &quot;/tmp/RtmpWSwswQ/c.txt&quot;</code></pre>
 </div>
 <div id="standard-output" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Standard output</h3>
@@ -390,27 +414,26 @@ with the type of “stdout” should be also assigned with no
 “outputBinding” set.</p>
 <p>An example for command tool “cat” is defined with <code>stdout</code> field in
 the output, with the name passed from the input parameter “p2”:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="co">## define Cat</span></a>
-<a class="sourceLine" id="cb50-2" title="2">p1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;infiles&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>)</a>
-<a class="sourceLine" id="cb50-3" title="3">p2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;outfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>,</a>
-<a class="sourceLine" id="cb50-4" title="4">                 <span class="dt">default =</span> <span class="st">&quot;catout.txt&quot;</span>, <span class="dt">position =</span> <span class="dv">-1</span>)</a>
-<a class="sourceLine" id="cb50-5" title="5">Cat &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;cat&quot;</span>,</a>
-<a class="sourceLine" id="cb50-6" title="6">                <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(p1, p2),</a>
-<a class="sourceLine" id="cb50-7" title="7">                <span class="dt">stdout =</span> <span class="st">&quot;$(inputs.outfile)&quot;</span>)</a>
-<a class="sourceLine" id="cb50-8" title="8"><span class="co">## assign inputs</span></a>
-<a class="sourceLine" id="cb50-9" title="9">afile &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">&quot;a.txt&quot;</span>)</a>
-<a class="sourceLine" id="cb50-10" title="10">bfile &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">&quot;b.txt&quot;</span>)</a>
-<a class="sourceLine" id="cb50-11" title="11"><span class="kw">write</span>(<span class="st">&quot;a&quot;</span>, afile)</a>
-<a class="sourceLine" id="cb50-12" title="12"><span class="kw">write</span>(<span class="st">&quot;b&quot;</span>, bfile)</a>
-<a class="sourceLine" id="cb50-13" title="13">Cat<span class="op">$</span>infiles &lt;-<span class="st"> </span><span class="kw">list</span>(afile, bfile)</a>
-<a class="sourceLine" id="cb50-14" title="14"><span class="co">## run</span></a>
-<a class="sourceLine" id="cb50-15" title="15">r6 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Cat, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="components.html#cb50-1"></a><span class="co">## define Cat</span></span>
+<span id="cb50-2"><a href="components.html#cb50-2"></a>p1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;infiles&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>)</span>
+<span id="cb50-3"><a href="components.html#cb50-3"></a>p2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;outfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>,</span>
+<span id="cb50-4"><a href="components.html#cb50-4"></a>                 <span class="dt">default =</span> <span class="st">&quot;catout.txt&quot;</span>, <span class="dt">position =</span> <span class="dv">-1</span>)</span>
+<span id="cb50-5"><a href="components.html#cb50-5"></a>Cat &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;cat&quot;</span>,</span>
+<span id="cb50-6"><a href="components.html#cb50-6"></a>                <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(p1, p2),</span>
+<span id="cb50-7"><a href="components.html#cb50-7"></a>                <span class="dt">stdout =</span> <span class="st">&quot;$(inputs.outfile)&quot;</span>)</span>
+<span id="cb50-8"><a href="components.html#cb50-8"></a><span class="co">## assign inputs</span></span>
+<span id="cb50-9"><a href="components.html#cb50-9"></a>afile &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">&quot;a.txt&quot;</span>)</span>
+<span id="cb50-10"><a href="components.html#cb50-10"></a>bfile &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">&quot;b.txt&quot;</span>)</span>
+<span id="cb50-11"><a href="components.html#cb50-11"></a><span class="kw">write</span>(<span class="st">&quot;a&quot;</span>, afile)</span>
+<span id="cb50-12"><a href="components.html#cb50-12"></a><span class="kw">write</span>(<span class="st">&quot;b&quot;</span>, bfile)</span>
+<span id="cb50-13"><a href="components.html#cb50-13"></a>Cat<span class="op">$</span>infiles &lt;-<span class="st"> </span><span class="kw">list</span>(afile, bfile)</span>
+<span id="cb50-14"><a href="components.html#cb50-14"></a><span class="co">## run</span></span>
+<span id="cb50-15"><a href="components.html#cb50-15"></a>r6 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Cat, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1">r6<span class="op">$</span>command</a></code></pre></div>
-<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file82293f44eecc.cwl] /tmp/RuS5OA$ cat \\&quot;                     
-## [2] &quot;    /tmp/tmp9mZiyG/stgf7d11d8e-d9c8-4b3e-8de9-a772a3f26266/a.txt \\&quot;                      
-## [3] &quot;    /tmp/tmp9mZiyG/stg07a897c4-58d8-44a1-99c8-94053a90659d/b.txt &gt; /tmp/RuS5OA/catout.txt&quot;
-## [4] &quot;\033[1;30mINFO\033[0m Could not collect memory usage, job ended before monitoring began.&quot;</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="components.html#cb52-1"></a>r6<span class="op">$</span>command</span></code></pre></div>
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file9ec62420ffd0.cwl] /tmp/nfu_xgwh$ cat \\&quot;                       
+## [2] &quot;    /tmp/tmp5yyr_wt_/stgcba80d66-ebc8-4458-bb3f-0a6d4af16452/a.txt \\&quot;                        
+## [3] &quot;    /tmp/tmp5yyr_wt_/stgc90fc446-9c53-470f-8418-b227f7649d11/b.txt &gt; /tmp/nfu_xgwh/catout.txt&quot;</code></pre>
 
 <div class="tips">
 <p>In this example, we used the parameter “p2” to pass the name to the

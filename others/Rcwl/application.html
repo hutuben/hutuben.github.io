@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Application | Bioinformatics tools and pipelines using R and CWL</title>
   <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Application | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -25,15 +25,15 @@
 <meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="run-approaches.html">
-<link rel="next" href="references.html">
+<link rel="prev" href="run-approaches.html"/>
+<link rel="next" href="variant-calling.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -59,9 +59,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -70,14 +70,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -86,9 +88,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -197,6 +199,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.3" data-path="application.html"><a href="application.html#joint-discovery"><i class="fa fa-check"></i><b>5.6.3</b> Joint Discovery</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="variant-calling.html"><a href="variant-calling.html"><i class="fa fa-check"></i><b>6</b> Variant calling</a><ul>
+<li class="chapter" data-level="6.1" data-path="variant-calling.html"><a href="variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="variant-calling.html"><a href="variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
+<li class="chapter" data-level="6.3" data-path="variant-calling.html"><a href="variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="variant-calling.html"><a href="variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
+<li class="chapter" data-level="6.3.2" data-path="variant-calling.html"><a href="variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
+<li class="chapter" data-level="6.3.3" data-path="variant-calling.html"><a href="variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
+<li class="chapter" data-level="6.3.4" data-path="variant-calling.html"><a href="variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
+<li class="chapter" data-level="6.3.5" data-path="variant-calling.html"><a href="variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
+<li class="chapter" data-level="6.3.6" data-path="variant-calling.html"><a href="variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
+<li class="chapter" data-level="6.3.7" data-path="variant-calling.html"><a href="variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
+<li class="chapter" data-level="6.3.8" data-path="variant-calling.html"><a href="variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
+<li class="chapter" data-level="6.3.9" data-path="variant-calling.html"><a href="variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html"><i class="fa fa-check"></i><b>7</b> RNA-Seq alignment and quantification</a><ul>
+<li class="chapter" data-level="7.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#bulk-mrna"><i class="fa fa-check"></i><b>7.1</b> bulk mRNA</a></li>
+<li class="chapter" data-level="7.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#transcriptome-quantification"><i class="fa fa-check"></i><b>7.2</b> transcriptome quantification</a></li>
+<li class="chapter" data-level="7.3" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#single-cell-rnaseq"><i class="fa fa-check"></i><b>7.3</b> single cell RNAseq</a></li>
+<li class="chapter" data-level="7.4" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#mirna"><i class="fa fa-check"></i><b>7.4</b> miRNA</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#prepare-reference"><i class="fa fa-check"></i><b>7.4.1</b> Prepare reference</a></li>
+<li class="chapter" data-level="7.4.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#run-mirdeep2-pipeline"><i class="fa fa-check"></i><b>7.4.2</b> Run miRDeep2 pipeline</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -229,35 +255,35 @@ package are stored in the “src” folder with “tl_” and “pl_” prefix
 respectively. The function <code>cwlTools</code> can be used to collect the
 available scripts. The <code>cachePath</code> can be your existing cache
 directory or a new folder.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">tools &lt;-<span class="st"> </span><span class="kw">cwlTools</span>(<span class="dt">cachePath =</span> <span class="kw">tempdir</span>())</a>
-<a class="sourceLine" id="cb82-2" title="2">tools</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="application.html#cb82-1"></a>tools &lt;-<span class="st"> </span><span class="kw">cwlTools</span>(<span class="dt">cachePath =</span> <span class="kw">tempdir</span>())</span>
+<span id="cb82-2"><a href="application.html#cb82-2"></a>tools</span></code></pre></div>
 <pre><code>## class: BiocFileCache
-## bfccache: /tmp/Rtmp7YFNaP
-## bfccount: 55
+## bfccache: /tmp/RtmpWSwswQ
+## bfccount: 77
 ## For more information see: bfcinfo() or bfcquery()</code></pre>
 <p>The full paths can be pulled from the “fpath” column. The scripts can
 be viewed to demonstrate how the tools and pipelines were built.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb84-2" title="2"><span class="kw">bfcinfo</span>(tools) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(rname, fpath)</a></code></pre></div>
-<pre><code>## # A tibble: 55 x 2
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="application.html#cb84-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb84-2"><a href="application.html#cb84-2"></a><span class="kw">bfcinfo</span>(tools) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(rname, fpath)</span></code></pre></div>
+<pre><code>## # A tibble: 77 x 2
 ##    rname              fpath                                                
 ##    &lt;chr&gt;              &lt;chr&gt;                                                
 ##  1 ApplyBQSR          /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
 ##  2 BaseRecalibrator   /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
 ##  3 bcfview            /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  4 blastn             /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  5 bowtie2_build      /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  6 bowtie2            /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  7 bwa_index          /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  8 bwa                /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  9 CalculateContamin… /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-## 10 ColSeqArtifact     /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-## # … with 45 more rows</code></pre>
+##  4 bgzip              /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
+##  5 blastn             /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
+##  6 bowtie2_build      /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
+##  7 bowtie2            /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
+##  8 bwa_index          /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
+##  9 bwa                /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
+## 10 CalculateContamin… /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
+## # … with 67 more rows</code></pre>
 <p>The commands and docker containers from the wrapped tools are included
 in the metadata.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">tls &lt;-<span class="st"> </span><span class="kw">bfcinfo</span>(tools) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Type <span class="op">==</span><span class="st"> &quot;tool&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-2" title="2"><span class="st">    </span><span class="kw">select</span>(rname, Command, Container)</a></code></pre></div>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(tls)</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="application.html#cb86-1"></a>tls &lt;-<span class="st"> </span><span class="kw">bfcinfo</span>(tools) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Type <span class="op">==</span><span class="st"> &quot;tool&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb86-2"><a href="application.html#cb86-2"></a><span class="st">    </span><span class="kw">select</span>(rname, Command, Container)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="application.html#cb87-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(tls)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -270,12 +296,12 @@ in the metadata.</p>
 <tr class="odd">
 <td align="left">ApplyBQSR</td>
 <td align="left">gatk ApplyBQSR</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
+<td align="left">broadinstitute/gatk:latest</td>
 </tr>
 <tr class="even">
 <td align="left">BaseRecalibrator</td>
 <td align="left">gatk BaseRecalibrator</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
+<td align="left">broadinstitute/gatk:latest</td>
 </tr>
 <tr class="odd">
 <td align="left">bcfview</td>
@@ -283,114 +309,134 @@ in the metadata.</p>
 <td align="left">biocontainers/bcftools:v1.5_cv3</td>
 </tr>
 <tr class="even">
+<td align="left">bgzip</td>
+<td align="left">bgzip -c</td>
+<td align="left">biocontainers/tabix:v1.3.2-2-deb_cv1</td>
+</tr>
+<tr class="odd">
 <td align="left">blastn</td>
 <td align="left">blastn</td>
 <td align="left">biocontainers/blast:v2.2.31_cv2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">bowtie2_build</td>
 <td align="left">bowtie2-build</td>
 <td align="left">biocontainers/bowtie2:v2.2.9_cv2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">bowtie2</td>
 <td align="left">bowtie2</td>
 <td align="left">biocontainers/bowtie2:v2.2.9_cv2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">bwa_index</td>
 <td align="left">bwa index</td>
-<td align="left">biocontainers/bwa:v0.7.15_cv4</td>
+<td align="left">biocontainers/bwa:v0.7.17-3-deb_cv1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">bwa</td>
 <td align="left">bwa mem</td>
-<td align="left">biocontainers/bwa:0.7.15_cv4</td>
-</tr>
-<tr class="odd">
-<td align="left">CalculateContamination</td>
-<td align="left">gatk CalculateContamination</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
+<td align="left">biocontainers/bwa:v0.7.17-3-deb_cv1</td>
 </tr>
 <tr class="even">
-<td align="left">ColSeqArtifact</td>
-<td align="left">gatk CollectSequencingArtifactMetrics</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
+<td align="left">CalculateContamination</td>
+<td align="left">gatk CalculateContamination</td>
+<td align="left">broadinstitute/gatk:latest</td>
 </tr>
 <tr class="odd">
+<td align="left">ColSeqArtifact</td>
+<td align="left">gatk CollectSequencingArtifactMetrics</td>
+<td align="left">broadinstitute/gatk:latest</td>
+</tr>
+<tr class="even">
 <td align="left">cutadapt</td>
 <td align="left">cutadapt</td>
 <td align="left">kfdrc/cutadapt</td>
 </tr>
+<tr class="odd">
+<td align="left">fastqc</td>
+<td align="left">fastqc</td>
+<td align="left">hubentu/rcwl-rnaseq</td>
+</tr>
 <tr class="even">
-<td align="left">fastqc</td>
-<td align="left">fastqc</td>
+<td align="left">featureCounts</td>
+<td align="left">featureCounts</td>
 <td align="left">hubentu/rcwl-rnaseq</td>
 </tr>
 <tr class="odd">
-<td align="left">featureCounts</td>
-<td align="left">featureCounts</td>
-<td align="left">hubentu/rcwl-rnaseq</td>
-</tr>
-<tr class="even">
 <td align="left">FilterMutectCalls</td>
 <td align="left">gatk FilterMutectCalls</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
-</tr>
-<tr class="odd">
-<td align="left">FilterOBias</td>
-<td align="left">gatk FilterByOrientationBias</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
+<td align="left">broadinstitute/gatk:latest</td>
 </tr>
 <tr class="even">
-<td align="left">Funcotator</td>
-<td align="left">gatk Funcotator</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
+<td align="left">FilterOBias</td>
+<td align="left">gatk FilterByOrientationBias</td>
+<td align="left">broadinstitute/gatk:latest</td>
 </tr>
 <tr class="odd">
+<td align="left">Funcotator</td>
+<td align="left">gatk Funcotator</td>
+<td align="left">broadinstitute/gatk:latest</td>
+</tr>
+<tr class="even">
 <td align="left">geneBody_coverage</td>
 <td align="left">geneBody_coverage.py</td>
 <td align="left">hubentu/rcwl-rnaseq</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">genePredToBed</td>
 <td align="left">genePredToBed</td>
 <td align="left">hubentu/rcwl-rnaseq</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">GenomicsDB</td>
 <td align="left">gatk GenomicsDBImport</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
-</tr>
-<tr class="even">
-<td align="left">GetPileupSummaries</td>
-<td align="left">gatk GetPileupSummaries</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
+<td align="left">broadinstitute/gatk:latest</td>
 </tr>
 <tr class="odd">
+<td align="left">GetPileupSummaries</td>
+<td align="left">gatk GetPileupSummaries</td>
+<td align="left">broadinstitute/gatk:latest</td>
+</tr>
+<tr class="even">
 <td align="left">gtfToGenePred</td>
 <td align="left">gtfToGenePred</td>
 <td align="left">hubentu/rcwl-rnaseq</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">hisat2_align</td>
 <td align="left">hisat2</td>
 <td align="left">biocontainers/hisat2:v2.0.5-1-deb_cv1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">hisat2_build</td>
 <td align="left">hisat2-build</td>
 <td align="left">biocontainers/hisat2:v2.0.5-1-deb_cv1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">htseq</td>
 <td align="left">htseq-count</td>
 <td align="left">genomicpariscentre/htseq</td>
 </tr>
+<tr class="even">
+<td align="left">lancet</td>
+<td align="left">/lancet-1.0.7/lancet</td>
+<td align="left">kfdrc/lancet:1.0.7</td>
+</tr>
 <tr class="odd">
+<td align="left">LoFreq</td>
+<td align="left">lofreq somatic</td>
+<td align="left">andreaswilm/lofreq:v2.1.2</td>
+</tr>
+<tr class="even">
 <td align="left">makeblastdb</td>
 <td align="left">makeblastdb</td>
 <td align="left">biocontainers/blast:v2.2.31_cv2</td>
+</tr>
+<tr class="odd">
+<td align="left">manta</td>
+<td align="left">configManta.py</td>
+<td align="left">cmopipeline/strelka2_manta</td>
 </tr>
 <tr class="even">
 <td align="left">markdup</td>
@@ -408,53 +454,83 @@ in the metadata.</p>
 <td align="left">hubentu/rcwl-rnaseq</td>
 </tr>
 <tr class="odd">
+<td align="left">MuSE</td>
+<td align="left">MuSEv1.0rc_submission_c039ffa call</td>
+<td align="left">marghoob/muse:1.0rc_c</td>
+</tr>
+<tr class="even">
 <td align="left">Mutect2</td>
 <td align="left">gatk Mutect2</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
-</tr>
-<tr class="even">
-<td align="left">mvOut</td>
-<td align="left">Rscript -e args &lt;- commandArgs(TRUE); logFile &lt;- args[1]; log1 &lt;- readLines(logFile); startn &lt;- grep(‘Final Outputs:’, log1)+1; endn &lt;- grep(‘}$’, log1); endn &lt;- endn[endn &gt; startn][1]; logOut &lt;- jsonlite::fromJSON(log1[startn:endn]); logOut &lt;- logOut[lengths(logOut)&gt;0]; dir.create(‘output’, showWarnings = FALSE); lapply(logOut, function(x)file.rename(x, file.path(‘output’, basename(x))))</td>
-<td align="left">NA</td>
+<td align="left">broadinstitute/gatk:latest</td>
 </tr>
 <tr class="odd">
-<td align="left">PoN</td>
-<td align="left">gatk CreateSomaticPanelOfNormals</td>
-<td align="left">broadinstitute/gatk:4.1.2.0</td>
+<td align="left">mvOut</td>
+<td align="left">R function</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
+<td align="left">neusomatic_call</td>
+<td align="left">python /opt/neusomatic/neusomatic/python/call.py</td>
+<td align="left">msahraeian/neusomatic</td>
+</tr>
+<tr class="odd">
+<td align="left">neusomatic_postprocess</td>
+<td align="left">python /opt/neusomatic/neusomatic/python/postprocess.py</td>
+<td align="left">msahraeian/neusomatic</td>
+</tr>
+<tr class="even">
+<td align="left">neusomatic_preprocess</td>
+<td align="left">python /opt/neusomatic/neusomatic/python/preprocess.py</td>
+<td align="left">msahraeian/neusomatic</td>
+</tr>
+<tr class="odd">
+<td align="left">polysolver</td>
+<td align="left">bash /home/polysolver/scripts/shell_call_hla_type</td>
+<td align="left">sachet/polysolver:v4</td>
+</tr>
+<tr class="even">
+<td align="left">PoN</td>
+<td align="left">gatk CreateSomaticPanelOfNormals</td>
+<td align="left">broadinstitute/gatk:latest</td>
+</tr>
+<tr class="odd">
 <td align="left">read_distribution</td>
 <td align="left">read_distribution.py</td>
 <td align="left">hubentu/rcwl-rnaseq</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">runWDL</td>
 <td align="left">java</td>
 <td align="left">NA</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">salmon_index</td>
 <td align="left">salmon index</td>
 <td align="left">combinelab/salmon</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">salmon_quant</td>
 <td align="left">salmon quant</td>
 <td align="left">combinelab/salmon</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">sam2bam</td>
 <td align="left">samtools view</td>
 <td align="left">biocontainers/samtools:v1.7.0_cv3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">samtools_flagstat</td>
 <td align="left">samtools flagstat</td>
 <td align="left">biocontainers/samtools:v1.7.0_cv3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">samtools_index</td>
 <td align="left">samtools index</td>
+<td align="left">biocontainers/samtools:v1.7.0_cv3</td>
+</tr>
+<tr class="even">
+<td align="left">samtools_mpileup</td>
+<td align="left">samtools mpileup</td>
 <td align="left">biocontainers/samtools:v1.7.0_cv3</td>
 </tr>
 <tr class="odd">
@@ -463,19 +539,59 @@ in the metadata.</p>
 <td align="left">biocontainers/samtools:v1.7.0_cv3</td>
 </tr>
 <tr class="even">
+<td align="left">SomaticSniper</td>
+<td align="left">/opt/somatic-sniper/build/bin/bam-somaticsniper</td>
+<td align="left">lethalfang/somaticsniper:1.0.5.0-2</td>
+</tr>
+<tr class="odd">
 <td align="left">sortBam</td>
 <td align="left">samtools sort</td>
 <td align="left">biocontainers/samtools:v1.7.0_cv3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">STAR</td>
 <td align="left">STAR</td>
 <td align="left">hubentu/rcwl-rnaseq</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">starFusion</td>
 <td align="left">/usr/local/src/STAR-Fusion/STAR-Fusion</td>
 <td align="left">trinityctat/ctatfusion</td>
+</tr>
+<tr class="even">
+<td align="left">strelka</td>
+<td align="left">configureStrelkaSomaticWorkflow.py</td>
+<td align="left">cmopipeline/strelka2_manta</td>
+</tr>
+<tr class="odd">
+<td align="left">tabix_index</td>
+<td align="left">tabix</td>
+<td align="left">biocontainers/tabix:v1.3.2-2-deb_cv1</td>
+</tr>
+<tr class="even">
+<td align="left">VarDict</td>
+<td align="left">/opt/VarDict-1.5.1/bin/VarDict</td>
+<td align="left">lethalfang/vardictjava:1.5.1</td>
+</tr>
+<tr class="odd">
+<td align="left">VarScan2_processSomatic</td>
+<td align="left">java -jar /opt/varscan/VarScan.jar processSomatic</td>
+<td align="left">mgibio/varscan-cwl:v2.4.2-samtools1.3.1</td>
+</tr>
+<tr class="even">
+<td align="left">VarScan2_somatic</td>
+<td align="left">java -jar /opt/varscan/VarScan.jar somatic</td>
+<td align="left">mgibio/varscan-cwl:v2.4.2-samtools1.3.1</td>
+</tr>
+<tr class="odd">
+<td align="left">VarScan2_somaticFilter</td>
+<td align="left">java -jar /opt/varscan/VarScan.jar somaticFilter</td>
+<td align="left">mgibio/varscan-cwl:v2.4.2-samtools1.3.1</td>
+</tr>
+<tr class="even">
+<td align="left">VarScan2</td>
+<td align="left"></td>
+<td align="left">serge2016/varscan:v0.1.1</td>
 </tr>
 </tbody>
 </table>
@@ -487,66 +603,66 @@ example, a simple alignment pipelines with mapping and marking
 duplicates can be built from the <code>tools</code>.</p>
 <p>First, we check whether the required tools (bwa, samtools and picard
 markduplicates) are available.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">bfcquery</span>(tools, <span class="st">&quot;bwa|sam2bam|sortBam|samtools_index|markdup&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb88-2" title="2"><span class="st">    </span><span class="kw">filter</span>(Type <span class="op">==</span><span class="st"> &quot;tool&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb88-3" title="3"><span class="st">    </span><span class="kw">select</span>(rname, Command, Container)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="application.html#cb88-1"></a><span class="kw">bfcquery</span>(tools, <span class="st">&quot;bwa|sam2bam|sortBam|samtools_index|markdup&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb88-2"><a href="application.html#cb88-2"></a><span class="st">    </span><span class="kw">filter</span>(Type <span class="op">==</span><span class="st"> &quot;tool&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb88-3"><a href="application.html#cb88-3"></a><span class="st">    </span><span class="kw">select</span>(rname, Command, Container)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
-##   rname          Command               Container                        
-##   &lt;chr&gt;          &lt;chr&gt;                 &lt;chr&gt;                            
-## 1 bwa_index      bwa index             biocontainers/bwa:v0.7.15_cv4    
-## 2 bwa            bwa mem               biocontainers/bwa:0.7.15_cv4     
-## 3 markdup        picard MarkDuplicates biocontainers/picard:2.3.0       
-## 4 sam2bam        samtools view         biocontainers/samtools:v1.7.0_cv3
-## 5 samtools_index samtools index        biocontainers/samtools:v1.7.0_cv3
+##   rname          Command               Container                          
+##   &lt;chr&gt;          &lt;chr&gt;                 &lt;chr&gt;                              
+## 1 bwa_index      bwa index             biocontainers/bwa:v0.7.17-3-deb_cv1
+## 2 bwa            bwa mem               biocontainers/bwa:v0.7.17-3-deb_cv1
+## 3 markdup        picard MarkDuplicates biocontainers/picard:2.3.0         
+## 4 sam2bam        samtools view         biocontainers/samtools:v1.7.0_cv3  
+## 5 samtools_index samtools index        biocontainers/samtools:v1.7.0_cv3  
 ## 6 sortBam        samtools sort         biocontainers/samtools:v1.7.0_cv3</code></pre>
 <p>Next, we define the input parameters:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">p1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;threads&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;int&quot;</span>)</a>
-<a class="sourceLine" id="cb90-2" title="2">p2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;RG&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>)</a>
-<a class="sourceLine" id="cb90-3" title="3">p3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;Ref&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>)</a>
-<a class="sourceLine" id="cb90-4" title="4">p4 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;FQ1&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</a>
-<a class="sourceLine" id="cb90-5" title="5">p5 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;FQ2&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File?&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="application.html#cb90-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;threads&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;int&quot;</span>)</span>
+<span id="cb90-2"><a href="application.html#cb90-2"></a>p2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;RG&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>)</span>
+<span id="cb90-3"><a href="application.html#cb90-3"></a>p3 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;Ref&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;string&quot;</span>)</span>
+<span id="cb90-4"><a href="application.html#cb90-4"></a>p4 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;FQ1&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</span>
+<span id="cb90-5"><a href="application.html#cb90-5"></a>p5 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;FQ2&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File?&quot;</span>)</span></code></pre></div>
 <p>Then we define the pipeline steps, from raw fastqs to duplicates
 marked alignments:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="co">## bwa</span></a>
-<a class="sourceLine" id="cb91-2" title="2">s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;bwa&quot;</span>, <span class="dt">run =</span> bwa,</a>
-<a class="sourceLine" id="cb91-3" title="3">           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="st">&quot;threads&quot;</span>,</a>
-<a class="sourceLine" id="cb91-4" title="4">                     <span class="dt">RG =</span> <span class="st">&quot;RG&quot;</span>,</a>
-<a class="sourceLine" id="cb91-5" title="5">                     <span class="dt">Ref =</span> <span class="st">&quot;Ref&quot;</span>,</a>
-<a class="sourceLine" id="cb91-6" title="6">                     <span class="dt">FQ1 =</span> <span class="st">&quot;FQ1&quot;</span>,</a>
-<a class="sourceLine" id="cb91-7" title="7">                     <span class="dt">FQ2 =</span> <span class="st">&quot;FQ2&quot;</span>))</a>
-<a class="sourceLine" id="cb91-8" title="8"><span class="co">## sam to bam</span></a>
-<a class="sourceLine" id="cb91-9" title="9">s2 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;sam2bam&quot;</span>, <span class="dt">run =</span> sam2bam,</a>
-<a class="sourceLine" id="cb91-10" title="10">           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">sam =</span> <span class="st">&quot;bwa/sam&quot;</span>))</a>
-<a class="sourceLine" id="cb91-11" title="11"><span class="co">## sort bam</span></a>
-<a class="sourceLine" id="cb91-12" title="12">s3 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;sortBam&quot;</span>, <span class="dt">run =</span> sortBam,</a>
-<a class="sourceLine" id="cb91-13" title="13">           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">bam =</span> <span class="st">&quot;sam2bam/bam&quot;</span>))</a>
-<a class="sourceLine" id="cb91-14" title="14"><span class="co">## mark duplicates</span></a>
-<a class="sourceLine" id="cb91-15" title="15">s4 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;markdup&quot;</span>, <span class="dt">run =</span> markdup,</a>
-<a class="sourceLine" id="cb91-16" title="16">           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">ibam =</span> <span class="st">&quot;sortBam/sbam&quot;</span>,</a>
-<a class="sourceLine" id="cb91-17" title="17">                     <span class="dt">obam =</span> <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb91-18" title="18">                         <span class="dt">valueFrom=</span><span class="st">&quot;$(inputs.ibam.nameroot).mdup.bam&quot;</span>),</a>
-<a class="sourceLine" id="cb91-19" title="19">                     <span class="dt">matrix =</span> <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb91-20" title="20">                         <span class="dt">valueFrom=</span><span class="st">&quot;$(inputs.ibam.nameroot).markdup.txt&quot;</span>)))</a>
-<a class="sourceLine" id="cb91-21" title="21"><span class="co">## index bam</span></a>
-<a class="sourceLine" id="cb91-22" title="22">s5 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;idxBam&quot;</span>, <span class="dt">run =</span> samtools_index,</a>
-<a class="sourceLine" id="cb91-23" title="23">           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">bam =</span> <span class="st">&quot;markdup/mBam&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="application.html#cb91-1"></a><span class="co">## bwa</span></span>
+<span id="cb91-2"><a href="application.html#cb91-2"></a>s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;bwa&quot;</span>, <span class="dt">run =</span> bwa,</span>
+<span id="cb91-3"><a href="application.html#cb91-3"></a>           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="st">&quot;threads&quot;</span>,</span>
+<span id="cb91-4"><a href="application.html#cb91-4"></a>                     <span class="dt">RG =</span> <span class="st">&quot;RG&quot;</span>,</span>
+<span id="cb91-5"><a href="application.html#cb91-5"></a>                     <span class="dt">Ref =</span> <span class="st">&quot;Ref&quot;</span>,</span>
+<span id="cb91-6"><a href="application.html#cb91-6"></a>                     <span class="dt">FQ1 =</span> <span class="st">&quot;FQ1&quot;</span>,</span>
+<span id="cb91-7"><a href="application.html#cb91-7"></a>                     <span class="dt">FQ2 =</span> <span class="st">&quot;FQ2&quot;</span>))</span>
+<span id="cb91-8"><a href="application.html#cb91-8"></a><span class="co">## sam to bam</span></span>
+<span id="cb91-9"><a href="application.html#cb91-9"></a>s2 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;sam2bam&quot;</span>, <span class="dt">run =</span> sam2bam,</span>
+<span id="cb91-10"><a href="application.html#cb91-10"></a>           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">sam =</span> <span class="st">&quot;bwa/sam&quot;</span>))</span>
+<span id="cb91-11"><a href="application.html#cb91-11"></a><span class="co">## sort bam</span></span>
+<span id="cb91-12"><a href="application.html#cb91-12"></a>s3 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;sortBam&quot;</span>, <span class="dt">run =</span> sortBam,</span>
+<span id="cb91-13"><a href="application.html#cb91-13"></a>           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">bam =</span> <span class="st">&quot;sam2bam/bam&quot;</span>))</span>
+<span id="cb91-14"><a href="application.html#cb91-14"></a><span class="co">## mark duplicates</span></span>
+<span id="cb91-15"><a href="application.html#cb91-15"></a>s4 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;markdup&quot;</span>, <span class="dt">run =</span> markdup,</span>
+<span id="cb91-16"><a href="application.html#cb91-16"></a>           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">ibam =</span> <span class="st">&quot;sortBam/sbam&quot;</span>,</span>
+<span id="cb91-17"><a href="application.html#cb91-17"></a>                     <span class="dt">obam =</span> <span class="kw">list</span>(</span>
+<span id="cb91-18"><a href="application.html#cb91-18"></a>                         <span class="dt">valueFrom=</span><span class="st">&quot;$(inputs.ibam.nameroot).mdup.bam&quot;</span>),</span>
+<span id="cb91-19"><a href="application.html#cb91-19"></a>                     <span class="dt">matrix =</span> <span class="kw">list</span>(</span>
+<span id="cb91-20"><a href="application.html#cb91-20"></a>                         <span class="dt">valueFrom=</span><span class="st">&quot;$(inputs.ibam.nameroot).markdup.txt&quot;</span>)))</span>
+<span id="cb91-21"><a href="application.html#cb91-21"></a><span class="co">## index bam</span></span>
+<span id="cb91-22"><a href="application.html#cb91-22"></a>s5 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;idxBam&quot;</span>, <span class="dt">run =</span> samtools_index,</span>
+<span id="cb91-23"><a href="application.html#cb91-23"></a>           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">bam =</span> <span class="st">&quot;markdup/mBam&quot;</span>))</span></code></pre></div>
 <p>Last, we define the outputs and connect the steps to a new pipeline:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1">req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;StepInputExpressionRequirement&quot;</span>)</a>
-<a class="sourceLine" id="cb92-2" title="2">req2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;InlineJavascriptRequirement&quot;</span>)</a>
-<a class="sourceLine" id="cb92-3" title="3"><span class="co">## outputs</span></a>
-<a class="sourceLine" id="cb92-4" title="4">o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;Bam&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;markdup/mBam&quot;</span>)</a>
-<a class="sourceLine" id="cb92-5" title="5">o2 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;Idx&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;idxBam/idx&quot;</span>)</a>
-<a class="sourceLine" id="cb92-6" title="6"><span class="co">## stepParam</span></a>
-<a class="sourceLine" id="cb92-7" title="7">Align &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">requirements =</span> <span class="kw">list</span>(req1, req2),</a>
-<a class="sourceLine" id="cb92-8" title="8">                      <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(p1, p2, p3, p4, p5),</a>
-<a class="sourceLine" id="cb92-9" title="9">                      <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1, o2))</a>
-<a class="sourceLine" id="cb92-10" title="10"><span class="co">## build pipeline</span></a>
-<a class="sourceLine" id="cb92-11" title="11">Align &lt;-<span class="st"> </span>Align <span class="op">+</span><span class="st"> </span>s1 <span class="op">+</span><span class="st"> </span>s2 <span class="op">+</span><span class="st"> </span>s3 <span class="op">+</span><span class="st"> </span>s4 <span class="op">+</span><span class="st"> </span>s5</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="application.html#cb92-1"></a>req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;StepInputExpressionRequirement&quot;</span>)</span>
+<span id="cb92-2"><a href="application.html#cb92-2"></a>req2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;InlineJavascriptRequirement&quot;</span>)</span>
+<span id="cb92-3"><a href="application.html#cb92-3"></a><span class="co">## outputs</span></span>
+<span id="cb92-4"><a href="application.html#cb92-4"></a>o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;Bam&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;markdup/mBam&quot;</span>)</span>
+<span id="cb92-5"><a href="application.html#cb92-5"></a>o2 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;Idx&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;idxBam/idx&quot;</span>)</span>
+<span id="cb92-6"><a href="application.html#cb92-6"></a><span class="co">## stepParam</span></span>
+<span id="cb92-7"><a href="application.html#cb92-7"></a>Align &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">requirements =</span> <span class="kw">list</span>(req1, req2),</span>
+<span id="cb92-8"><a href="application.html#cb92-8"></a>                      <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(p1, p2, p3, p4, p5),</span>
+<span id="cb92-9"><a href="application.html#cb92-9"></a>                      <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1, o2))</span>
+<span id="cb92-10"><a href="application.html#cb92-10"></a><span class="co">## build pipeline</span></span>
+<span id="cb92-11"><a href="application.html#cb92-11"></a>Align &lt;-<span class="st"> </span>Align <span class="op">+</span><span class="st"> </span>s1 <span class="op">+</span><span class="st"> </span>s2 <span class="op">+</span><span class="st"> </span>s3 <span class="op">+</span><span class="st"> </span>s4 <span class="op">+</span><span class="st"> </span>s5</span></code></pre></div>
 <p>The pipeline is ready for use. We can plot the pipeline with
 <code>plotCWL</code> from the <code>Rcwl</code> package.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">plotCWL</span>(Align)</a></code></pre></div>
-<div id="htmlwidget-96c11ae5fcc278930ac3" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-96c11ae5fcc278930ac3">{"x":{"diagram":"graph TB\nA(threads)-->H{bwa}\nB(RG)-->H{bwa}\nC(Ref)-->H{bwa}\nD(FQ1)-->H{bwa}\nE(FQ2)-->H{bwa}\nH{bwa}-->|sam|I{sam2bam}\nI{sam2bam}-->|bam|J{sortBam}\nJ{sortBam}-->|sbam|K{markdup}\nK{markdup}-->F((Bam))\nF((Bam))-->L{idxBam}\nL{idxBam}-->G((Idx))"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="application.html#cb93-1"></a><span class="kw">plotCWL</span>(Align)</span></code></pre></div>
+<div id="htmlwidget-04b9ef104f08f09c141c" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-04b9ef104f08f09c141c">{"x":{"diagram":"graph TB\nA(threads)-->H{bwa}\nB(RG)-->H{bwa}\nC(Ref)-->H{bwa}\nD(FQ1)-->H{bwa}\nE(FQ2)-->H{bwa}\nH{bwa}-->|sam|I{sam2bam}\nI{sam2bam}-->|bam|J{sortBam}\nJ{sortBam}-->|sbam|K{markdup}\nK{markdup}-->F((Bam))\nF((Bam))-->L{idxBam}\nL{idxBam}-->G((Idx))"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="rcwlpipelines-summary" class="section level2">
@@ -560,7 +676,7 @@ expected to be included in the future.</p>
 <p>The pipeline can be used to preprocess DNA sequences in fastq
 format. It can take paired fastqs and read groups from multiple batches
 as input.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="kw">inputs</span>(bwaAlignRecal)</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="application.html#cb94-1"></a><span class="kw">inputs</span>(bwaMMRecal)</span></code></pre></div>
 <pre><code>## inputs:
 ##   outBam (string):  
 ##   RG (string[]):  
@@ -576,7 +692,7 @@ step.</p>
 <ol style="list-style-type: decimal">
 <li><code>bwaAlign</code>: bwa alignment by read groups:</li>
 </ol>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">runs</span>(<span class="kw">runs</span>(bwaAlignRecal)[[<span class="dv">1</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="application.html#cb96-1"></a><span class="kw">runs</span>(<span class="kw">runs</span>(bwaMMRecal)[[<span class="dv">1</span>]])</span></code></pre></div>
 <pre><code>## List of length 4
 ## names(4): bwa sam2bam sortBam idxBam</code></pre>
 <ul>
@@ -589,7 +705,7 @@ format with <code>samtools</code>.</li>
 <ol start="2" style="list-style-type: decimal">
 <li><code>mergeBamDup</code>: To merge by samples and mark duplicates:</li>
 </ol>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw">runs</span>(<span class="kw">runs</span>(bwaAlignRecal)[[<span class="dv">2</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="application.html#cb98-1"></a><span class="kw">runs</span>(<span class="kw">runs</span>(bwaMMRecal)[[<span class="dv">2</span>]])</span></code></pre></div>
 <pre><code>## List of length 4
 ## names(4): mergeBam markdup samtools_index samtools_flagstat</code></pre>
 <ul>
@@ -602,7 +718,7 @@ format with <code>samtools</code>.</li>
 <li><code>BaseRecal</code>: To apply TCGA
 BaseRecalibrator and ApplyBQSR.</li>
 </ol>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="kw">runs</span>(<span class="kw">runs</span>(bwaAlignRecal)[[<span class="dv">3</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="application.html#cb100-1"></a><span class="kw">runs</span>(<span class="kw">runs</span>(bwaMMRecal)[[<span class="dv">3</span>]])</span></code></pre></div>
 <pre><code>## List of length 5
 ## names(5): BaseRecalibrator ApplyBQSR samtools_index samtools_flagstat samtools_stats</code></pre>
 <ul>
@@ -617,7 +733,7 @@ Quality Score Recalibration with <code>gatk BaseRecalibrator</code>.</li>
 <p>The final bam files with duplicates marked and base quality
 recalibration, bam index, duplicates matrix, and statistics summaries
 will be in the output folder.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">outputs</span>(bwaAlignRecal)</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="application.html#cb102-1"></a><span class="kw">outputs</span>(bwaMMRecal)</span></code></pre></div>
 <pre><code>## outputs:
 ## BAM:
 ##   type: File
@@ -632,7 +748,7 @@ will be in the output folder.</p>
 ##   type: File
 ##   outputSource: BaseRecal/stats</code></pre>
 <p>Here is the short summary and steps plot:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">short</span>(bwaAlignRecal)</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="application.html#cb104-1"></a><span class="kw">short</span>(bwaMMRecal)</span></code></pre></div>
 <pre><code>## inputs:
 ## - outBam
 ## - RG
@@ -650,42 +766,42 @@ will be in the output folder.</p>
 ## - bwaAlign
 ## - mergeBamDup
 ## - BaseRecal</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="kw">plotCWL</span>(bwaAlignRecal)</a></code></pre></div>
-<div id="htmlwidget-9e3192077ca7fc47eccf" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9e3192077ca7fc47eccf">{"x":{"diagram":"graph TB\nC(threads)-->L{bwaAlign}\nB(RG)-->L{bwaAlign}\nD(Ref)-->L{bwaAlign}\nE(FQ1s)-->L{bwaAlign}\nF(FQ2s)-->L{bwaAlign}\nL{bwaAlign}-->|Bam|M{mergeBamDup}\nA(outBam)-->M{mergeBamDup}\nM{mergeBamDup}-->I((matrix))\nM{mergeBamDup}-->|Idx|N{BaseRecal}\nD(Ref)-->N{BaseRecal}\nG(knowSites)-->N{BaseRecal}\nA(outBam)-->N{BaseRecal}\nN{BaseRecal}-->H((BAM))\nN{BaseRecal}-->J((flagstat))\nN{BaseRecal}-->K((stats))"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="application.html#cb106-1"></a><span class="kw">plotCWL</span>(bwaMMRecal)</span></code></pre></div>
+<div id="htmlwidget-0980107b8de47bd2810a" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0980107b8de47bd2810a">{"x":{"diagram":"graph TB\nC(threads)-->L{bwaAlign}\nB(RG)-->L{bwaAlign}\nD(Ref)-->L{bwaAlign}\nE(FQ1s)-->L{bwaAlign}\nF(FQ2s)-->L{bwaAlign}\nL{bwaAlign}-->|Bam|M{mergeBamDup}\nA(outBam)-->M{mergeBamDup}\nM{mergeBamDup}-->I((matrix))\nM{mergeBamDup}-->|Idx|N{BaseRecal}\nD(Ref)-->N{BaseRecal}\nG(knowSites)-->N{BaseRecal}\nA(outBam)-->N{BaseRecal}\nN{BaseRecal}-->H((BAM))\nN{BaseRecal}-->J((flagstat))\nN{BaseRecal}-->K((stats))"},"evals":[],"jsHooks":[]}</script>
 <div id="prepare-data" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Prepare data</h3>
 <p>Here is a simple example of two samples. The “sample1” have two lanes of sequences and the “sample2” has only one pair of reads. The lists of reads1 <code>fq1</code>, reads2 <code>fq2</code>, read groups and output BAM names are defined in the <code>inputList</code>. The reference genome and number of threads to run the job are defined in the shared options, <code>paramList</code>:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">fq1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="kw">list</span>(<span class="st">&quot;apps/DNASeq/data/fq1_1.fq&quot;</span>,</a>
-<a class="sourceLine" id="cb107-2" title="2">                           <span class="st">&quot;apps/DNASeq/data/fq2_1.fq&quot;</span>),</a>
-<a class="sourceLine" id="cb107-3" title="3">            <span class="dt">sample2 =</span> <span class="kw">list</span>(<span class="st">&quot;apps/DNASeq/data/fq1_1.fq&quot;</span>))</a>
-<a class="sourceLine" id="cb107-4" title="4">fq2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="kw">list</span>(<span class="st">&quot;apps/DNASeq/data/fq1_2.fq&quot;</span>,</a>
-<a class="sourceLine" id="cb107-5" title="5">                           <span class="st">&quot;apps/DNASeq/data/fq2_2.fq&quot;</span>),</a>
-<a class="sourceLine" id="cb107-6" title="6">            <span class="dt">sample2 =</span> <span class="kw">list</span>(<span class="st">&quot;apps/DNASeq/data/fq1_2.fq&quot;</span>))</a>
-<a class="sourceLine" id="cb107-7" title="7">rgs &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="kw">list</span>(<span class="st">&quot;@RG</span><span class="ch">\\</span><span class="st">tID:sample1.1</span><span class="ch">\\</span><span class="st">tPL:Illumina</span><span class="ch">\\</span><span class="st">tSM:sample1&quot;</span>,</a>
-<a class="sourceLine" id="cb107-8" title="8">                           <span class="st">&quot;@RG</span><span class="ch">\\</span><span class="st">tID:sample1.2</span><span class="ch">\\</span><span class="st">tPL:Illumina</span><span class="ch">\\</span><span class="st">tSM:sample1&quot;</span>),</a>
-<a class="sourceLine" id="cb107-9" title="9">            <span class="dt">sample2 =</span> <span class="kw">list</span>(<span class="st">&quot;@RG</span><span class="ch">\\</span><span class="st">tID:sample2.1</span><span class="ch">\\</span><span class="st">tPL:Illumina</span><span class="ch">\\</span><span class="st">tSM:sample2&quot;</span>))</a>
-<a class="sourceLine" id="cb107-10" title="10">samples &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="st">&quot;sample1.bam&quot;</span>, <span class="dt">sample2 =</span> <span class="st">&quot;sample2.bam&quot;</span>)</a>
-<a class="sourceLine" id="cb107-11" title="11"></a>
-<a class="sourceLine" id="cb107-12" title="12">inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">outBam =</span> samples, <span class="dt">RG =</span> rgs, <span class="dt">FQ1s =</span> fq1, <span class="dt">FQ2s =</span> fq2)</a>
-<a class="sourceLine" id="cb107-13" title="13">paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb107-14" title="14">                  <span class="dt">Ref =</span> <span class="st">&quot;apps/data/hs37d5.fa&quot;</span>,</a>
-<a class="sourceLine" id="cb107-15" title="15">                  <span class="dt">knowSites =</span> <span class="kw">list</span>(<span class="st">&quot;apps/data/dbsnp_138.b37.vcf&quot;</span>,</a>
-<a class="sourceLine" id="cb107-16" title="16">                                   <span class="st">&quot;apps/data/Mills_and_1000G_gold_standard.indels.b37.vcf&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="application.html#cb107-1"></a>fq1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="kw">list</span>(<span class="st">&quot;apps/DNASeq/data/fq1_1.fq&quot;</span>,</span>
+<span id="cb107-2"><a href="application.html#cb107-2"></a>                           <span class="st">&quot;apps/DNASeq/data/fq2_1.fq&quot;</span>),</span>
+<span id="cb107-3"><a href="application.html#cb107-3"></a>            <span class="dt">sample2 =</span> <span class="kw">list</span>(<span class="st">&quot;apps/DNASeq/data/fq1_1.fq&quot;</span>))</span>
+<span id="cb107-4"><a href="application.html#cb107-4"></a>fq2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="kw">list</span>(<span class="st">&quot;apps/DNASeq/data/fq1_2.fq&quot;</span>,</span>
+<span id="cb107-5"><a href="application.html#cb107-5"></a>                           <span class="st">&quot;apps/DNASeq/data/fq2_2.fq&quot;</span>),</span>
+<span id="cb107-6"><a href="application.html#cb107-6"></a>            <span class="dt">sample2 =</span> <span class="kw">list</span>(<span class="st">&quot;apps/DNASeq/data/fq1_2.fq&quot;</span>))</span>
+<span id="cb107-7"><a href="application.html#cb107-7"></a>rgs &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="kw">list</span>(<span class="st">&quot;@RG</span><span class="ch">\\</span><span class="st">tID:sample1.1</span><span class="ch">\\</span><span class="st">tPL:Illumina</span><span class="ch">\\</span><span class="st">tSM:sample1&quot;</span>,</span>
+<span id="cb107-8"><a href="application.html#cb107-8"></a>                           <span class="st">&quot;@RG</span><span class="ch">\\</span><span class="st">tID:sample1.2</span><span class="ch">\\</span><span class="st">tPL:Illumina</span><span class="ch">\\</span><span class="st">tSM:sample1&quot;</span>),</span>
+<span id="cb107-9"><a href="application.html#cb107-9"></a>            <span class="dt">sample2 =</span> <span class="kw">list</span>(<span class="st">&quot;@RG</span><span class="ch">\\</span><span class="st">tID:sample2.1</span><span class="ch">\\</span><span class="st">tPL:Illumina</span><span class="ch">\\</span><span class="st">tSM:sample2&quot;</span>))</span>
+<span id="cb107-10"><a href="application.html#cb107-10"></a>samples &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="st">&quot;sample1.bam&quot;</span>, <span class="dt">sample2 =</span> <span class="st">&quot;sample2.bam&quot;</span>)</span>
+<span id="cb107-11"><a href="application.html#cb107-11"></a></span>
+<span id="cb107-12"><a href="application.html#cb107-12"></a>inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">outBam =</span> samples, <span class="dt">RG =</span> rgs, <span class="dt">FQ1s =</span> fq1, <span class="dt">FQ2s =</span> fq2)</span>
+<span id="cb107-13"><a href="application.html#cb107-13"></a>paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">2</span>,</span>
+<span id="cb107-14"><a href="application.html#cb107-14"></a>                  <span class="dt">Ref =</span> <span class="st">&quot;apps/data/hs37d5.fa&quot;</span>,</span>
+<span id="cb107-15"><a href="application.html#cb107-15"></a>                  <span class="dt">knowSites =</span> <span class="kw">list</span>(<span class="st">&quot;apps/data/dbsnp_138.b37.vcf&quot;</span>,</span>
+<span id="cb107-16"><a href="application.html#cb107-16"></a>                                   <span class="st">&quot;apps/data/Mills_and_1000G_gold_standard.indels.b37.vcf&quot;</span>))</span></code></pre></div>
 </div>
 <div id="run-in-cluster" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Run in cluster</h3>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">res &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(bwaAlignRecal, <span class="dt">outdir =</span> <span class="st">&quot;apps/DNASeq/output/BAM&quot;</span>,</a>
-<a class="sourceLine" id="cb108-2" title="2">                   <span class="dt">inputList =</span> inputList, <span class="dt">paramList =</span> paramList,</a>
-<a class="sourceLine" id="cb108-3" title="3">                   <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">2</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</a>
-<a class="sourceLine" id="cb108-4" title="4">                                             <span class="dt">template =</span> <span class="st">&quot;/rpcc/bioinformatics/sge_centos7.tmpl&quot;</span>,</a>
-<a class="sourceLine" id="cb108-5" title="5">                                             <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">jobname=</span><span class="st">&quot;bwa&quot;</span>,</a>
-<a class="sourceLine" id="cb108-6" title="6">                                                              <span class="dt">threads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb108-7" title="7">                                                              <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>),</a>
-<a class="sourceLine" id="cb108-8" title="8">                                             <span class="dt">log=</span><span class="ot">TRUE</span>, <span class="dt">logdir=</span><span class="st">&quot;.&quot;</span>, <span class="dt">progressbar =</span> T),</a>
-<a class="sourceLine" id="cb108-9" title="9">                   <span class="dt">docker =</span> <span class="ot">FALSE</span>, <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="application.html#cb108-1"></a>res &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(bwaMMRecal, <span class="dt">outdir =</span> <span class="st">&quot;apps/DNASeq/output/BAM&quot;</span>,</span>
+<span id="cb108-2"><a href="application.html#cb108-2"></a>                   <span class="dt">inputList =</span> inputList, <span class="dt">paramList =</span> paramList,</span>
+<span id="cb108-3"><a href="application.html#cb108-3"></a>                   <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">2</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</span>
+<span id="cb108-4"><a href="application.html#cb108-4"></a>                                             <span class="dt">template =</span> <span class="st">&quot;/rpcc/bioinformatics/sge_centos7.tmpl&quot;</span>,</span>
+<span id="cb108-5"><a href="application.html#cb108-5"></a>                                             <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">jobname=</span><span class="st">&quot;bwa&quot;</span>,</span>
+<span id="cb108-6"><a href="application.html#cb108-6"></a>                                                              <span class="dt">threads =</span> <span class="dv">2</span>,</span>
+<span id="cb108-7"><a href="application.html#cb108-7"></a>                                                              <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>),</span>
+<span id="cb108-8"><a href="application.html#cb108-8"></a>                                             <span class="dt">log=</span><span class="ot">TRUE</span>, <span class="dt">logdir=</span><span class="st">&quot;.&quot;</span>, <span class="dt">progressbar =</span> T),</span>
+<span id="cb108-9"><a href="application.html#cb108-9"></a>                   <span class="dt">docker =</span> <span class="ot">FALSE</span>, <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>List outputs:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="kw">dir</span>(<span class="st">&quot;apps/DNASeq/output/BAM/sample2&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="application.html#cb109-1"></a><span class="kw">dir</span>(<span class="st">&quot;apps/DNASeq/output/BAM/sample2&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;sample2.bam&quot;          &quot;sample2.bam.bai&quot;      &quot;sample2.flagstat.txt&quot;
 ## [4] &quot;sample2.markdup.txt&quot;  &quot;sample2.stats.txt&quot;</code></pre>
 </div>
@@ -695,7 +811,7 @@ will be in the output folder.</p>
 <p>The pipeline was built with reads quality summary, <code>STAR</code> alignment,
 quantification by <code>featureCounts</code> and <code>RSeQC</code> quality control. Here
 are the inputs:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw">inputs</span>(rnaseq_Sf)</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="application.html#cb111-1"></a><span class="kw">inputs</span>(rnaseq_Sf)</span></code></pre></div>
 <pre><code>## inputs:
 ##   in_seqfiles (File[]):  
 ##   in_prefix (string):  
@@ -722,7 +838,7 @@ are the inputs:</p>
 collected together into the output folder. A final QC report could be
 generated by <code>multiqc</code>, which is also available in the data package.</p>
 <p>Here are the short summary and steps plot:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="kw">short</span>(rnaseq_Sf)</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="application.html#cb113-1"></a><span class="kw">short</span>(rnaseq_Sf)</span></code></pre></div>
 <pre><code>## inputs:
 ## - in_seqfiles
 ## - in_prefix
@@ -734,7 +850,6 @@ generated by <code>multiqc</code>, which is also available in the data package.<
 ## - out_BAM
 ## - out_Log
 ## - out_Count
-## - out_idx
 ## - out_stat
 ## - out_count
 ## - out_distribution
@@ -743,6 +858,7 @@ generated by <code>multiqc</code>, which is also available in the data package.<
 ## steps:
 ## - fastqc
 ## - STAR
+## - sortBam
 ## - samtools_index
 ## - samtools_flagstat
 ## - featureCounts
@@ -750,14 +866,14 @@ generated by <code>multiqc</code>, which is also available in the data package.<
 ## - genePredToBed
 ## - r_distribution
 ## - gCoverage</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">plotCWL</span>(rnaseq_Sf)</a></code></pre></div>
-<div id="htmlwidget-196c77cc1a20bc7d3dbd" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-196c77cc1a20bc7d3dbd">{"x":{"diagram":"graph TB\nA(in_seqfiles)-->P{fastqc}\nP{fastqc}-->F((out_fastqc))\nB(in_prefix)-->Q{STAR}\nC(in_genomeDir)-->Q{STAR}\nD(in_GTFfile)-->Q{STAR}\nA(in_seqfiles)-->Q{STAR}\nE(in_runThreadN)-->Q{STAR}\nQ{STAR}-->G((out_BAM))\nQ{STAR}-->H((out_Log))\nQ{STAR}-->I((out_Count))\nG((out_BAM))-->R{samtools_index}\nR{samtools_index}-->J((out_idx))\nG((out_BAM))-->S{samtools_flagstat}\nS{samtools_flagstat}-->K((out_stat))\nD(in_GTFfile)-->T{featureCounts}\nG((out_BAM))-->T{featureCounts}\nT{featureCounts}-->L((out_count))\nD(in_GTFfile)-->U{gtfToGenePred}\nU{gtfToGenePred}-->|genePred|V{genePredToBed}\nJ((out_idx))-->W{r_distribution}\nV{genePredToBed}-->|bed|W{r_distribution}\nW{r_distribution}-->M((out_distribution))\nJ((out_idx))-->X{gCoverage}\nV{genePredToBed}-->|bed|X{gCoverage}\nX{gCoverage}-->N((out_gCovP))\nX{gCoverage}-->O((out_gCovT))"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="application.html#cb115-1"></a><span class="kw">plotCWL</span>(rnaseq_Sf)</span></code></pre></div>
+<div id="htmlwidget-059685c343858191dbbc" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-059685c343858191dbbc">{"x":{"diagram":"graph TB\nA(in_seqfiles)-->O{fastqc}\nO{fastqc}-->F((out_fastqc))\nB(in_prefix)-->P{STAR}\nC(in_genomeDir)-->P{STAR}\nD(in_GTFfile)-->P{STAR}\nA(in_seqfiles)-->P{STAR}\nE(in_runThreadN)-->P{STAR}\nP{STAR}-->H((out_Log))\nP{STAR}-->I((out_Count))\nP{STAR}-->|outBAM|Q{sortBam}\nQ{sortBam}-->|sbam|R{samtools_index}\nR{samtools_index}-->G((out_BAM))\nQ{sortBam}-->|sbam|S{samtools_flagstat}\nS{samtools_flagstat}-->J((out_stat))\nD(in_GTFfile)-->T{featureCounts}\nG((out_BAM))-->T{featureCounts}\nT{featureCounts}-->K((out_count))\nD(in_GTFfile)-->U{gtfToGenePred}\nU{gtfToGenePred}-->|genePred|V{genePredToBed}\nG((out_BAM))-->W{r_distribution}\nV{genePredToBed}-->|bed|W{r_distribution}\nW{r_distribution}-->L((out_distribution))\nG((out_BAM))-->X{gCoverage}\nV{genePredToBed}-->|bed|X{gCoverage}\nX{gCoverage}-->M((out_gCovP))\nX{gCoverage}-->N((out_gCovT))"},"evals":[],"jsHooks":[]}</script>
 <div id="prepare-data-1" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Prepare data</h3>
 <p>An RNASeq test data set can be downloaded from <a href="http://genomedata.org/rnaseq-tutorial/HBR_UHR_ERCC_ds_5pc.tar">genomedata</a>, which includes paired-end fastqs for 6 samples.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">download.file</span>(<span class="st">&quot;http://genomedata.org/rnaseq-tutorial/HBR_UHR_ERCC_ds_5pc.tar&quot;</span>, <span class="st">&quot;apps/RNASeq/data/HBR_UHR_ERCC_ds_5pc.tar)</span></a>
-<a class="sourceLine" id="cb116-2" title="2"><span class="st">untar(&quot;</span>apps<span class="op">/</span>RNASeq<span class="op">/</span>data<span class="op">/</span>HBR_UHR_ERCC_ds_5pc.tar<span class="st">&quot;, exdir = &quot;</span>apps<span class="op">/</span>RNASeq<span class="op">/</span>data<span class="op">/</span><span class="st">&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="application.html#cb116-1"></a><span class="kw">download.file</span>(<span class="st">&quot;http://genomedata.org/rnaseq-tutorial/HBR_UHR_ERCC_ds_5pc.tar&quot;</span>, <span class="st">&quot;apps/RNASeq/data/HBR_UHR_ERCC_ds_5pc.tar)</span></span>
+<span id="cb116-2"><a href="application.html#cb116-2"></a><span class="st">untar(&quot;</span>apps<span class="op">/</span>RNASeq<span class="op">/</span>data<span class="op">/</span>HBR_UHR_ERCC_ds_5pc.tar<span class="st">&quot;, exdir = &quot;</span>apps<span class="op">/</span>RNASeq<span class="op">/</span>data<span class="op">/</span><span class="st">&quot;)</span></span></code></pre></div>
 <p>The input data must be in a named list, with the same names as the input list of the pipeline. For this pipeline, 5 inputs are required to be set, including <code>in_seqfiles</code>, <code>in_prefix</code>, <code>in_genomeDir</code>, <code>in_GTFfile</code> and <code>in_runThreadN</code>.</p>
 <p>There are two different input lists, <code>inputList</code> and <code>paramList</code>. The <code>inputList</code> is used to define the inputs for each sample and will be submitted to different cluster nodes. The <code>paramList</code> is used to define parameters which are shared in all jobs.</p>
 <p>Two following inputs should be listed in <code>inputList</code>:</p>
@@ -765,24 +881,24 @@ generated by <code>multiqc</code>, which is also available in the data package.<
 <li><p><code>in_seqfiles</code>: A list with the fastq files of each sample in each element. The names of the list are also required to be defined and can be the sample IDs. The length of the list will be the same as the number of samples, thus the list will be defined to <code>inputList</code> and assigned to different nodes for parallel computing.</p></li>
 <li><p><code>in_prefix</code> is the same as <code>in_seqfiles</code>, which defines a list of sample IDs.</p></li>
 </ul>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">files &lt;-<span class="st"> </span><span class="kw">normalizePath</span>(<span class="kw">list.files</span>(<span class="st">&quot;apps/RNASeq/data/&quot;</span>, <span class="st">&quot;.gz&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb117-2" title="2">files &lt;-<span class="st"> </span><span class="kw">tapply</span>(files, <span class="kw">substring</span>(<span class="kw">basename</span>(files), <span class="dv">1</span>, <span class="dv">8</span>), as.list)</a>
-<a class="sourceLine" id="cb117-3" title="3">inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">in_seqfiles =</span> files,</a>
-<a class="sourceLine" id="cb117-4" title="4">                  <span class="dt">in_prefix =</span> <span class="kw">as.list</span>(<span class="kw">names</span>(files)))</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="application.html#cb117-1"></a>files &lt;-<span class="st"> </span><span class="kw">normalizePath</span>(<span class="kw">list.files</span>(<span class="st">&quot;apps/RNASeq/data/&quot;</span>, <span class="st">&quot;.gz&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb117-2"><a href="application.html#cb117-2"></a>files &lt;-<span class="st"> </span><span class="kw">tapply</span>(files, <span class="kw">substring</span>(<span class="kw">basename</span>(files), <span class="dv">1</span>, <span class="dv">8</span>), as.list)</span>
+<span id="cb117-3"><a href="application.html#cb117-3"></a>inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">in_seqfiles =</span> files,</span>
+<span id="cb117-4"><a href="application.html#cb117-4"></a>                  <span class="dt">in_prefix =</span> <span class="kw">as.list</span>(<span class="kw">names</span>(files)))</span></code></pre></div>
 <p>These 3 parameter will be defined in <code>paramList</code>:</p>
 <ul>
 <li><p><code>in_genomeDir</code>: The reference genome indexes for STAR.</p></li>
 <li><p><code>in_GTFfile</code>: The gene annotation file in GTF format.</p></li>
 <li><p><code>in_runThreadN</code>: The number of threads to run for each job.</p></li>
 </ul>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1">paramList &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb118-2" title="2">    <span class="dt">in_genomeDir =</span> <span class="st">&quot;apps/data/GRCh38_100/&quot;</span>,</a>
-<a class="sourceLine" id="cb118-3" title="3">    <span class="dt">in_GTFfile =</span> <span class="st">&quot;apps/data/gencode.v25.annotation.gtf&quot;</span>,</a>
-<a class="sourceLine" id="cb118-4" title="4">    <span class="dt">in_runThreadN =</span> <span class="dv">4</span></a>
-<a class="sourceLine" id="cb118-5" title="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="application.html#cb118-1"></a>paramList &lt;-<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb118-2"><a href="application.html#cb118-2"></a>    <span class="dt">in_genomeDir =</span> <span class="st">&quot;apps/data/GRCh38_100/&quot;</span>,</span>
+<span id="cb118-3"><a href="application.html#cb118-3"></a>    <span class="dt">in_GTFfile =</span> <span class="st">&quot;apps/data/gencode.v25.annotation.gtf&quot;</span>,</span>
+<span id="cb118-4"><a href="application.html#cb118-4"></a>    <span class="dt">in_runThreadN =</span> <span class="dv">4</span></span>
+<span id="cb118-5"><a href="application.html#cb118-5"></a>)</span></code></pre></div>
 <p>In some cases, we need to modify the default arguments in some steps of a pipeline. For example,</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="kw">arguments</span>(rnaseq_Sf, <span class="st">&quot;STAR&quot;</span>)[[<span class="dv">2</span>]] &lt;-<span class="st"> &quot;2&quot;</span></a>
-<a class="sourceLine" id="cb119-2" title="2"><span class="kw">head</span>(<span class="kw">arguments</span>(rnaseq_Sf, <span class="st">&quot;STAR&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="application.html#cb119-1"></a><span class="kw">arguments</span>(rnaseq_Sf, <span class="st">&quot;STAR&quot;</span>)[[<span class="dv">2</span>]] &lt;-<span class="st"> &quot;2&quot;</span></span>
+<span id="cb119-2"><a href="application.html#cb119-2"></a><span class="kw">head</span>(<span class="kw">arguments</span>(rnaseq_Sf, <span class="st">&quot;STAR&quot;</span>))</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;--outFilterMultimapNmax&quot;
 ## 
@@ -804,16 +920,16 @@ generated by <code>multiqc</code>, which is also available in the data package.<
 <div id="submit-pipeline-with-sge" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Submit pipeline with SGE</h3>
 <p>The function <code>runCWLBatch</code> is used to submit the pipeline to cluster server. In addition to defining <code>inputList</code> and <code>paramList</code>, we need to define parallel parameters from the <code>BiocParallel</code> package. Here is an example where we use “sge” to submit the jobs. The “sge” template is a bash script with some predefined parameters for “qsub”. The nodes queue name and number of slots/threads are variables from the template and can be assigned by the <code>resources</code> list.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">res &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(<span class="dt">cwl =</span> rnaseq_Sf, <span class="dt">outdir =</span> <span class="st">&quot;apps/RNASeq/output/&quot;</span>,</a>
-<a class="sourceLine" id="cb121-2" title="2">                   <span class="dt">inputList =</span> inputList, <span class="dt">paramList =</span> paramList,</a>
-<a class="sourceLine" id="cb121-3" title="3">                   <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(</a>
-<a class="sourceLine" id="cb121-4" title="4">                       <span class="dt">workers =</span> <span class="kw">lengths</span>(inputList)[<span class="dv">1</span>], <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</a>
-<a class="sourceLine" id="cb121-5" title="5">                       <span class="dt">template =</span> <span class="st">&quot;apps/data/sge_centos7.tmpl&quot;</span>,</a>
-<a class="sourceLine" id="cb121-6" title="6">                       <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>,</a>
-<a class="sourceLine" id="cb121-7" title="7">                                        <span class="dt">threads =</span> <span class="dv">4</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="application.html#cb121-1"></a>res &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(<span class="dt">cwl =</span> rnaseq_Sf, <span class="dt">outdir =</span> <span class="st">&quot;apps/RNASeq/output/&quot;</span>,</span>
+<span id="cb121-2"><a href="application.html#cb121-2"></a>                   <span class="dt">inputList =</span> inputList, <span class="dt">paramList =</span> paramList,</span>
+<span id="cb121-3"><a href="application.html#cb121-3"></a>                   <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(</span>
+<span id="cb121-4"><a href="application.html#cb121-4"></a>                       <span class="dt">workers =</span> <span class="kw">lengths</span>(inputList)[<span class="dv">1</span>], <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</span>
+<span id="cb121-5"><a href="application.html#cb121-5"></a>                       <span class="dt">template =</span> <span class="st">&quot;apps/data/sge_centos7.tmpl&quot;</span>,</span>
+<span id="cb121-6"><a href="application.html#cb121-6"></a>                       <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>,</span>
+<span id="cb121-7"><a href="application.html#cb121-7"></a>                                        <span class="dt">threads =</span> <span class="dv">4</span>)))</span></code></pre></div>
 <p>That’s it! The fastqc files of each sample will be submitted to different nodes to run the whole pipeline automatically.</p>
 <p>All the results have been collected to output directory of each sample. For example,</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">dir</span>(<span class="st">&quot;apps/RNASeq/output/HBR_Rep1&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="application.html#cb122-1"></a><span class="kw">dir</span>(<span class="st">&quot;apps/RNASeq/output/HBR_Rep1&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read1_fastqc.zip&quot;
 ##  [2] &quot;HBR_Rep1_ERCC-Mix2_Build37-ErccTranscripts-chr22.read2_fastqc.zip&quot;
 ##  [3] &quot;HBR_Rep1Aligned.sortedByCoord.out.bam&quot;                            
@@ -830,10 +946,10 @@ generated by <code>multiqc</code>, which is also available in the data package.<
 <div id="summarize-qc" class="section level3">
 <h3><span class="header-section-number">5.4.3</span> Summarize QC</h3>
 <p>The tool “multiqc” can aggregate results from the multiple outputs of the pipeline and generate a single page report, which also was implemented in the <code>RcwlPipelines</code> package:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1">multiqc<span class="op">$</span>dir &lt;-<span class="st"> &quot;apps/RNASeq/output&quot;</span></a>
-<a class="sourceLine" id="cb124-2" title="2">multiqc</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="application.html#cb124-1"></a>multiqc<span class="op">$</span>dir &lt;-<span class="st"> &quot;apps/RNASeq/output&quot;</span></span>
+<span id="cb124-2"><a href="application.html#cb124-2"></a>multiqc</span></code></pre></div>
 <p>We can also run the tool using <code>Rcwl</code> locally with the option <code>docker = TRUE</code>:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="kw">runCWL</span>(multiqc, <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>, <span class="dt">Args =</span> <span class="st">&quot;--preserve-entire-environment&quot;</span>, <span class="dt">docker =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="application.html#cb125-1"></a><span class="kw">runCWL</span>(multiqc, <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>, <span class="dt">Args =</span> <span class="st">&quot;--preserve-entire-environment&quot;</span>, <span class="dt">docker =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <p><strong>Here we got the QC report:</strong></p>
 <p><a href="https://hubentu.github.io/others/multiqc_report.html" class="uri">https://hubentu.github.io/others/multiqc_report.html</a></p>
 </div>
@@ -854,8 +970,8 @@ pacakge, which contains two major steps (markID step was removed):</p>
 <p>The steps of the pipeline was built on the CWL files from its github
 repository, which were also contained in the package. Thereforce, we
 need to load the pipleine by sourcing it from the script.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">bfcinfo</span>(tools) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(rname <span class="op">==</span><span class="st"> &quot;mc3&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(rpath) <span class="op">%&gt;%</span><span class="st"> </span>source</a>
-<a class="sourceLine" id="cb126-2" title="2"><span class="kw">short</span>(mc3)</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="application.html#cb126-1"></a><span class="kw">bfcinfo</span>(tools) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(rname <span class="op">==</span><span class="st"> &quot;mc3&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>(rpath) <span class="op">%&gt;%</span><span class="st"> </span>source</span>
+<span id="cb126-2"><a href="application.html#cb126-2"></a><span class="kw">short</span>(mc3)</span></code></pre></div>
 <pre><code>## inputs:
 ## - tumorID
 ## - normalID
@@ -873,25 +989,25 @@ need to load the pipleine by sourcing it from the script.</p>
 ## steps:
 ## - call_variants
 ## - convert</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">plotCWL</span>(mc3)</a></code></pre></div>
-<div id="htmlwidget-83bd240bdeb30b6b99d5" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-83bd240bdeb30b6b99d5">{"x":{"diagram":"graph TB\nC(tumor)-->M{call_variants}\nD(normal)-->M{call_variants}\nF(centromere)-->M{call_variants}\nE(bed_file)-->M{call_variants}\nG(cosmic)-->M{call_variants}\nH(dbsnp)-->M{call_variants}\nI(refFasta)-->M{call_variants}\nA(tumorID)-->M{call_variants}\nB(normalID)-->M{call_variants}\nB(normalID)-->N{convert}\nA(tumorID)-->N{convert}\nM{call_variants}-->|museVCF|N{convert}\nM{call_variants}-->|mutectVCF|N{convert}\nM{call_variants}-->|somaticsniperVCF|N{convert}\nM{call_variants}-->|varscansVCF|N{convert}\nM{call_variants}-->|varscaniVCF|N{convert}\nM{call_variants}-->|radiaVCF|N{convert}\nM{call_variants}-->|pindelVCF|N{convert}\nM{call_variants}-->|indelocatorVCF|N{convert}\nI(refFasta)-->N{convert}\nJ(vepData)-->N{convert}\nC(tumor)-->N{convert}\nD(normal)-->N{convert}\nN{convert}-->K((outmaf))\nN{convert}-->L((outvcf))"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="application.html#cb128-1"></a><span class="kw">plotCWL</span>(mc3)</span></code></pre></div>
+<div id="htmlwidget-37a74ad4ad700906e5eb" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-37a74ad4ad700906e5eb">{"x":{"diagram":"graph TB\nC(tumor)-->M{call_variants}\nD(normal)-->M{call_variants}\nF(centromere)-->M{call_variants}\nE(bed_file)-->M{call_variants}\nG(cosmic)-->M{call_variants}\nH(dbsnp)-->M{call_variants}\nI(refFasta)-->M{call_variants}\nA(tumorID)-->M{call_variants}\nB(normalID)-->M{call_variants}\nB(normalID)-->N{convert}\nA(tumorID)-->N{convert}\nM{call_variants}-->|museVCF|N{convert}\nM{call_variants}-->|mutectVCF|N{convert}\nM{call_variants}-->|somaticsniperVCF|N{convert}\nM{call_variants}-->|varscansVCF|N{convert}\nM{call_variants}-->|varscaniVCF|N{convert}\nM{call_variants}-->|radiaVCF|N{convert}\nM{call_variants}-->|pindelVCF|N{convert}\nM{call_variants}-->|indelocatorVCF|N{convert}\nI(refFasta)-->N{convert}\nJ(vepData)-->N{convert}\nC(tumor)-->N{convert}\nD(normal)-->N{convert}\nN{convert}-->K((outmaf))\nN{convert}-->L((outvcf))"},"evals":[],"jsHooks":[]}</script>
 <p>Two steps are included.<br />
 1. <code>call_variants</code>: To call variants by 7 pipelines:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">callVar &lt;-<span class="st"> </span><span class="kw">readCWL</span>(<span class="kw">runs</span>(mc3)<span class="op">$</span>call_variants)</a>
-<a class="sourceLine" id="cb129-2" title="2"><span class="kw">plotCWL</span>(callVar)</a></code></pre></div>
-<div id="htmlwidget-8f1548269e1685564bcf" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8f1548269e1685564bcf">{"x":{"diagram":"graph TB\nC(reference)-->S{prep_ref}\nB(normal)-->T{normal_pileup}\nS{prep_ref}-->|prepped_ref|T{normal_pileup}\nA(tumor)-->U{tumor_pileup}\nS{prep_ref}-->|prepped_ref|U{tumor_pileup}\nU{tumor_pileup}-->|output|V{varscan}\nT{normal_pileup}-->|output|V{varscan}\nV{varscan}-->N((varscaniVCF))\nA(tumor)-->W{muse}\nB(normal)-->W{muse}\nS{prep_ref}-->|prepped_ref|W{muse}\nD(dbsnp)-->W{muse}\nH(number_of_procs)-->W{muse}\nA(tumor)-->X{mutect}\nB(normal)-->X{mutect}\nS{prep_ref}-->|prepped_ref|X{mutect}\nE(cosmic)-->X{mutect}\nD(dbsnp)-->X{mutect}\nH(number_of_procs)-->X{mutect}\nX{mutect}-->P((mutectVCF))\nA(tumor)-->Y{radia}\nB(normal)-->Y{radia}\nS{prep_ref}-->|prepped_ref|Y{radia}\nH(number_of_procs)-->Y{radia}\nA(tumor)-->Z{somaticsniper}\nB(normal)-->Z{somaticsniper}\nS{prep_ref}-->|prepped_ref|Z{somaticsniper}\nA(tumor)-->A1{pindel}\nB(normal)-->A1{pindel}\nS{prep_ref}-->|prepped_ref|A1{pindel}\nF(centromere)-->A1{pindel}\nH(number_of_procs)-->A1{pindel}\nA(tumor)-->B2{indelocator}\nB(normal)-->B2{indelocator}\nS{prep_ref}-->|prepped_ref|B2{indelocator}\nG(bed_file)-->B2{indelocator}\nB2{indelocator}-->|mutations|C3{reformat_indelocator}\nY{radia}-->|mutations|D4{fpfilter}\nV{varscan}-->|snp_vcf|D4{fpfilter}\nZ{somaticsniper}-->|mutations|D4{fpfilter}\nW{muse}-->|mutations|D4{fpfilter}\nA1{pindel}-->|somatic_vcf|D4{fpfilter}\nC3{reformat_indelocator}-->|mutations|D4{fpfilter}\nA(tumor)-->D4{fpfilter}\nB(normal)-->D4{fpfilter}\nS{prep_ref}-->|prepped_ref|D4{fpfilter}\nI(tumorID)-->D4{fpfilter}\nJ(normalID)-->D4{fpfilter}\nD4{fpfilter}-->Q((radiaVCF))\nD4{fpfilter}-->L((somaticsniperVCF))\nD4{fpfilter}-->M((varscansVCF))\nD4{fpfilter}-->O((museVCF))\nD4{fpfilter}-->K((pindelVCF))\nD4{fpfilter}-->R((indelocatorVCF))"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="application.html#cb129-1"></a>callVar &lt;-<span class="st"> </span><span class="kw">readCWL</span>(<span class="kw">runs</span>(mc3)<span class="op">$</span>call_variants)</span>
+<span id="cb129-2"><a href="application.html#cb129-2"></a><span class="kw">plotCWL</span>(callVar)</span></code></pre></div>
+<div id="htmlwidget-147dfdaee8a0b3d379e5" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-147dfdaee8a0b3d379e5">{"x":{"diagram":"graph TB\nC(reference)-->S{prep_ref}\nB(normal)-->T{normal_pileup}\nS{prep_ref}-->|prepped_ref|T{normal_pileup}\nA(tumor)-->U{tumor_pileup}\nS{prep_ref}-->|prepped_ref|U{tumor_pileup}\nU{tumor_pileup}-->|output|V{varscan}\nT{normal_pileup}-->|output|V{varscan}\nV{varscan}-->N((varscaniVCF))\nA(tumor)-->W{muse}\nB(normal)-->W{muse}\nS{prep_ref}-->|prepped_ref|W{muse}\nD(dbsnp)-->W{muse}\nH(number_of_procs)-->W{muse}\nA(tumor)-->X{mutect}\nB(normal)-->X{mutect}\nS{prep_ref}-->|prepped_ref|X{mutect}\nE(cosmic)-->X{mutect}\nD(dbsnp)-->X{mutect}\nH(number_of_procs)-->X{mutect}\nX{mutect}-->P((mutectVCF))\nA(tumor)-->Y{radia}\nB(normal)-->Y{radia}\nS{prep_ref}-->|prepped_ref|Y{radia}\nH(number_of_procs)-->Y{radia}\nA(tumor)-->Z{somaticsniper}\nB(normal)-->Z{somaticsniper}\nS{prep_ref}-->|prepped_ref|Z{somaticsniper}\nA(tumor)-->A1{pindel}\nB(normal)-->A1{pindel}\nS{prep_ref}-->|prepped_ref|A1{pindel}\nF(centromere)-->A1{pindel}\nH(number_of_procs)-->A1{pindel}\nA(tumor)-->B2{indelocator}\nB(normal)-->B2{indelocator}\nS{prep_ref}-->|prepped_ref|B2{indelocator}\nG(bed_file)-->B2{indelocator}\nB2{indelocator}-->|mutations|C3{reformat_indelocator}\nY{radia}-->|mutations|D4{fpfilter}\nV{varscan}-->|snp_vcf|D4{fpfilter}\nZ{somaticsniper}-->|mutations|D4{fpfilter}\nW{muse}-->|mutations|D4{fpfilter}\nA1{pindel}-->|somatic_vcf|D4{fpfilter}\nC3{reformat_indelocator}-->|mutations|D4{fpfilter}\nA(tumor)-->D4{fpfilter}\nB(normal)-->D4{fpfilter}\nS{prep_ref}-->|prepped_ref|D4{fpfilter}\nI(tumorID)-->D4{fpfilter}\nJ(normalID)-->D4{fpfilter}\nD4{fpfilter}-->Q((radiaVCF))\nD4{fpfilter}-->L((somaticsniperVCF))\nD4{fpfilter}-->M((varscansVCF))\nD4{fpfilter}-->O((museVCF))\nD4{fpfilter}-->K((pindelVCF))\nD4{fpfilter}-->R((indelocatorVCF))"},"evals":[],"jsHooks":[]}</script>
 <ol start="2" style="list-style-type: decimal">
 <li><code>covert</code>: To merge VCFs and convert to MAF:</li>
 </ol>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1">conv &lt;-<span class="st"> </span><span class="kw">readCWL</span>(<span class="kw">runs</span>(mc3)<span class="op">$</span>convert)</a>
-<a class="sourceLine" id="cb130-2" title="2"><span class="kw">plotCWL</span>(conv)</a></code></pre></div>
-<div id="htmlwidget-13f07c28b5d361248ccf" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-13f07c28b5d361248ccf">{"x":{"diagram":"graph TB\nC(museVCF)-->W{sort_muse}\nW{sort_muse}-->|output_vcf|X{standardize_muse}\nK(refFasta)-->X{standardize_muse}\nB(tumorID)-->X{standardize_muse}\nA(normalID)-->X{standardize_muse}\nD(mutectVCF)-->Y{sort_mutect}\nY{sort_mutect}-->|output_vcf|Z{standardize_mutect}\nK(refFasta)-->Z{standardize_mutect}\nB(tumorID)-->Z{standardize_mutect}\nA(normalID)-->Z{standardize_mutect}\nE(somaticsniperVCF)-->A1{sort_somaticsniper}\nA1{sort_somaticsniper}-->|output_vcf|B2{standardize_somaticsniper}\nK(refFasta)-->B2{standardize_somaticsniper}\nB(tumorID)-->B2{standardize_somaticsniper}\nA(normalID)-->B2{standardize_somaticsniper}\nF(varscansVCF)-->C3{sort_varscans}\nC3{sort_varscans}-->|output_vcf|D4{standardize_varscans}\nK(refFasta)-->D4{standardize_varscans}\nB(tumorID)-->D4{standardize_varscans}\nA(normalID)-->D4{standardize_varscans}\nG(varscaniVCF)-->E5{sort_varscani}\nE5{sort_varscani}-->|output_vcf|F6{standardize_varscani}\nK(refFasta)-->F6{standardize_varscani}\nB(tumorID)-->F6{standardize_varscani}\nA(normalID)-->F6{standardize_varscani}\nH(radiaVCF)-->G7{sort_radia}\nG7{sort_radia}-->|output_vcf|H8{standardize_radia}\nK(refFasta)-->H8{standardize_radia}\nB(tumorID)-->H8{standardize_radia}\nA(normalID)-->H8{standardize_radia}\nJ(indelocatorVCF)-->I9{sort_indelocator}\nI9{sort_indelocator}-->|output_vcf|J10{standardize_indelocator}\nK(refFasta)-->J10{standardize_indelocator}\nB(tumorID)-->J10{standardize_indelocator}\nA(normalID)-->J10{standardize_indelocator}\nI(pindelVCF)-->K11{sort_pindel}\nK11{sort_pindel}-->|output_vcf|L12{standardize_pindel}\nK(refFasta)-->L12{standardize_pindel}\nB(tumorID)-->L12{standardize_pindel}\nA(normalID)-->L12{standardize_pindel}\nX{standardize_muse}-->|vcf|M13{rehead_vcfs}\nZ{standardize_mutect}-->|vcf|M13{rehead_vcfs}\nB2{standardize_somaticsniper}-->|vcf|M13{rehead_vcfs}\nF6{standardize_varscani}-->|vcf|M13{rehead_vcfs}\nD4{standardize_varscans}-->|vcf|M13{rehead_vcfs}\nH8{standardize_radia}-->|vcf|M13{rehead_vcfs}\nL12{standardize_pindel}-->|vcf|M13{rehead_vcfs}\nJ10{standardize_indelocator}-->|vcf|M13{rehead_vcfs}\nM(tumor_analysis_uuid)-->M13{rehead_vcfs}\nN(tumor_bam_name)-->M13{rehead_vcfs}\nO(tumor_aliquot_uuid)-->M13{rehead_vcfs}\nB(tumorID)-->M13{rehead_vcfs}\nP(normal_analysis_uuid)-->M13{rehead_vcfs}\nQ(normal_bam_name)-->M13{rehead_vcfs}\nR(normal_aliquot_uuid)-->M13{rehead_vcfs}\nA(normalID)-->M13{rehead_vcfs}\nS(platform)-->M13{rehead_vcfs}\nT(center)-->M13{rehead_vcfs}\nM13{rehead_vcfs}-->|reheaded_muse|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_mutect|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_somsniper|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_varscans|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_varscani|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_radia|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_indelocator|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_pindel|N14{merge_vcf}\nN14{merge_vcf}-->|output_vcf|O15{vcf2maf}\nK(refFasta)-->O15{vcf2maf}\nL(vepData)-->O15{vcf2maf}\nB(tumorID)-->O15{vcf2maf}\nA(normalID)-->O15{vcf2maf}\nO15{vcf2maf}-->U((outmaf))\nO15{vcf2maf}-->V((vepvcf))"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="application.html#cb130-1"></a>conv &lt;-<span class="st"> </span><span class="kw">readCWL</span>(<span class="kw">runs</span>(mc3)<span class="op">$</span>convert)</span>
+<span id="cb130-2"><a href="application.html#cb130-2"></a><span class="kw">plotCWL</span>(conv)</span></code></pre></div>
+<div id="htmlwidget-bc50b9fcfeed929e8158" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bc50b9fcfeed929e8158">{"x":{"diagram":"graph TB\nC(museVCF)-->W{sort_muse}\nW{sort_muse}-->|output_vcf|X{standardize_muse}\nK(refFasta)-->X{standardize_muse}\nB(tumorID)-->X{standardize_muse}\nA(normalID)-->X{standardize_muse}\nD(mutectVCF)-->Y{sort_mutect}\nY{sort_mutect}-->|output_vcf|Z{standardize_mutect}\nK(refFasta)-->Z{standardize_mutect}\nB(tumorID)-->Z{standardize_mutect}\nA(normalID)-->Z{standardize_mutect}\nE(somaticsniperVCF)-->A1{sort_somaticsniper}\nA1{sort_somaticsniper}-->|output_vcf|B2{standardize_somaticsniper}\nK(refFasta)-->B2{standardize_somaticsniper}\nB(tumorID)-->B2{standardize_somaticsniper}\nA(normalID)-->B2{standardize_somaticsniper}\nF(varscansVCF)-->C3{sort_varscans}\nC3{sort_varscans}-->|output_vcf|D4{standardize_varscans}\nK(refFasta)-->D4{standardize_varscans}\nB(tumorID)-->D4{standardize_varscans}\nA(normalID)-->D4{standardize_varscans}\nG(varscaniVCF)-->E5{sort_varscani}\nE5{sort_varscani}-->|output_vcf|F6{standardize_varscani}\nK(refFasta)-->F6{standardize_varscani}\nB(tumorID)-->F6{standardize_varscani}\nA(normalID)-->F6{standardize_varscani}\nH(radiaVCF)-->G7{sort_radia}\nG7{sort_radia}-->|output_vcf|H8{standardize_radia}\nK(refFasta)-->H8{standardize_radia}\nB(tumorID)-->H8{standardize_radia}\nA(normalID)-->H8{standardize_radia}\nJ(indelocatorVCF)-->I9{sort_indelocator}\nI9{sort_indelocator}-->|output_vcf|J10{standardize_indelocator}\nK(refFasta)-->J10{standardize_indelocator}\nB(tumorID)-->J10{standardize_indelocator}\nA(normalID)-->J10{standardize_indelocator}\nI(pindelVCF)-->K11{sort_pindel}\nK11{sort_pindel}-->|output_vcf|L12{standardize_pindel}\nK(refFasta)-->L12{standardize_pindel}\nB(tumorID)-->L12{standardize_pindel}\nA(normalID)-->L12{standardize_pindel}\nX{standardize_muse}-->|vcf|M13{rehead_vcfs}\nZ{standardize_mutect}-->|vcf|M13{rehead_vcfs}\nB2{standardize_somaticsniper}-->|vcf|M13{rehead_vcfs}\nF6{standardize_varscani}-->|vcf|M13{rehead_vcfs}\nD4{standardize_varscans}-->|vcf|M13{rehead_vcfs}\nH8{standardize_radia}-->|vcf|M13{rehead_vcfs}\nL12{standardize_pindel}-->|vcf|M13{rehead_vcfs}\nJ10{standardize_indelocator}-->|vcf|M13{rehead_vcfs}\nM(tumor_analysis_uuid)-->M13{rehead_vcfs}\nN(tumor_bam_name)-->M13{rehead_vcfs}\nO(tumor_aliquot_uuid)-->M13{rehead_vcfs}\nB(tumorID)-->M13{rehead_vcfs}\nP(normal_analysis_uuid)-->M13{rehead_vcfs}\nQ(normal_bam_name)-->M13{rehead_vcfs}\nR(normal_aliquot_uuid)-->M13{rehead_vcfs}\nA(normalID)-->M13{rehead_vcfs}\nS(platform)-->M13{rehead_vcfs}\nT(center)-->M13{rehead_vcfs}\nM13{rehead_vcfs}-->|reheaded_muse|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_mutect|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_somsniper|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_varscans|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_varscani|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_radia|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_indelocator|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_pindel|N14{merge_vcf}\nN14{merge_vcf}-->|output_vcf|O15{vcf2maf}\nK(refFasta)-->O15{vcf2maf}\nL(vepData)-->O15{vcf2maf}\nB(tumorID)-->O15{vcf2maf}\nA(normalID)-->O15{vcf2maf}\nO15{vcf2maf}-->U((outmaf))\nO15{vcf2maf}-->V((vepvcf))"},"evals":[],"jsHooks":[]}</script>
 <p>The merged VCF and converted MAF files will be collected to the output
 folder:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="kw">outputs</span>(mc3)</a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="application.html#cb131-1"></a><span class="kw">outputs</span>(mc3)</span></code></pre></div>
 <pre><code>## outputs:
 ## outmaf:
 ##   type: File
@@ -906,35 +1022,35 @@ folder:</p>
 <li>Input list <code>inputList</code>.
 The tumorID/normalID must be consistent with <code>SM</code> from BAM read group.</li>
 </ol>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1">inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">tumorID=</span><span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;NA12892&quot;</span>),</a>
-<a class="sourceLine" id="cb133-2" title="2">                  <span class="dt">normalID=</span><span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;NA12878&quot;</span>),</a>
-<a class="sourceLine" id="cb133-3" title="3">                  <span class="dt">tumor=</span><span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;apps/DNASeq/data/tumor.bam&quot;</span>),</a>
-<a class="sourceLine" id="cb133-4" title="4">                  <span class="dt">normal=</span><span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;apps/DNASeq/data/normal.bam&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="application.html#cb133-1"></a>inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">tumorID=</span><span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;NA12892&quot;</span>),</span>
+<span id="cb133-2"><a href="application.html#cb133-2"></a>                  <span class="dt">normalID=</span><span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;NA12878&quot;</span>),</span>
+<span id="cb133-3"><a href="application.html#cb133-3"></a>                  <span class="dt">tumor=</span><span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;apps/DNASeq/data/tumor.bam&quot;</span>),</span>
+<span id="cb133-4"><a href="application.html#cb133-4"></a>                  <span class="dt">normal=</span><span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;apps/DNASeq/data/normal.bam&quot;</span>))</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Parameter list <code>paramList</code>.</li>
 </ol>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">bed_file=</span><span class="st">&quot;apps/data/mc3/gaf_20111020+broad_wex_1.1_hg19.bed&quot;</span>,</a>
-<a class="sourceLine" id="cb134-2" title="2">                  <span class="dt">centromere=</span><span class="st">&quot;apps/data/mc3/centromere_hg19.bed&quot;</span>,</a>
-<a class="sourceLine" id="cb134-3" title="3">                  <span class="dt">cosmic=</span><span class="st">&quot;apps/data/mc3/hg19_cosmic_v54_120711.vcf.gz&quot;</span>,</a>
-<a class="sourceLine" id="cb134-4" title="4">                  <span class="dt">dbsnp=</span><span class="st">&quot;apps/data/mc3/dbsnp_134_b37.leftAligned.vcf.gz&quot;</span>,</a>
-<a class="sourceLine" id="cb134-5" title="5">                  <span class="dt">refFasta=</span><span class="st">&quot;apps/data/human_g1k_v37.fa.gz&quot;</span>,</a>
-<a class="sourceLine" id="cb134-6" title="6">                  <span class="dt">vepData=</span><span class="st">&quot;apps/data/.vep/&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="application.html#cb134-1"></a>paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">bed_file=</span><span class="st">&quot;apps/data/mc3/gaf_20111020+broad_wex_1.1_hg19.bed&quot;</span>,</span>
+<span id="cb134-2"><a href="application.html#cb134-2"></a>                  <span class="dt">centromere=</span><span class="st">&quot;apps/data/mc3/centromere_hg19.bed&quot;</span>,</span>
+<span id="cb134-3"><a href="application.html#cb134-3"></a>                  <span class="dt">cosmic=</span><span class="st">&quot;apps/data/mc3/hg19_cosmic_v54_120711.vcf.gz&quot;</span>,</span>
+<span id="cb134-4"><a href="application.html#cb134-4"></a>                  <span class="dt">dbsnp=</span><span class="st">&quot;apps/data/mc3/dbsnp_134_b37.leftAligned.vcf.gz&quot;</span>,</span>
+<span id="cb134-5"><a href="application.html#cb134-5"></a>                  <span class="dt">refFasta=</span><span class="st">&quot;apps/data/human_g1k_v37.fa.gz&quot;</span>,</span>
+<span id="cb134-6"><a href="application.html#cb134-6"></a>                  <span class="dt">vepData=</span><span class="st">&quot;apps/data/.vep/&quot;</span>)</span></code></pre></div>
 </div>
 <div id="run-mc3-pipeline" class="section level3">
 <h3><span class="header-section-number">5.5.2</span> Run MC3 pipeline</h3>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1">res &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(mc3, <span class="dt">outdir =</span> <span class="st">&quot;apps/DNASeq/output/mc3&quot;</span>,</a>
-<a class="sourceLine" id="cb135-2" title="2">                   <span class="dt">inputList =</span> inputList, <span class="dt">paramList =</span> paramList,</a>
-<a class="sourceLine" id="cb135-3" title="3">                   <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">1</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</a>
-<a class="sourceLine" id="cb135-4" title="4">                                             <span class="dt">template =</span> <span class="st">&quot;apps/data/sge_centos7.tmpl&quot;</span>,</a>
-<a class="sourceLine" id="cb135-5" title="5">                                             <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb135-6" title="6">                                                              <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="application.html#cb135-1"></a>res &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(mc3, <span class="dt">outdir =</span> <span class="st">&quot;apps/DNASeq/output/mc3&quot;</span>,</span>
+<span id="cb135-2"><a href="application.html#cb135-2"></a>                   <span class="dt">inputList =</span> inputList, <span class="dt">paramList =</span> paramList,</span>
+<span id="cb135-3"><a href="application.html#cb135-3"></a>                   <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">1</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</span>
+<span id="cb135-4"><a href="application.html#cb135-4"></a>                                             <span class="dt">template =</span> <span class="st">&quot;apps/data/sge_centos7.tmpl&quot;</span>,</span>
+<span id="cb135-5"><a href="application.html#cb135-5"></a>                                             <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">2</span>,</span>
+<span id="cb135-6"><a href="application.html#cb135-6"></a>                                                              <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>)))</span></code></pre></div>
 <p>The final VCF was filtered and merged from the outputs of different
 callers and annotated by VEP:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="kw">dir</span>(<span class="st">&quot;apps/DNASeq/output/mc3/test&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="application.html#cb136-1"></a><span class="kw">dir</span>(<span class="st">&quot;apps/DNASeq/output/mc3/test&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;merged.vep.vcf&quot; &quot;vep.maf&quot;</code></pre>
 <p>The merged VCF file was converted to MAF file:</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1">vcf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;apps/DNASeq/output/mc3/test/merged.vep.vcf&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
-<a class="sourceLine" id="cb138-2" title="2"><span class="kw">head</span>(vcf)</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="application.html#cb138-1"></a>vcf &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;apps/DNASeq/output/mc3/test/merged.vep.vcf&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</span>
+<span id="cb138-2"><a href="application.html#cb138-2"></a><span class="kw">head</span>(vcf)</span></code></pre></div>
 <pre><code>##   V1       V2          V3 V4 V5  V6   V7
 ## 1 21 10400299           .  A  T 0.0 PASS
 ## 2 21 10400380           .  C  T   . PASS
@@ -967,7 +1083,7 @@ to cwl and requires
 pipeline. The details of the pipeline can be found here:
 <a href="https://software.broadinstitute.org/gatk/best-practices/workflow?id=11145" class="uri">https://software.broadinstitute.org/gatk/best-practices/workflow?id=11145</a></p>
 <div class="figure">
-<img src="https://us.v-cdn.net/5019796/uploads/editor/mz/tzm69d8e2spl.png" alt="Germline short variant discovery (SNPs + Indels)" />
+<img src="https://us.v-cdn.net/5019796/uploads/editor/mz/tzm69d8e2spl.png" alt="" />
 <p class="caption">Germline short variant discovery (SNPs + Indels)</p>
 </div>
 <p>The germline pipeline include 4 steps in WDL, paired fastq to ubam,
@@ -999,7 +1115,7 @@ of germline variants will be generated.</p>
 <div id="gatk-alignment" class="section level3">
 <h3><span class="header-section-number">5.6.1</span> GATK Alignment</h3>
 <p>We wrapped the steps from raw fastqs to analysis-ready BAM file into <code>GAlign</code> pipeline. Here is the short summary of the pipeline.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">short</span>(GAlign)</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="application.html#cb140-1"></a><span class="kw">short</span>(GAlign)</span></code></pre></div>
 <pre><code>## inputs:
 ## - fastq1
 ## - fastq2
@@ -1024,34 +1140,34 @@ of germline variants will be generated.</p>
 ## - align
 ## - mvOut</code></pre>
 <p>For the <code>inputList</code>, we need to assign the fastqs files and read groups for each sample. The inputs can be multiple items separated by comma if there are more than one read groups for each sample. The input templates and WDL scripts can be assigned in the <code>paramList</code>, and the reference and other GATK bundle files in the local json files should be changed accordingly to your local version of files. The path to the <code>cromwell</code> binary file is also required. Here is an example:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">tmpl1 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/seq-format-conversion/paired-fastq-to-unmapped-bam.inputs.json&quot;</span>)</a>
-<a class="sourceLine" id="cb142-2" title="2">tmpl2 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-data-processing/processing-for-variant-discovery-gatk4.hg38.wgs.inputs.local.json&quot;</span>)</a>
-<a class="sourceLine" id="cb142-3" title="3">wdl1 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/seq-format-conversion/paired-fastq-to-unmapped-bam.wdl&quot;</span>)</a>
-<a class="sourceLine" id="cb142-4" title="4">wdl2 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-data-processing/processing-for-variant-discovery-gatk4.wdl&quot;</span>)</a>
-<a class="sourceLine" id="cb142-5" title="5"></a>
-<a class="sourceLine" id="cb142-6" title="6">inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">fastq1=</span><span class="kw">list</span>(<span class="dt">normal=</span><span class="st">&quot;apps/DNASeq/data/normal_1.fq&quot;</span>,</a>
-<a class="sourceLine" id="cb142-7" title="7">                              <span class="dt">tumor=</span><span class="st">&quot;apps/DNASeq/data/tumor_1.fq&quot;</span>),</a>
-<a class="sourceLine" id="cb142-8" title="8">                  <span class="dt">fastq2=</span><span class="kw">list</span>(<span class="dt">normal=</span><span class="st">&quot;apps/DNASeq/data/normal_2.fq&quot;</span>,</a>
-<a class="sourceLine" id="cb142-9" title="9">                              <span class="dt">tumor=</span><span class="st">&quot;apps/DNASeq/data/tumor_2.fq&quot;</span>),</a>
-<a class="sourceLine" id="cb142-10" title="10">                  <span class="dt">readGroup=</span><span class="kw">list</span>(<span class="st">&quot;normal.1&quot;</span>, <span class="st">&quot;tumor.1&quot;</span>),</a>
-<a class="sourceLine" id="cb142-11" title="11">                  <span class="dt">sampleName=</span><span class="kw">list</span>(<span class="st">&quot;normal&quot;</span>, <span class="st">&quot;tumor&quot;</span>),</a>
-<a class="sourceLine" id="cb142-12" title="12">                  <span class="dt">library=</span><span class="kw">list</span>(<span class="st">&quot;normal&quot;</span>, <span class="st">&quot;tumor&quot;</span>),</a>
-<a class="sourceLine" id="cb142-13" title="13">                  <span class="dt">platunit=</span><span class="kw">list</span>(<span class="st">&quot;normal&quot;</span>, <span class="st">&quot;tumor&quot;</span>),</a>
-<a class="sourceLine" id="cb142-14" title="14">                  <span class="dt">platform=</span><span class="kw">list</span>(<span class="st">&quot;illumina&quot;</span>, <span class="st">&quot;illumina&quot;</span>),</a>
-<a class="sourceLine" id="cb142-15" title="15">                  <span class="dt">center=</span><span class="kw">list</span>(<span class="st">&quot;rpccc&quot;</span>, <span class="st">&quot;rpccc&quot;</span>))</a>
-<a class="sourceLine" id="cb142-16" title="16">paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">tmpl1=</span>tmpl1,</a>
-<a class="sourceLine" id="cb142-17" title="17">                  <span class="dt">wdl1=</span>wdl1,</a>
-<a class="sourceLine" id="cb142-18" title="18">                  <span class="dt">tmpl2=</span>tmpl2,</a>
-<a class="sourceLine" id="cb142-19" title="19">                  <span class="dt">wdl2=</span>wdl2,</a>
-<a class="sourceLine" id="cb142-20" title="20">                  <span class="dt">cromwell=</span><span class="st">&quot;/software/cromwell-36.jar&quot;</span>)</a>
-<a class="sourceLine" id="cb142-21" title="21">r1 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(GAlign, <span class="dt">outdir=</span><span class="st">&quot;apps/DNASeq/output/BAM&quot;</span>, inputList, paramList,</a>
-<a class="sourceLine" id="cb142-22" title="22">                  <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">2</span>, <span class="dt">cluster=</span><span class="st">&quot;sge&quot;</span>,</a>
-<a class="sourceLine" id="cb142-23" title="23">                                  <span class="dt">template =</span> <span class="st">&quot;apps/data/sge_centos7.tmpl&quot;</span>,</a>
-<a class="sourceLine" id="cb142-24" title="24">                                  <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">16</span>,</a>
-<a class="sourceLine" id="cb142-25" title="25">                                                   <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>)),</a>
-<a class="sourceLine" id="cb142-26" title="26">                  <span class="dt">stderr=</span><span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="application.html#cb142-1"></a>tmpl1 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/seq-format-conversion/paired-fastq-to-unmapped-bam.inputs.json&quot;</span>)</span>
+<span id="cb142-2"><a href="application.html#cb142-2"></a>tmpl2 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-data-processing/processing-for-variant-discovery-gatk4.hg38.wgs.inputs.local.json&quot;</span>)</span>
+<span id="cb142-3"><a href="application.html#cb142-3"></a>wdl1 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/seq-format-conversion/paired-fastq-to-unmapped-bam.wdl&quot;</span>)</span>
+<span id="cb142-4"><a href="application.html#cb142-4"></a>wdl2 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-data-processing/processing-for-variant-discovery-gatk4.wdl&quot;</span>)</span>
+<span id="cb142-5"><a href="application.html#cb142-5"></a></span>
+<span id="cb142-6"><a href="application.html#cb142-6"></a>inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">fastq1=</span><span class="kw">list</span>(<span class="dt">normal=</span><span class="st">&quot;apps/DNASeq/data/normal_1.fq&quot;</span>,</span>
+<span id="cb142-7"><a href="application.html#cb142-7"></a>                              <span class="dt">tumor=</span><span class="st">&quot;apps/DNASeq/data/tumor_1.fq&quot;</span>),</span>
+<span id="cb142-8"><a href="application.html#cb142-8"></a>                  <span class="dt">fastq2=</span><span class="kw">list</span>(<span class="dt">normal=</span><span class="st">&quot;apps/DNASeq/data/normal_2.fq&quot;</span>,</span>
+<span id="cb142-9"><a href="application.html#cb142-9"></a>                              <span class="dt">tumor=</span><span class="st">&quot;apps/DNASeq/data/tumor_2.fq&quot;</span>),</span>
+<span id="cb142-10"><a href="application.html#cb142-10"></a>                  <span class="dt">readGroup=</span><span class="kw">list</span>(<span class="st">&quot;normal.1&quot;</span>, <span class="st">&quot;tumor.1&quot;</span>),</span>
+<span id="cb142-11"><a href="application.html#cb142-11"></a>                  <span class="dt">sampleName=</span><span class="kw">list</span>(<span class="st">&quot;normal&quot;</span>, <span class="st">&quot;tumor&quot;</span>),</span>
+<span id="cb142-12"><a href="application.html#cb142-12"></a>                  <span class="dt">library=</span><span class="kw">list</span>(<span class="st">&quot;normal&quot;</span>, <span class="st">&quot;tumor&quot;</span>),</span>
+<span id="cb142-13"><a href="application.html#cb142-13"></a>                  <span class="dt">platunit=</span><span class="kw">list</span>(<span class="st">&quot;normal&quot;</span>, <span class="st">&quot;tumor&quot;</span>),</span>
+<span id="cb142-14"><a href="application.html#cb142-14"></a>                  <span class="dt">platform=</span><span class="kw">list</span>(<span class="st">&quot;illumina&quot;</span>, <span class="st">&quot;illumina&quot;</span>),</span>
+<span id="cb142-15"><a href="application.html#cb142-15"></a>                  <span class="dt">center=</span><span class="kw">list</span>(<span class="st">&quot;rpccc&quot;</span>, <span class="st">&quot;rpccc&quot;</span>))</span>
+<span id="cb142-16"><a href="application.html#cb142-16"></a>paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">tmpl1=</span>tmpl1,</span>
+<span id="cb142-17"><a href="application.html#cb142-17"></a>                  <span class="dt">wdl1=</span>wdl1,</span>
+<span id="cb142-18"><a href="application.html#cb142-18"></a>                  <span class="dt">tmpl2=</span>tmpl2,</span>
+<span id="cb142-19"><a href="application.html#cb142-19"></a>                  <span class="dt">wdl2=</span>wdl2,</span>
+<span id="cb142-20"><a href="application.html#cb142-20"></a>                  <span class="dt">cromwell=</span><span class="st">&quot;/software/cromwell-36.jar&quot;</span>)</span>
+<span id="cb142-21"><a href="application.html#cb142-21"></a>r1 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(GAlign, <span class="dt">outdir=</span><span class="st">&quot;apps/DNASeq/output/BAM&quot;</span>, inputList, paramList,</span>
+<span id="cb142-22"><a href="application.html#cb142-22"></a>                  <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">2</span>, <span class="dt">cluster=</span><span class="st">&quot;sge&quot;</span>,</span>
+<span id="cb142-23"><a href="application.html#cb142-23"></a>                                  <span class="dt">template =</span> <span class="st">&quot;apps/data/sge_centos7.tmpl&quot;</span>,</span>
+<span id="cb142-24"><a href="application.html#cb142-24"></a>                                  <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">16</span>,</span>
+<span id="cb142-25"><a href="application.html#cb142-25"></a>                                                   <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>)),</span>
+<span id="cb142-26"><a href="application.html#cb142-26"></a>                  <span class="dt">stderr=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>The outputs were globbed from the <code>cromwell</code> execution folder:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="kw">list.files</span>(<span class="st">&quot;apps/DNASeq/output/BAM/normal&quot;</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="application.html#cb143-1"></a><span class="kw">list.files</span>(<span class="st">&quot;apps/DNASeq/output/BAM/normal&quot;</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;output/normal.hg38.bai&quot;                        
 ## [2] &quot;output/normal.hg38.bam&quot;                        
 ## [3] &quot;output/normal.hg38.bam.md5&quot;                    
@@ -1062,25 +1178,25 @@ of germline variants will be generated.</p>
 <div id="haplotypecaller" class="section level3">
 <h3><span class="header-section-number">5.6.2</span> HaplotypeCaller</h3>
 <p>This step takes the BAM files as input and each BAM file will be assigned to different computing nodes. The json template file needs to be modified to include the correct GATK bundle paths first.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">wdl3 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-germline-snps-indels/haplotypecaller-gvcf-gatk4.wdl&quot;</span>)</a>
-<a class="sourceLine" id="cb145-2" title="2">tmpl3 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-germline-snps-indels/haplotypecaller-gvcf-gatk4.hg38.inputs.local.json&quot;</span>)</a>
-<a class="sourceLine" id="cb145-3" title="3"></a>
-<a class="sourceLine" id="cb145-4" title="4">bams &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">normal =</span> <span class="kw">normalizePath</span>(<span class="st">&quot;output/BAM/normal/output/normal.hg38.bam&quot;</span>),</a>
-<a class="sourceLine" id="cb145-5" title="5">             <span class="dt">tumor =</span> <span class="kw">normalizePath</span>(<span class="st">&quot;output/BAM/tumor/output/tumor.hg38.bam&quot;</span>))</a>
-<a class="sourceLine" id="cb145-6" title="6">inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">bam =</span> bams)</a>
-<a class="sourceLine" id="cb145-7" title="7">paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">intervals =</span> <span class="kw">normalizePath</span>(<span class="st">&quot;output/interval.txt&quot;</span>),</a>
-<a class="sourceLine" id="cb145-8" title="8">                  <span class="dt">cromwell =</span> <span class="st">&quot;/software/cromwell-36.jar&quot;</span>,</a>
-<a class="sourceLine" id="cb145-9" title="9">                  <span class="dt">wdl =</span> wdl3,</a>
-<a class="sourceLine" id="cb145-10" title="10">                  <span class="dt">tmpl =</span> tmpl3)</a>
-<a class="sourceLine" id="cb145-11" title="11"></a>
-<a class="sourceLine" id="cb145-12" title="12">r2 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(hapCall, <span class="dt">outdir=</span><span class="st">&quot;apps/DNASeq/output/GATK&quot;</span>, inputList, paramList,</a>
-<a class="sourceLine" id="cb145-13" title="13">                  <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">2</span>, <span class="dt">cluster=</span><span class="st">&quot;sge&quot;</span>,</a>
-<a class="sourceLine" id="cb145-14" title="14">                                  <span class="dt">template =</span> <span class="st">&quot;apps/data/sge_centos7.tmpl&quot;</span>,</a>
-<a class="sourceLine" id="cb145-15" title="15">                                  <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">16</span>,</a>
-<a class="sourceLine" id="cb145-16" title="16">                                                   <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>)),</a>
-<a class="sourceLine" id="cb145-17" title="17">                  <span class="dt">stderr=</span><span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="application.html#cb145-1"></a>wdl3 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-germline-snps-indels/haplotypecaller-gvcf-gatk4.wdl&quot;</span>)</span>
+<span id="cb145-2"><a href="application.html#cb145-2"></a>tmpl3 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-germline-snps-indels/haplotypecaller-gvcf-gatk4.hg38.inputs.local.json&quot;</span>)</span>
+<span id="cb145-3"><a href="application.html#cb145-3"></a></span>
+<span id="cb145-4"><a href="application.html#cb145-4"></a>bams &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">normal =</span> <span class="kw">normalizePath</span>(<span class="st">&quot;output/BAM/normal/output/normal.hg38.bam&quot;</span>),</span>
+<span id="cb145-5"><a href="application.html#cb145-5"></a>             <span class="dt">tumor =</span> <span class="kw">normalizePath</span>(<span class="st">&quot;output/BAM/tumor/output/tumor.hg38.bam&quot;</span>))</span>
+<span id="cb145-6"><a href="application.html#cb145-6"></a>inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">bam =</span> bams)</span>
+<span id="cb145-7"><a href="application.html#cb145-7"></a>paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">intervals =</span> <span class="kw">normalizePath</span>(<span class="st">&quot;output/interval.txt&quot;</span>),</span>
+<span id="cb145-8"><a href="application.html#cb145-8"></a>                  <span class="dt">cromwell =</span> <span class="st">&quot;/software/cromwell-36.jar&quot;</span>,</span>
+<span id="cb145-9"><a href="application.html#cb145-9"></a>                  <span class="dt">wdl =</span> wdl3,</span>
+<span id="cb145-10"><a href="application.html#cb145-10"></a>                  <span class="dt">tmpl =</span> tmpl3)</span>
+<span id="cb145-11"><a href="application.html#cb145-11"></a></span>
+<span id="cb145-12"><a href="application.html#cb145-12"></a>r2 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(hapCall, <span class="dt">outdir=</span><span class="st">&quot;apps/DNASeq/output/GATK&quot;</span>, inputList, paramList,</span>
+<span id="cb145-13"><a href="application.html#cb145-13"></a>                  <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">2</span>, <span class="dt">cluster=</span><span class="st">&quot;sge&quot;</span>,</span>
+<span id="cb145-14"><a href="application.html#cb145-14"></a>                                  <span class="dt">template =</span> <span class="st">&quot;apps/data/sge_centos7.tmpl&quot;</span>,</span>
+<span id="cb145-15"><a href="application.html#cb145-15"></a>                                  <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">16</span>,</span>
+<span id="cb145-16"><a href="application.html#cb145-16"></a>                                                   <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>)),</span>
+<span id="cb145-17"><a href="application.html#cb145-17"></a>                  <span class="dt">stderr=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>Here are the outputs:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="kw">list.files</span>(<span class="st">&quot;apps/DNASeq/output/GATK/normal&quot;</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="application.html#cb146-1"></a><span class="kw">list.files</span>(<span class="st">&quot;apps/DNASeq/output/GATK/normal&quot;</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;haplotypecaller-gvcf-gatk4.wdl.log&quot;
 ## [2] &quot;output/normal.hg38.g.vcf.gz&quot;       
 ## [3] &quot;output/normal.hg38.g.vcf.gz.tbi&quot;</code></pre>
@@ -1088,27 +1204,27 @@ of germline variants will be generated.</p>
 <div id="joint-discovery" class="section level3">
 <h3><span class="header-section-number">5.6.3</span> Joint Discovery</h3>
 <p>The joint genotyping step will combine the <code>gvcf</code> files and then call variants in all samples, so only one computing node is required. Multiple values or files of the samples will need to be seperated by comma for each input in the <code>inputList</code>. The paths of the local bundle files will also need to be added to the json template file.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">wdl4 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-germline-snps-indels/joint-discovery-gatk4-local.wdl&quot;</span>)</a>
-<a class="sourceLine" id="cb148-2" title="2">tmpl4 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-germline-snps-indels/joint-discovery-gatk4-local.hg38.wgs.inputs.json&quot;</span>)</a>
-<a class="sourceLine" id="cb148-3" title="3"></a>
-<a class="sourceLine" id="cb148-4" title="4">inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sampleName =</span> <span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;normal,tumor&quot;</span>),</a>
-<a class="sourceLine" id="cb148-5" title="5">                  <span class="dt">gvcf =</span> <span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;apps/DNASeq/output/GATK/normal/output/normal.hg38.g.vcf.gz,apps/DNASeq/output/GATK/tumor/output/tumor.hg38.g.vcf.gz&quot;</span>))</a>
-<a class="sourceLine" id="cb148-6" title="6"></a>
-<a class="sourceLine" id="cb148-7" title="7">paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">callsetName =</span> <span class="st">&quot;test&quot;</span>,</a>
-<a class="sourceLine" id="cb148-8" title="8">                  <span class="dt">intervals =</span> <span class="st">&quot;apps/DNASeq/output/interval.21.interval_list&quot;</span>,</a>
-<a class="sourceLine" id="cb148-9" title="9">                  <span class="dt">unpadded_intervals =</span> <span class="st">&quot;apps/DNASeq/output/interval.21.intervals&quot;</span>,</a>
-<a class="sourceLine" id="cb148-10" title="10">                  <span class="dt">tmpl =</span> tmpl4,</a>
-<a class="sourceLine" id="cb148-11" title="11">                  <span class="dt">cromwell =</span> <span class="st">&quot;/software/cromwell-36.jar&quot;</span>,</a>
-<a class="sourceLine" id="cb148-12" title="12">                  <span class="dt">wdl =</span> wdl4)</a>
-<a class="sourceLine" id="cb148-13" title="13"></a>
-<a class="sourceLine" id="cb148-14" title="14">r3 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(jdCall, <span class="dt">outdir=</span><span class="st">&quot;apps/DNASeq/output/GATK&quot;</span>, inputList, paramList,</a>
-<a class="sourceLine" id="cb148-15" title="15">                  <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">1</span>, <span class="dt">cluster=</span><span class="st">&quot;sge&quot;</span>,</a>
-<a class="sourceLine" id="cb148-16" title="16">                                  <span class="dt">template =</span> <span class="st">&quot;apps/sge_centos7.tmpl&quot;</span>,</a>
-<a class="sourceLine" id="cb148-17" title="17">                                  <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">16</span>,</a>
-<a class="sourceLine" id="cb148-18" title="18">                                                   <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>)),</a>
-<a class="sourceLine" id="cb148-19" title="19">                  <span class="dt">stderr=</span><span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="application.html#cb148-1"></a>wdl4 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-germline-snps-indels/joint-discovery-gatk4-local.wdl&quot;</span>)</span>
+<span id="cb148-2"><a href="application.html#cb148-2"></a>tmpl4 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="dt">package=</span><span class="st">&quot;RcwlPipelines&quot;</span>, <span class="st">&quot;GATK4/gatk4-germline-snps-indels/joint-discovery-gatk4-local.hg38.wgs.inputs.json&quot;</span>)</span>
+<span id="cb148-3"><a href="application.html#cb148-3"></a></span>
+<span id="cb148-4"><a href="application.html#cb148-4"></a>inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sampleName =</span> <span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;normal,tumor&quot;</span>),</span>
+<span id="cb148-5"><a href="application.html#cb148-5"></a>                  <span class="dt">gvcf =</span> <span class="kw">list</span>(<span class="dt">test=</span><span class="st">&quot;apps/DNASeq/output/GATK/normal/output/normal.hg38.g.vcf.gz,apps/DNASeq/output/GATK/tumor/output/tumor.hg38.g.vcf.gz&quot;</span>))</span>
+<span id="cb148-6"><a href="application.html#cb148-6"></a></span>
+<span id="cb148-7"><a href="application.html#cb148-7"></a>paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">callsetName =</span> <span class="st">&quot;test&quot;</span>,</span>
+<span id="cb148-8"><a href="application.html#cb148-8"></a>                  <span class="dt">intervals =</span> <span class="st">&quot;apps/DNASeq/output/interval.21.interval_list&quot;</span>,</span>
+<span id="cb148-9"><a href="application.html#cb148-9"></a>                  <span class="dt">unpadded_intervals =</span> <span class="st">&quot;apps/DNASeq/output/interval.21.intervals&quot;</span>,</span>
+<span id="cb148-10"><a href="application.html#cb148-10"></a>                  <span class="dt">tmpl =</span> tmpl4,</span>
+<span id="cb148-11"><a href="application.html#cb148-11"></a>                  <span class="dt">cromwell =</span> <span class="st">&quot;/software/cromwell-36.jar&quot;</span>,</span>
+<span id="cb148-12"><a href="application.html#cb148-12"></a>                  <span class="dt">wdl =</span> wdl4)</span>
+<span id="cb148-13"><a href="application.html#cb148-13"></a></span>
+<span id="cb148-14"><a href="application.html#cb148-14"></a>r3 &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(jdCall, <span class="dt">outdir=</span><span class="st">&quot;apps/DNASeq/output/GATK&quot;</span>, inputList, paramList,</span>
+<span id="cb148-15"><a href="application.html#cb148-15"></a>                  <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">1</span>, <span class="dt">cluster=</span><span class="st">&quot;sge&quot;</span>,</span>
+<span id="cb148-16"><a href="application.html#cb148-16"></a>                                  <span class="dt">template =</span> <span class="st">&quot;apps/sge_centos7.tmpl&quot;</span>,</span>
+<span id="cb148-17"><a href="application.html#cb148-17"></a>                                  <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">threads =</span> <span class="dv">16</span>,</span>
+<span id="cb148-18"><a href="application.html#cb148-18"></a>                                                   <span class="dt">queue =</span> <span class="st">&quot;centos7.q&quot;</span>)),</span>
+<span id="cb148-19"><a href="application.html#cb148-19"></a>                  <span class="dt">stderr=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>Here are the final outputs:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="kw">list.files</span>(<span class="st">&quot;apps/DNASeq/output/GATK/test&quot;</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="application.html#cb149-1"></a><span class="kw">list.files</span>(<span class="st">&quot;apps/DNASeq/output/GATK/test&quot;</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;joint-discovery-gatk4-local.wdl.log&quot;        
 ## [2] &quot;output/out.intervals&quot;                       
 ## [3] &quot;output/test.variant_calling_detail_metrics&quot; 
@@ -1125,7 +1241,7 @@ of germline variants will be generated.</p>
         </div>
       </div>
 <a href="run-approaches.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="variant-calling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

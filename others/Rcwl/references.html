@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>References | Bioinformatics tools and pipelines using R and CWL</title>
   <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="References | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -25,14 +25,14 @@
 <meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-08-15" />
+<meta name="date" content="2019-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="application.html">
+<link rel="prev" href="rna-seq-alignment-and-quantification.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -59,9 +59,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -70,14 +70,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -86,9 +88,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -197,6 +199,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.3" data-path="application.html"><a href="application.html#joint-discovery"><i class="fa fa-check"></i><b>5.6.3</b> Joint Discovery</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="variant-calling.html"><a href="variant-calling.html"><i class="fa fa-check"></i><b>6</b> Variant calling</a><ul>
+<li class="chapter" data-level="6.1" data-path="variant-calling.html"><a href="variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="variant-calling.html"><a href="variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
+<li class="chapter" data-level="6.3" data-path="variant-calling.html"><a href="variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="variant-calling.html"><a href="variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
+<li class="chapter" data-level="6.3.2" data-path="variant-calling.html"><a href="variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
+<li class="chapter" data-level="6.3.3" data-path="variant-calling.html"><a href="variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
+<li class="chapter" data-level="6.3.4" data-path="variant-calling.html"><a href="variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
+<li class="chapter" data-level="6.3.5" data-path="variant-calling.html"><a href="variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
+<li class="chapter" data-level="6.3.6" data-path="variant-calling.html"><a href="variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
+<li class="chapter" data-level="6.3.7" data-path="variant-calling.html"><a href="variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
+<li class="chapter" data-level="6.3.8" data-path="variant-calling.html"><a href="variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
+<li class="chapter" data-level="6.3.9" data-path="variant-calling.html"><a href="variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html"><i class="fa fa-check"></i><b>7</b> RNA-Seq alignment and quantification</a><ul>
+<li class="chapter" data-level="7.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#bulk-mrna"><i class="fa fa-check"></i><b>7.1</b> bulk mRNA</a></li>
+<li class="chapter" data-level="7.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#transcriptome-quantification"><i class="fa fa-check"></i><b>7.2</b> transcriptome quantification</a></li>
+<li class="chapter" data-level="7.3" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#single-cell-rnaseq"><i class="fa fa-check"></i><b>7.3</b> single cell RNAseq</a></li>
+<li class="chapter" data-level="7.4" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#mirna"><i class="fa fa-check"></i><b>7.4</b> miRNA</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#prepare-reference"><i class="fa fa-check"></i><b>7.4.1</b> Prepare reference</a></li>
+<li class="chapter" data-level="7.4.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#run-mirdeep2-pipeline"><i class="fa fa-check"></i><b>7.4.2</b> Run miRDeep2 pipeline</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -227,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="application.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rna-seq-alignment-and-quantification.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -258,7 +284,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-references.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/references.Rmd",
 "text": "Edit"
 },
 "history": {

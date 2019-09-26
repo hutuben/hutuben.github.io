@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL</title>
+  <title>Chapter 7 RNA-Seq alignment and quantification | Bioinformatics tools and pipelines using R and CWL</title>
   <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL" />
+  <meta property="og:title" content="Chapter 7 RNA-Seq alignment and quantification | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Writing Pipeline | Bioinformatics tools and pipelines using R and CWL" />
+  <meta name="twitter:title" content="Chapter 7 RNA-Seq alignment and quantification | Bioinformatics tools and pipelines using R and CWL" />
   
   <meta name="twitter:description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="components.html"/>
-<link rel="next" href="run-approaches.html"/>
+<link rel="prev" href="variant-calling.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -244,115 +244,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="writing-pipeline" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Writing Pipeline</h1>
-<p>We can connect multiple tools into a pipeline. Here is an example to uncompress an R script and execute it with <code>Rscript</code>.</p>
-<p>We first define a simple <code>Rscript</code> tool without using docker:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="writing-pipeline.html#cb54-1"></a>d1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</span>
-<span id="cb54-2"><a href="writing-pipeline.html#cb54-2"></a>Rs &lt;-<span class="st"> </span><span class="kw">cwlParam</span>(<span class="dt">baseCommand =</span> <span class="st">&quot;/usr/bin/Rscript&quot;</span>,</span>
-<span id="cb54-3"><a href="writing-pipeline.html#cb54-3"></a>               <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(d1))</span>
-<span id="cb54-4"><a href="writing-pipeline.html#cb54-4"></a>Rs</span></code></pre></div>
-<pre><code>## class: cwlParam 
-##  cwlClass: CommandLineTool 
-##  cwlVersion: v1.0 
-##  baseCommand: /usr/bin/Rscript 
-## inputs:
-##   rfile (File):  
-## outputs:
-## output:
-##   type: stdout</code></pre>
-<p>Here is the test run:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="writing-pipeline.html#cb56-1"></a>Rs<span class="op">$</span>rfile &lt;-<span class="st"> </span>r4<span class="op">$</span>output</span>
-<span id="cb56-2"><a href="writing-pipeline.html#cb56-2"></a>tres &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Rs, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
-<pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="writing-pipeline.html#cb58-1"></a><span class="kw">readLines</span>(tres<span class="op">$</span>output)</span></code></pre></div>
-<pre><code>## [1] &quot;[1] 9 8 3 5 6&quot;</code></pre>
-<p>The pipeline includes two steps, decompressed by <code>GZ</code> and compiled by <code>Rs</code>. The input file is a compressed file and the output file would be the output <code>Rout</code> from <code>Rs</code>.</p>
-<p>First we need to define the direct inputs and outputs from <code>GZ</code> and <code>Rs</code>, respectively:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="writing-pipeline.html#cb60-1"></a>i1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</span>
-<span id="cb60-2"><a href="writing-pipeline.html#cb60-2"></a>o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_cout&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;Compile/output&quot;</span>)</span></code></pre></div>
-<p>For the input “cwl_zifle”, it refers to the <code>GZ</code> input <code>zfile</code>. The output “cwl_cout” will be the outcome of <code>Rs</code> output <code>Rout</code>.</p>
-<p>The <code>cwlStepParam</code> is used to define <code>inputs</code> and <code>outputs</code>, and the <code>Step</code> function is used to define the two steps. The <code>run</code> option refers to the corresponding <code>cwlParam</code> object and the <code>In</code> option should be linked to the input parameters defined by <code>cwlStepParam</code>. At the end, we use <code>+</code> to connect all steps:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="writing-pipeline.html#cb61-1"></a>cwl &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">inputs =</span> <span class="kw">InputParamList</span>(i1),</span>
-<span id="cb61-2"><a href="writing-pipeline.html#cb61-2"></a>                    <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o1))</span>
-<span id="cb61-3"><a href="writing-pipeline.html#cb61-3"></a>s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Uncomp&quot;</span>, <span class="dt">run =</span> GZ,</span>
-<span id="cb61-4"><a href="writing-pipeline.html#cb61-4"></a>           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">zfile =</span> <span class="st">&quot;cwl_zfile&quot;</span>))</span>
-<span id="cb61-5"><a href="writing-pipeline.html#cb61-5"></a>s2 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Compile&quot;</span>, <span class="dt">run =</span> Rs,</span>
-<span id="cb61-6"><a href="writing-pipeline.html#cb61-6"></a>           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">rfile =</span> <span class="st">&quot;Uncomp/rfile&quot;</span>))</span>
-<span id="cb61-7"><a href="writing-pipeline.html#cb61-7"></a>cwl &lt;-<span class="st"> </span>cwl <span class="op">+</span><span class="st"> </span>s1 <span class="op">+</span><span class="st"> </span>s2</span>
-<span id="cb61-8"><a href="writing-pipeline.html#cb61-8"></a>cwl</span></code></pre></div>
-<pre><code>## class: cwlStepParam 
-##  cwlClass: Workflow 
-##  cwlVersion: v1.0 
-## inputs:
-##   cwl_zfile (File):  
-## outputs:
-## cwl_cout:
-##   type: File
-##   outputSource: Compile/output
-## steps:
-##   Uncomp:
-##     run: Uncomp.cwl
-##     zfile: cwl_zfile
-##     out: rfile
-##   Compile:
-##     run: Compile.cwl
-##     rfile: Uncomp/rfile
-##     out: output</code></pre>
-<p>Let’s run the pipeline:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="writing-pipeline.html#cb63-1"></a>cwl<span class="op">$</span>cwl_zfile &lt;-<span class="st"> </span>zzfil</span>
-<span id="cb63-2"><a href="writing-pipeline.html#cb63-2"></a>r7 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
-<pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="writing-pipeline.html#cb65-1"></a><span class="kw">readLines</span>(r7<span class="op">$</span>output)</span></code></pre></div>
-<pre><code>## [1] &quot;[1]  6  7  2  5 10&quot;</code></pre>
-<div id="scattering-pipeline" class="section level2">
-<h2><span class="header-section-number">3.1</span> Scattering pipeline</h2>
-<p>The scattering feature can specify the associated workflow steps or subworkflows to execute separately over a list of input elements. To use this feature, <code>ScatterFeatureRequirement</code> must be specified in the workflow requirement. Different <code>scatter</code> methods can be used in the associated steps to decompose the input into a discrete set of jobs. More details can be found at: <a href="https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep" class="uri">https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep</a>.</p>
-<p>Here is an example to execute multiple R scripts. First, we need to set the input and output types to be an array of “File”, and add the requirments. In the “Compile” step, the scattering input is required to be set with the <code>scatter</code> option:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="writing-pipeline.html#cb67-1"></a>i2 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_rfiles&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>)</span>
-<span id="cb67-2"><a href="writing-pipeline.html#cb67-2"></a>o2 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_couts&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File[]&quot;</span>, <span class="dt">outputSource =</span> <span class="st">&quot;Compile/output&quot;</span>)</span>
-<span id="cb67-3"><a href="writing-pipeline.html#cb67-3"></a>req1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">class =</span> <span class="st">&quot;ScatterFeatureRequirement&quot;</span>)</span>
-<span id="cb67-4"><a href="writing-pipeline.html#cb67-4"></a></span>
-<span id="cb67-5"><a href="writing-pipeline.html#cb67-5"></a>cwl2 &lt;-<span class="st"> </span><span class="kw">cwlStepParam</span>(<span class="dt">requirements =</span> <span class="kw">list</span>(req1),</span>
-<span id="cb67-6"><a href="writing-pipeline.html#cb67-6"></a>                     <span class="dt">inputs =</span> <span class="kw">InputParamList</span>(i2),</span>
-<span id="cb67-7"><a href="writing-pipeline.html#cb67-7"></a>                     <span class="dt">outputs =</span> <span class="kw">OutputParamList</span>(o2))</span>
-<span id="cb67-8"><a href="writing-pipeline.html#cb67-8"></a>s1 &lt;-<span class="st"> </span><span class="kw">Step</span>(<span class="dt">id =</span> <span class="st">&quot;Compile&quot;</span>, <span class="dt">run =</span> Rs,</span>
-<span id="cb67-9"><a href="writing-pipeline.html#cb67-9"></a>           <span class="dt">In =</span> <span class="kw">list</span>(<span class="dt">rfile =</span> <span class="st">&quot;cwl_rfiles&quot;</span>),</span>
-<span id="cb67-10"><a href="writing-pipeline.html#cb67-10"></a>           <span class="dt">scatter =</span> <span class="st">&quot;rfile&quot;</span>)</span>
-<span id="cb67-11"><a href="writing-pipeline.html#cb67-11"></a>cwl2 &lt;-<span class="st"> </span>cwl2 <span class="op">+</span><span class="st"> </span>s1</span>
-<span id="cb67-12"><a href="writing-pipeline.html#cb67-12"></a>cwl2</span></code></pre></div>
-<pre><code>## class: cwlStepParam 
-##  cwlClass: Workflow 
-##  cwlVersion: v1.0 
-## requirements:
-## - class: ScatterFeatureRequirement
-## inputs:
-##   cwl_rfiles (File[]):  
-## outputs:
-## cwl_couts:
-##   type: File[]
-##   outputSource: Compile/output
-## steps:
-##   Compile:
-##     run: Compile.cwl
-##     rfile: cwl_rfiles
-##     out: output
-##     scatter: rfile</code></pre>
-<p>Now multiple R scripts can be assigned to the workflow inputs and executed:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="writing-pipeline.html#cb69-1"></a>cwl2<span class="op">$</span>cwl_rfiles &lt;-<span class="st"> </span><span class="kw">c</span>(r4b<span class="op">$</span>output, r4b<span class="op">$</span>output)</span>
-<span id="cb69-2"><a href="writing-pipeline.html#cb69-2"></a>r8 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl2, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
-<pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="writing-pipeline.html#cb71-1"></a>r8<span class="op">$</span>output</span></code></pre></div>
-<pre><code>## [1] &quot;/tmp/RtmpWSwswQ/68fa97dcf91845e69e01f25fd7c81504d8192b71&quot;
-## [2] &quot;/tmp/RtmpWSwswQ/68fa97dcf91845e69e01f25fd7c81504d8192b71&quot;</code></pre>
+<div id="rna-seq-alignment-and-quantification" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> RNA-Seq alignment and quantification</h1>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="rna-seq-alignment-and-quantification.html#cb183-1"></a><span class="kw">library</span>(RcwlPipelines)</span>
+<span id="cb183-2"><a href="rna-seq-alignment-and-quantification.html#cb183-2"></a><span class="kw">library</span>(BiocParallel)</span>
+<span id="cb183-3"><a href="rna-seq-alignment-and-quantification.html#cb183-3"></a><span class="kw">library</span>(fs)</span></code></pre></div>
+<div id="bulk-mrna" class="section level2">
+<h2><span class="header-section-number">7.1</span> bulk mRNA</h2>
 </div>
-<div id="pipeline-plot" class="section level2">
-<h2><span class="header-section-number">3.2</span> Pipeline plot</h2>
-<p>The function <code>plotCWL</code> can be used to visualize the relationship of inputs, outputs and the components for a tool or pipeline:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="writing-pipeline.html#cb73-1"></a><span class="kw">plotCWL</span>(cwl)</span></code></pre></div>
-<div id="htmlwidget-17849a148e026be1292d" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-17849a148e026be1292d">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
+<div id="transcriptome-quantification" class="section level2">
+<h2><span class="header-section-number">7.2</span> transcriptome quantification</h2>
+</div>
+<div id="single-cell-rnaseq" class="section level2">
+<h2><span class="header-section-number">7.3</span> single cell RNAseq</h2>
+</div>
+<div id="mirna" class="section level2">
+<h2><span class="header-section-number">7.4</span> miRNA</h2>
+<p>The <code>miRDeep2</code> is one of the popular tools for discovering known and novel miRNAs from small RNA sequencing data. We wrapped the mapping and quantification steps into <code>miRDeep2PL</code>. Here is the instructions for <code>miRDeep2</code>: <a href="https://github.com/rajewsky-lab/mirdeep2" class="uri">https://github.com/rajewsky-lab/mirdeep2</a>.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="rna-seq-alignment-and-quantification.html#cb184-1"></a><span class="kw">plotCWL</span>(miRDeep2PL)</span></code></pre></div>
+<div id="htmlwidget-3aa5173a307f2e99b8d9" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3aa5173a307f2e99b8d9">{"x":{"diagram":"graph TB\nA(reads)-->R{Mapper}\nB(format)-->R{Mapper}\nC(adapter)-->R{Mapper}\nE(genome)-->R{Mapper}\nR{Mapper}-->P((preads))\nR{Mapper}-->Q((arf))\nP((preads))-->S{miRDeep2}\nE(genome)-->S{miRDeep2}\nQ((arf))-->S{miRDeep2}\nF(miRef)-->S{miRDeep2}\nG(miOther)-->S{miRDeep2}\nH(precursors)-->S{miRDeep2}\nI(species)-->S{miRDeep2}\nS{miRDeep2}-->J((csvfiles))\nS{miRDeep2}-->K((htmls))\nS{miRDeep2}-->L((bed))\nS{miRDeep2}-->M((expression))\nS{miRDeep2}-->N((mirna_results))\nS{miRDeep2}-->O((pdfs))"},"evals":[],"jsHooks":[]}</script>
+<p>We use the data from <code>mirdeep2</code> github repository as an example.
+<a href="https://github.com/rajewsky-lab/mirdeep2/tree/master/tutorial_dir" class="uri">https://github.com/rajewsky-lab/mirdeep2/tree/master/tutorial_dir</a></p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="rna-seq-alignment-and-quantification.html#cb185-1"></a><span class="kw">list.files</span>(<span class="st">&quot;apps/miRNA/tutorial_dir&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;cel_cluster.fa&quot;                 &quot;mature_ref_other_species.fa&quot;   
+## [3] &quot;mature_ref_this_species.fa&quot;     &quot;precursors_ref_this_species.fa&quot;
+## [5] &quot;reads_collapsed.fa&quot;             &quot;reads.fa&quot;                      
+## [7] &quot;run_tut.sh&quot;                     &quot;sample_result.html&quot;</code></pre>
+<div id="prepare-reference" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Prepare reference</h3>
+<p>First, we need to build indexes for the miRNA reference with <code>bowtie-build</code>. This is only required to be performed once for each refernce genome.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="rna-seq-alignment-and-quantification.html#cb187-1"></a>bowtie_build<span class="op">$</span>ref &lt;-<span class="st"> &quot;apps/miRNA/tutorial_dir/cel_cluster.fa&quot;</span></span>
+<span id="cb187-2"><a href="rna-seq-alignment-and-quantification.html#cb187-2"></a>bowtie_build<span class="op">$</span>outPrefix &lt;-<span class="st"> &quot;cel_cluster&quot;</span></span>
+<span id="cb187-3"><a href="rna-seq-alignment-and-quantification.html#cb187-3"></a>idxRes &lt;-<span class="st"> </span><span class="kw">runCWL</span>(bowtie_build, <span class="dt">outdir =</span> <span class="st">&quot;apps/miRNA/output/genome&quot;</span>, <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb187-4"><a href="rna-seq-alignment-and-quantification.html#cb187-4"></a><span class="kw">file.copy</span>(<span class="st">&quot;apps/miRNA/tutorial_dir/cel_cluster.fa&quot;</span>, <span class="st">&quot;apps/miRNA/output/genome/cel_cluster.fa&quot;</span>)</span></code></pre></div>
+<p>Here are the indexed reference files.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="rna-seq-alignment-and-quantification.html#cb188-1"></a><span class="kw">dir_info</span>(<span class="st">&quot;apps/miRNA/output/genome&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(path, size)</span></code></pre></div>
+<pre><code>## # A tibble: 7 x 2
+##   path                                                   size
+##   &lt;fs::path&gt;                                      &lt;fs::bytes&gt;
+## 1 apps/miRNA/output/genome/cel_cluster.1.ebwt              4M
+## 2 apps/miRNA/output/genome/cel_cluster.2.ebwt             812
+## 3 apps/miRNA/output/genome/cel_cluster.3.ebwt              26
+## 4 apps/miRNA/output/genome/cel_cluster.4.ebwt           1.57K
+## 5 apps/miRNA/output/genome/cel_cluster.fa               6.47K
+## 6 apps/miRNA/output/genome/cel_cluster.rev.1.ebwt          4M
+## 7 apps/miRNA/output/genome/cel_cluster.rev.2.ebwt         812</code></pre>
+</div>
+<div id="run-mirdeep2-pipeline" class="section level3">
+<h3><span class="header-section-number">7.4.2</span> Run miRDeep2 pipeline</h3>
+<p>First we need to prepare the inputs into ‘inputList’ and ‘paramList’ for parallel execution.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="rna-seq-alignment-and-quantification.html#cb190-1"></a><span class="kw">inputs</span>(miRDeep2PL)</span></code></pre></div>
+<pre><code>## inputs:
+##   reads (File):  
+##   format (string):  -c
+##   adapter (string):  
+##   len (int):  18
+##   genome (File):  
+##   miRef  ( File|string ): 
+##   miOther  ( File|string ): 
+##   precursors  ( File|string ): 
+##   species (string):</code></pre>
+<p>To mimic multiple samples analysis, here we just repeat to use the input reads.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="rna-seq-alignment-and-quantification.html#cb192-1"></a>reads &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/reads.fa&quot;</span>,</span>
+<span id="cb192-2"><a href="rna-seq-alignment-and-quantification.html#cb192-2"></a>              <span class="dt">sample2 =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/reads.fa&quot;</span>)</span>
+<span id="cb192-3"><a href="rna-seq-alignment-and-quantification.html#cb192-3"></a></span>
+<span id="cb192-4"><a href="rna-seq-alignment-and-quantification.html#cb192-4"></a>inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">reads =</span> reads)</span>
+<span id="cb192-5"><a href="rna-seq-alignment-and-quantification.html#cb192-5"></a>paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">adapter =</span> <span class="st">&quot;TCGTATGCCGTCTTCTGCTTGT&quot;</span>,</span>
+<span id="cb192-6"><a href="rna-seq-alignment-and-quantification.html#cb192-6"></a>                  <span class="dt">genome =</span> <span class="st">&quot;apps/miRNA/output/genome/cel_cluster.fa&quot;</span>,</span>
+<span id="cb192-7"><a href="rna-seq-alignment-and-quantification.html#cb192-7"></a>                  <span class="dt">miRef =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/mature_ref_this_species.fa&quot;</span>,</span>
+<span id="cb192-8"><a href="rna-seq-alignment-and-quantification.html#cb192-8"></a>                  <span class="dt">miOther =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/mature_ref_other_species.fa&quot;</span>,</span>
+<span id="cb192-9"><a href="rna-seq-alignment-and-quantification.html#cb192-9"></a>                  <span class="dt">precursors =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/precursors_ref_this_species.fa&quot;</span>,</span>
+<span id="cb192-10"><a href="rna-seq-alignment-and-quantification.html#cb192-10"></a>                  <span class="dt">species =</span> <span class="st">&quot;C.elegans&quot;</span>)</span></code></pre></div>
+<p>Let’s run the pipeline with two computing nodes.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="rna-seq-alignment-and-quantification.html#cb193-1"></a>mirRes &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(miRDeep2PL, <span class="dt">outdir =</span> <span class="st">&quot;apps/miRNA/output/&quot;</span>, inputList, paramList,</span>
+<span id="cb193-2"><a href="rna-seq-alignment-and-quantification.html#cb193-2"></a>                      <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">2</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</span>
+<span id="cb193-3"><a href="rna-seq-alignment-and-quantification.html#cb193-3"></a>                                                <span class="dt">template =</span> <span class="st">&quot;apps/data/sge.tmpl&quot;</span>,</span>
+<span id="cb193-4"><a href="rna-seq-alignment-and-quantification.html#cb193-4"></a>                                                <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">jobname =</span> <span class="st">&quot;miRNA&quot;</span>,</span>
+<span id="cb193-5"><a href="rna-seq-alignment-and-quantification.html#cb193-5"></a>                                                                 <span class="dt">queue =</span> <span class="st">&quot;all.q&quot;</span>,</span>
+<span id="cb193-6"><a href="rna-seq-alignment-and-quantification.html#cb193-6"></a>                                                                 <span class="dt">threads =</span> <span class="dv">2</span>),</span>
+<span id="cb193-7"><a href="rna-seq-alignment-and-quantification.html#cb193-7"></a>                                                <span class="dt">log=</span><span class="ot">TRUE</span>, <span class="dt">logdir=</span><span class="st">&quot;.&quot;</span>, <span class="dt">progressbar =</span> T),</span>
+<span id="cb193-8"><a href="rna-seq-alignment-and-quantification.html#cb193-8"></a>                      <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>Here are the results:</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="rna-seq-alignment-and-quantification.html#cb194-1"></a><span class="kw">dir_info</span>(<span class="st">&quot;apps/miRNA/output/sample1&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(path, size)</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 2
+##    path                                                                size
+##    &lt;fs::path&gt;                                                    &lt;fs::byte&gt;
+##  1 apps/miRNA/output/sample1/expression_26_09_2019_t_20_10_36.h…     21.15K
+##  2 apps/miRNA/output/sample1/expression_analyses                         4K
+##  3 apps/miRNA/output/sample1/miRNAs_expressed_all_samples_26_09…        441
+##  4 apps/miRNA/output/sample1/mirna_results_26_09_2019_t_20_10_36         4K
+##  5 apps/miRNA/output/sample1/pdfs_26_09_2019_t_20_10_36                  4K
+##  6 apps/miRNA/output/sample1/reads_collapsed.arf                     61.36K
+##  7 apps/miRNA/output/sample1/reads_collapsed.fa                      59.31K
+##  8 apps/miRNA/output/sample1/result_26_09_2019_t_20_10_36.bed           747
+##  9 apps/miRNA/output/sample1/result_26_09_2019_t_20_10_36.csv         4.39K
+## 10 apps/miRNA/output/sample1/result_26_09_2019_t_20_10_36.html       42.73K</code></pre>
 
+</div>
 </div>
 </div>
             </section>
@@ -360,8 +349,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="components.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="run-approaches.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="variant-calling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -391,7 +380,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-pipeline.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-RNASeq.Rmd",
 "text": "Edit"
 },
 "history": {

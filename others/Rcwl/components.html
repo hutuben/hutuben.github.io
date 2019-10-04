@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Components | Bioinformatics tools and pipelines using R and CWL</title>
   <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Components | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-09-26" />
+<meta name="date" content="2019-10-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -199,19 +202,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.3" data-path="application.html"><a href="application.html#joint-discovery"><i class="fa fa-check"></i><b>5.6.3</b> Joint Discovery</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="variant-calling.html"><a href="variant-calling.html"><i class="fa fa-check"></i><b>6</b> Variant calling</a><ul>
-<li class="chapter" data-level="6.1" data-path="variant-calling.html"><a href="variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
-<li class="chapter" data-level="6.2" data-path="variant-calling.html"><a href="variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
-<li class="chapter" data-level="6.3" data-path="variant-calling.html"><a href="variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="variant-calling.html"><a href="variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
-<li class="chapter" data-level="6.3.2" data-path="variant-calling.html"><a href="variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
-<li class="chapter" data-level="6.3.3" data-path="variant-calling.html"><a href="variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
-<li class="chapter" data-level="6.3.4" data-path="variant-calling.html"><a href="variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
-<li class="chapter" data-level="6.3.5" data-path="variant-calling.html"><a href="variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
-<li class="chapter" data-level="6.3.6" data-path="variant-calling.html"><a href="variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
-<li class="chapter" data-level="6.3.7" data-path="variant-calling.html"><a href="variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
-<li class="chapter" data-level="6.3.8" data-path="variant-calling.html"><a href="variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
-<li class="chapter" data-level="6.3.9" data-path="variant-calling.html"><a href="variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+<li class="chapter" data-level="6" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html"><i class="fa fa-check"></i><b>6</b> DNA-Seq Variant calling</a><ul>
+<li class="chapter" data-level="6.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
+<li class="chapter" data-level="6.3" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
+<li class="chapter" data-level="6.3.2" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
+<li class="chapter" data-level="6.3.3" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
+<li class="chapter" data-level="6.3.4" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
+<li class="chapter" data-level="6.3.5" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
+<li class="chapter" data-level="6.3.6" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
+<li class="chapter" data-level="6.3.7" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
+<li class="chapter" data-level="6.3.8" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
+<li class="chapter" data-level="6.3.9" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+<li class="chapter" data-level="6.3.10" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#combined-somatic-caller-pipeline"><i class="fa fa-check"></i><b>6.3.10</b> Combined somatic caller pipeline</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html"><i class="fa fa-check"></i><b>7</b> RNA-Seq alignment and quantification</a><ul>
@@ -272,13 +276,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb22-9"><a href="components.html#cb22-9"></a>r2 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoA, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="components.html#cb24-1"></a>r2<span class="op">$</span>command</span></code></pre></div>
-<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file9ec64c0fe693.cwl] /tmp/xu0wuxpu$ echo \\&quot;                
-## [2] &quot;    --file=/tmp/tmp9ryojtfo/stg93b9e7b2-7292-4e60-adca-7a3ed1bcbf92/file9ec66fe8ba62 \\&quot;
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file3c1a3b3307fa.cwl] /tmp/oo07thsp$ echo \\&quot;                
+## [2] &quot;    --file=/tmp/tmpsk4__kiv/stgb9db5eff-079b-4444-9bef-616023bd76b6/file3c1a2beb1b5a \\&quot;
 ## [3] &quot;    -f \\&quot;                                                                              
 ## [4] &quot;    -i \\&quot;                                                                              
 ## [5] &quot;    1 \\&quot;                                                                               
 ## [6] &quot;    -s \\&quot;                                                                              
-## [7] &quot;    Hello &gt; /tmp/xu0wuxpu/output.txt&quot;</code></pre>
+## [7] &quot;    Hello &gt; /tmp/oo07thsp/output.txt&quot;</code></pre>
 </div>
 <div id="array-inputs" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Array Inputs</h3>
@@ -313,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="components.html#cb29-1"></a>r3 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoB, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="components.html#cb31-1"></a>r3<span class="op">$</span>command</span></code></pre></div>
-<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file9ec615883ce9.cwl] /tmp/u3b6uz3x$ echo \\&quot;
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file3c1a10562f3f.cwl] /tmp/khq5oyqo$ echo \\&quot;
 ## [2] &quot;    -A \\&quot;                                                              
 ## [3] &quot;    a \\&quot;                                                               
 ## [4] &quot;    b \\&quot;                                                               
@@ -321,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [6] &quot;    -B=d \\&quot;                                                            
 ## [7] &quot;    -B=e \\&quot;                                                            
 ## [8] &quot;    -B=f \\&quot;                                                            
-## [9] &quot;    -C=g,h,i &gt; /tmp/u3b6uz3x/f9d8da775ce6fc6c567d2b6d5922a11cd41a3d9b&quot;</code></pre>
+## [9] &quot;    -C=g,h,i &gt; /tmp/khq5oyqo/7df1f484bb30e2238afe6e57859a08313fa61644&quot;</code></pre>
 </div>
 </div>
 <div id="output-parameters" class="section level2">
@@ -351,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb35-4"><a href="components.html#cb35-4"></a>r4 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(gz, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="components.html#cb37-1"></a>r4<span class="op">$</span>output</span></code></pre></div>
-<pre><code>## [1] &quot;/tmp/RtmpWSwswQ/sample.R&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmpnNy4FI/sample.R&quot;</code></pre>
 <p>Or we can use <code>arguments</code> to set some default parameters:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="components.html#cb39-1"></a>z1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</span>
 <span id="cb39-2"><a href="components.html#cb39-2"></a>o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> ofile)</span>
@@ -402,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb46-5"><a href="components.html#cb46-5"></a>r5 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(touch, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="components.html#cb48-1"></a>r5<span class="op">$</span>output</span></code></pre></div>
-<pre><code>## [1] &quot;/tmp/RtmpWSwswQ/a.txt&quot; &quot;/tmp/RtmpWSwswQ/c.txt&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmpnNy4FI/a.txt&quot; &quot;/tmp/RtmpnNy4FI/c.txt&quot;</code></pre>
 </div>
 <div id="standard-output" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Standard output</h3>
@@ -431,9 +435,9 @@ the output, with the name passed from the input parameter “p2”:</p>
 <span id="cb50-15"><a href="components.html#cb50-15"></a>r6 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Cat, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="components.html#cb52-1"></a>r6<span class="op">$</span>command</span></code></pre></div>
-<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file9ec62420ffd0.cwl] /tmp/nfu_xgwh$ cat \\&quot;                       
-## [2] &quot;    /tmp/tmp5yyr_wt_/stgcba80d66-ebc8-4458-bb3f-0a6d4af16452/a.txt \\&quot;                        
-## [3] &quot;    /tmp/tmp5yyr_wt_/stgc90fc446-9c53-470f-8418-b227f7649d11/b.txt &gt; /tmp/nfu_xgwh/catout.txt&quot;</code></pre>
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file3c1a5b1a2f89.cwl] /tmp/k91a7vol$ cat \\&quot;                       
+## [2] &quot;    /tmp/tmpsbs66zhs/stg9fbfde2b-66d3-4991-a833-1b638ceac300/a.txt \\&quot;                        
+## [3] &quot;    /tmp/tmpsbs66zhs/stg4be469c1-e020-4d57-b28c-1e9f44a02b70/b.txt &gt; /tmp/k91a7vol/catout.txt&quot;</code></pre>
 
 <div class="tips">
 <p>In this example, we used the parameter “p2” to pass the name to the
@@ -459,11 +463,13 @@ file, the “inputBinding” field will be skipped for this parameter.</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

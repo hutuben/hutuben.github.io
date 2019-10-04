@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Application | Bioinformatics tools and pipelines using R and CWL</title>
   <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Application | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-09-26" />
+<meta name="date" content="2019-10-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="run-approaches.html"/>
-<link rel="next" href="variant-calling.html"/>
+<link rel="next" href="dna-seq-variant-calling.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -199,19 +202,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.3" data-path="application.html"><a href="application.html#joint-discovery"><i class="fa fa-check"></i><b>5.6.3</b> Joint Discovery</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="variant-calling.html"><a href="variant-calling.html"><i class="fa fa-check"></i><b>6</b> Variant calling</a><ul>
-<li class="chapter" data-level="6.1" data-path="variant-calling.html"><a href="variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
-<li class="chapter" data-level="6.2" data-path="variant-calling.html"><a href="variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
-<li class="chapter" data-level="6.3" data-path="variant-calling.html"><a href="variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="variant-calling.html"><a href="variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
-<li class="chapter" data-level="6.3.2" data-path="variant-calling.html"><a href="variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
-<li class="chapter" data-level="6.3.3" data-path="variant-calling.html"><a href="variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
-<li class="chapter" data-level="6.3.4" data-path="variant-calling.html"><a href="variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
-<li class="chapter" data-level="6.3.5" data-path="variant-calling.html"><a href="variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
-<li class="chapter" data-level="6.3.6" data-path="variant-calling.html"><a href="variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
-<li class="chapter" data-level="6.3.7" data-path="variant-calling.html"><a href="variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
-<li class="chapter" data-level="6.3.8" data-path="variant-calling.html"><a href="variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
-<li class="chapter" data-level="6.3.9" data-path="variant-calling.html"><a href="variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+<li class="chapter" data-level="6" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html"><i class="fa fa-check"></i><b>6</b> DNA-Seq Variant calling</a><ul>
+<li class="chapter" data-level="6.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
+<li class="chapter" data-level="6.3" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
+<li class="chapter" data-level="6.3.2" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
+<li class="chapter" data-level="6.3.3" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
+<li class="chapter" data-level="6.3.4" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
+<li class="chapter" data-level="6.3.5" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
+<li class="chapter" data-level="6.3.6" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
+<li class="chapter" data-level="6.3.7" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
+<li class="chapter" data-level="6.3.8" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
+<li class="chapter" data-level="6.3.9" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+<li class="chapter" data-level="6.3.10" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#combined-somatic-caller-pipeline"><i class="fa fa-check"></i><b>6.3.10</b> Combined somatic caller pipeline</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html"><i class="fa fa-check"></i><b>7</b> RNA-Seq alignment and quantification</a><ul>
@@ -258,26 +262,30 @@ directory or a new folder.</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="application.html#cb82-1"></a>tools &lt;-<span class="st"> </span><span class="kw">cwlTools</span>(<span class="dt">cachePath =</span> <span class="kw">tempdir</span>())</span>
 <span id="cb82-2"><a href="application.html#cb82-2"></a>tools</span></code></pre></div>
 <pre><code>## class: BiocFileCache
-## bfccache: /tmp/RtmpWSwswQ
+## bfccache: /tmp/RtmpnNy4FI
 ## bfccount: 77
 ## For more information see: bfcinfo() or bfcquery()</code></pre>
 <p>The full paths can be pulled from the “fpath” column. The scripts can
 be viewed to demonstrate how the tools and pipelines were built.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="application.html#cb84-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb84-2"><a href="application.html#cb84-2"></a><span class="kw">bfcinfo</span>(tools) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(rname, fpath)</span></code></pre></div>
+<span id="cb84-2"><a href="application.html#cb84-2"></a><span class="kw">library</span>(conflicted)</span>
+<span id="cb84-3"><a href="application.html#cb84-3"></a><span class="co">## always use select from dplyr</span></span>
+<span id="cb84-4"><a href="application.html#cb84-4"></a><span class="kw">conflict_prefer</span>(<span class="st">&quot;select&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="dt">quiet =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb84-5"><a href="application.html#cb84-5"></a><span class="kw">conflict_prefer</span>(<span class="st">&quot;filter&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="dt">quiet =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb84-6"><a href="application.html#cb84-6"></a><span class="kw">bfcinfo</span>(tools) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(rname, fpath)</span></code></pre></div>
 <pre><code>## # A tibble: 77 x 2
 ##    rname              fpath                                                
 ##    &lt;chr&gt;              &lt;chr&gt;                                                
-##  1 ApplyBQSR          /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  2 BaseRecalibrator   /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  3 bcfview            /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  4 bgzip              /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  5 blastn             /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  6 bowtie2_build      /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  7 bowtie2            /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  8 bwa_index          /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-##  9 bwa                /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
-## 10 CalculateContamin… /home/qhu/workspace/projects/RPipe/RcwlPipelines/ins…
+##  1 ApplyBQSR          /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
+##  2 BaseRecalibrator   /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
+##  3 bcfview            /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
+##  4 bgzip              /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
+##  5 blastn             /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
+##  6 bowtie2_build      /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
+##  7 bowtie2            /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
+##  8 bwa_index          /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
+##  9 bwa                /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
+## 10 CalculateContamin… /home/qhu/.linuxbrew/lib/R/3.6/site-library/RcwlPipe…
 ## # … with 67 more rows</code></pre>
 <p>The commands and docker containers from the wrapped tools are included
 in the metadata.</p>
@@ -661,8 +669,8 @@ marked alignments:</p>
 <p>The pipeline is ready for use. We can plot the pipeline with
 <code>plotCWL</code> from the <code>Rcwl</code> package.</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="application.html#cb93-1"></a><span class="kw">plotCWL</span>(Align)</span></code></pre></div>
-<div id="htmlwidget-04b9ef104f08f09c141c" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-04b9ef104f08f09c141c">{"x":{"diagram":"graph TB\nA(threads)-->H{bwa}\nB(RG)-->H{bwa}\nC(Ref)-->H{bwa}\nD(FQ1)-->H{bwa}\nE(FQ2)-->H{bwa}\nH{bwa}-->|sam|I{sam2bam}\nI{sam2bam}-->|bam|J{sortBam}\nJ{sortBam}-->|sbam|K{markdup}\nK{markdup}-->F((Bam))\nF((Bam))-->L{idxBam}\nL{idxBam}-->G((Idx))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4c9cb2eeb3a2087d62ec" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4c9cb2eeb3a2087d62ec">{"x":{"diagram":"graph TB\nA(threads)-->H{bwa}\nB(RG)-->H{bwa}\nC(Ref)-->H{bwa}\nD(FQ1)-->H{bwa}\nE(FQ2)-->H{bwa}\nH{bwa}-->|sam|I{sam2bam}\nI{sam2bam}-->|bam|J{sortBam}\nJ{sortBam}-->|sbam|K{markdup}\nK{markdup}-->F((Bam))\nF((Bam))-->L{idxBam}\nL{idxBam}-->G((Idx))"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="rcwlpipelines-summary" class="section level2">
@@ -767,8 +775,8 @@ will be in the output folder.</p>
 ## - mergeBamDup
 ## - BaseRecal</code></pre>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="application.html#cb106-1"></a><span class="kw">plotCWL</span>(bwaMMRecal)</span></code></pre></div>
-<div id="htmlwidget-0980107b8de47bd2810a" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0980107b8de47bd2810a">{"x":{"diagram":"graph TB\nC(threads)-->L{bwaAlign}\nB(RG)-->L{bwaAlign}\nD(Ref)-->L{bwaAlign}\nE(FQ1s)-->L{bwaAlign}\nF(FQ2s)-->L{bwaAlign}\nL{bwaAlign}-->|Bam|M{mergeBamDup}\nA(outBam)-->M{mergeBamDup}\nM{mergeBamDup}-->I((matrix))\nM{mergeBamDup}-->|Idx|N{BaseRecal}\nD(Ref)-->N{BaseRecal}\nG(knowSites)-->N{BaseRecal}\nA(outBam)-->N{BaseRecal}\nN{BaseRecal}-->H((BAM))\nN{BaseRecal}-->J((flagstat))\nN{BaseRecal}-->K((stats))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0aaaf5dccb0a313291e0" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0aaaf5dccb0a313291e0">{"x":{"diagram":"graph TB\nC(threads)-->L{bwaAlign}\nB(RG)-->L{bwaAlign}\nD(Ref)-->L{bwaAlign}\nE(FQ1s)-->L{bwaAlign}\nF(FQ2s)-->L{bwaAlign}\nL{bwaAlign}-->|Bam|M{mergeBamDup}\nA(outBam)-->M{mergeBamDup}\nM{mergeBamDup}-->I((matrix))\nM{mergeBamDup}-->|Idx|N{BaseRecal}\nD(Ref)-->N{BaseRecal}\nG(knowSites)-->N{BaseRecal}\nA(outBam)-->N{BaseRecal}\nN{BaseRecal}-->H((BAM))\nN{BaseRecal}-->J((flagstat))\nN{BaseRecal}-->K((stats))"},"evals":[],"jsHooks":[]}</script>
 <div id="prepare-data" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Prepare data</h3>
 <p>Here is a simple example of two samples. The “sample1” have two lanes of sequences and the “sample2” has only one pair of reads. The lists of reads1 <code>fq1</code>, reads2 <code>fq2</code>, read groups and output BAM names are defined in the <code>inputList</code>. The reference genome and number of threads to run the job are defined in the shared options, <code>paramList</code>:</p>
@@ -867,8 +875,8 @@ generated by <code>multiqc</code>, which is also available in the data package.<
 ## - r_distribution
 ## - gCoverage</code></pre>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="application.html#cb115-1"></a><span class="kw">plotCWL</span>(rnaseq_Sf)</span></code></pre></div>
-<div id="htmlwidget-059685c343858191dbbc" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-059685c343858191dbbc">{"x":{"diagram":"graph TB\nA(in_seqfiles)-->O{fastqc}\nO{fastqc}-->F((out_fastqc))\nB(in_prefix)-->P{STAR}\nC(in_genomeDir)-->P{STAR}\nD(in_GTFfile)-->P{STAR}\nA(in_seqfiles)-->P{STAR}\nE(in_runThreadN)-->P{STAR}\nP{STAR}-->H((out_Log))\nP{STAR}-->I((out_Count))\nP{STAR}-->|outBAM|Q{sortBam}\nQ{sortBam}-->|sbam|R{samtools_index}\nR{samtools_index}-->G((out_BAM))\nQ{sortBam}-->|sbam|S{samtools_flagstat}\nS{samtools_flagstat}-->J((out_stat))\nD(in_GTFfile)-->T{featureCounts}\nG((out_BAM))-->T{featureCounts}\nT{featureCounts}-->K((out_count))\nD(in_GTFfile)-->U{gtfToGenePred}\nU{gtfToGenePred}-->|genePred|V{genePredToBed}\nG((out_BAM))-->W{r_distribution}\nV{genePredToBed}-->|bed|W{r_distribution}\nW{r_distribution}-->L((out_distribution))\nG((out_BAM))-->X{gCoverage}\nV{genePredToBed}-->|bed|X{gCoverage}\nX{gCoverage}-->M((out_gCovP))\nX{gCoverage}-->N((out_gCovT))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-acc9742da87de1ca7624" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-acc9742da87de1ca7624">{"x":{"diagram":"graph TB\nA(in_seqfiles)-->O{fastqc}\nO{fastqc}-->F((out_fastqc))\nB(in_prefix)-->P{STAR}\nC(in_genomeDir)-->P{STAR}\nD(in_GTFfile)-->P{STAR}\nA(in_seqfiles)-->P{STAR}\nE(in_runThreadN)-->P{STAR}\nP{STAR}-->H((out_Log))\nP{STAR}-->I((out_Count))\nP{STAR}-->|outBAM|Q{sortBam}\nQ{sortBam}-->|sbam|R{samtools_index}\nR{samtools_index}-->G((out_BAM))\nQ{sortBam}-->|sbam|S{samtools_flagstat}\nS{samtools_flagstat}-->J((out_stat))\nD(in_GTFfile)-->T{featureCounts}\nG((out_BAM))-->T{featureCounts}\nT{featureCounts}-->K((out_count))\nD(in_GTFfile)-->U{gtfToGenePred}\nU{gtfToGenePred}-->|genePred|V{genePredToBed}\nG((out_BAM))-->W{r_distribution}\nV{genePredToBed}-->|bed|W{r_distribution}\nW{r_distribution}-->L((out_distribution))\nG((out_BAM))-->X{gCoverage}\nV{genePredToBed}-->|bed|X{gCoverage}\nX{gCoverage}-->M((out_gCovP))\nX{gCoverage}-->N((out_gCovT))"},"evals":[],"jsHooks":[]}</script>
 <div id="prepare-data-1" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Prepare data</h3>
 <p>An RNASeq test data set can be downloaded from <a href="http://genomedata.org/rnaseq-tutorial/HBR_UHR_ERCC_ds_5pc.tar">genomedata</a>, which includes paired-end fastqs for 6 samples.</p>
@@ -990,21 +998,21 @@ need to load the pipleine by sourcing it from the script.</p>
 ## - call_variants
 ## - convert</code></pre>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="application.html#cb128-1"></a><span class="kw">plotCWL</span>(mc3)</span></code></pre></div>
-<div id="htmlwidget-37a74ad4ad700906e5eb" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-37a74ad4ad700906e5eb">{"x":{"diagram":"graph TB\nC(tumor)-->M{call_variants}\nD(normal)-->M{call_variants}\nF(centromere)-->M{call_variants}\nE(bed_file)-->M{call_variants}\nG(cosmic)-->M{call_variants}\nH(dbsnp)-->M{call_variants}\nI(refFasta)-->M{call_variants}\nA(tumorID)-->M{call_variants}\nB(normalID)-->M{call_variants}\nB(normalID)-->N{convert}\nA(tumorID)-->N{convert}\nM{call_variants}-->|museVCF|N{convert}\nM{call_variants}-->|mutectVCF|N{convert}\nM{call_variants}-->|somaticsniperVCF|N{convert}\nM{call_variants}-->|varscansVCF|N{convert}\nM{call_variants}-->|varscaniVCF|N{convert}\nM{call_variants}-->|radiaVCF|N{convert}\nM{call_variants}-->|pindelVCF|N{convert}\nM{call_variants}-->|indelocatorVCF|N{convert}\nI(refFasta)-->N{convert}\nJ(vepData)-->N{convert}\nC(tumor)-->N{convert}\nD(normal)-->N{convert}\nN{convert}-->K((outmaf))\nN{convert}-->L((outvcf))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8f24ad36dfe38d9992ee" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8f24ad36dfe38d9992ee">{"x":{"diagram":"graph TB\nC(tumor)-->M{call_variants}\nD(normal)-->M{call_variants}\nF(centromere)-->M{call_variants}\nE(bed_file)-->M{call_variants}\nG(cosmic)-->M{call_variants}\nH(dbsnp)-->M{call_variants}\nI(refFasta)-->M{call_variants}\nA(tumorID)-->M{call_variants}\nB(normalID)-->M{call_variants}\nB(normalID)-->N{convert}\nA(tumorID)-->N{convert}\nM{call_variants}-->|museVCF|N{convert}\nM{call_variants}-->|mutectVCF|N{convert}\nM{call_variants}-->|somaticsniperVCF|N{convert}\nM{call_variants}-->|varscansVCF|N{convert}\nM{call_variants}-->|varscaniVCF|N{convert}\nM{call_variants}-->|radiaVCF|N{convert}\nM{call_variants}-->|pindelVCF|N{convert}\nM{call_variants}-->|indelocatorVCF|N{convert}\nI(refFasta)-->N{convert}\nJ(vepData)-->N{convert}\nC(tumor)-->N{convert}\nD(normal)-->N{convert}\nN{convert}-->K((outmaf))\nN{convert}-->L((outvcf))"},"evals":[],"jsHooks":[]}</script>
 <p>Two steps are included.<br />
 1. <code>call_variants</code>: To call variants by 7 pipelines:</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="application.html#cb129-1"></a>callVar &lt;-<span class="st"> </span><span class="kw">readCWL</span>(<span class="kw">runs</span>(mc3)<span class="op">$</span>call_variants)</span>
 <span id="cb129-2"><a href="application.html#cb129-2"></a><span class="kw">plotCWL</span>(callVar)</span></code></pre></div>
-<div id="htmlwidget-147dfdaee8a0b3d379e5" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-147dfdaee8a0b3d379e5">{"x":{"diagram":"graph TB\nC(reference)-->S{prep_ref}\nB(normal)-->T{normal_pileup}\nS{prep_ref}-->|prepped_ref|T{normal_pileup}\nA(tumor)-->U{tumor_pileup}\nS{prep_ref}-->|prepped_ref|U{tumor_pileup}\nU{tumor_pileup}-->|output|V{varscan}\nT{normal_pileup}-->|output|V{varscan}\nV{varscan}-->N((varscaniVCF))\nA(tumor)-->W{muse}\nB(normal)-->W{muse}\nS{prep_ref}-->|prepped_ref|W{muse}\nD(dbsnp)-->W{muse}\nH(number_of_procs)-->W{muse}\nA(tumor)-->X{mutect}\nB(normal)-->X{mutect}\nS{prep_ref}-->|prepped_ref|X{mutect}\nE(cosmic)-->X{mutect}\nD(dbsnp)-->X{mutect}\nH(number_of_procs)-->X{mutect}\nX{mutect}-->P((mutectVCF))\nA(tumor)-->Y{radia}\nB(normal)-->Y{radia}\nS{prep_ref}-->|prepped_ref|Y{radia}\nH(number_of_procs)-->Y{radia}\nA(tumor)-->Z{somaticsniper}\nB(normal)-->Z{somaticsniper}\nS{prep_ref}-->|prepped_ref|Z{somaticsniper}\nA(tumor)-->A1{pindel}\nB(normal)-->A1{pindel}\nS{prep_ref}-->|prepped_ref|A1{pindel}\nF(centromere)-->A1{pindel}\nH(number_of_procs)-->A1{pindel}\nA(tumor)-->B2{indelocator}\nB(normal)-->B2{indelocator}\nS{prep_ref}-->|prepped_ref|B2{indelocator}\nG(bed_file)-->B2{indelocator}\nB2{indelocator}-->|mutations|C3{reformat_indelocator}\nY{radia}-->|mutations|D4{fpfilter}\nV{varscan}-->|snp_vcf|D4{fpfilter}\nZ{somaticsniper}-->|mutations|D4{fpfilter}\nW{muse}-->|mutations|D4{fpfilter}\nA1{pindel}-->|somatic_vcf|D4{fpfilter}\nC3{reformat_indelocator}-->|mutations|D4{fpfilter}\nA(tumor)-->D4{fpfilter}\nB(normal)-->D4{fpfilter}\nS{prep_ref}-->|prepped_ref|D4{fpfilter}\nI(tumorID)-->D4{fpfilter}\nJ(normalID)-->D4{fpfilter}\nD4{fpfilter}-->Q((radiaVCF))\nD4{fpfilter}-->L((somaticsniperVCF))\nD4{fpfilter}-->M((varscansVCF))\nD4{fpfilter}-->O((museVCF))\nD4{fpfilter}-->K((pindelVCF))\nD4{fpfilter}-->R((indelocatorVCF))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-64f1effcdc91c34f4a83" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-64f1effcdc91c34f4a83">{"x":{"diagram":"graph TB\nC(reference)-->S{prep_ref}\nB(normal)-->T{normal_pileup}\nS{prep_ref}-->|prepped_ref|T{normal_pileup}\nA(tumor)-->U{tumor_pileup}\nS{prep_ref}-->|prepped_ref|U{tumor_pileup}\nU{tumor_pileup}-->|output|V{varscan}\nT{normal_pileup}-->|output|V{varscan}\nV{varscan}-->N((varscaniVCF))\nA(tumor)-->W{muse}\nB(normal)-->W{muse}\nS{prep_ref}-->|prepped_ref|W{muse}\nD(dbsnp)-->W{muse}\nH(number_of_procs)-->W{muse}\nA(tumor)-->X{mutect}\nB(normal)-->X{mutect}\nS{prep_ref}-->|prepped_ref|X{mutect}\nE(cosmic)-->X{mutect}\nD(dbsnp)-->X{mutect}\nH(number_of_procs)-->X{mutect}\nX{mutect}-->P((mutectVCF))\nA(tumor)-->Y{radia}\nB(normal)-->Y{radia}\nS{prep_ref}-->|prepped_ref|Y{radia}\nH(number_of_procs)-->Y{radia}\nA(tumor)-->Z{somaticsniper}\nB(normal)-->Z{somaticsniper}\nS{prep_ref}-->|prepped_ref|Z{somaticsniper}\nA(tumor)-->A1{pindel}\nB(normal)-->A1{pindel}\nS{prep_ref}-->|prepped_ref|A1{pindel}\nF(centromere)-->A1{pindel}\nH(number_of_procs)-->A1{pindel}\nA(tumor)-->B2{indelocator}\nB(normal)-->B2{indelocator}\nS{prep_ref}-->|prepped_ref|B2{indelocator}\nG(bed_file)-->B2{indelocator}\nB2{indelocator}-->|mutations|C3{reformat_indelocator}\nY{radia}-->|mutations|D4{fpfilter}\nV{varscan}-->|snp_vcf|D4{fpfilter}\nZ{somaticsniper}-->|mutations|D4{fpfilter}\nW{muse}-->|mutations|D4{fpfilter}\nA1{pindel}-->|somatic_vcf|D4{fpfilter}\nC3{reformat_indelocator}-->|mutations|D4{fpfilter}\nA(tumor)-->D4{fpfilter}\nB(normal)-->D4{fpfilter}\nS{prep_ref}-->|prepped_ref|D4{fpfilter}\nI(tumorID)-->D4{fpfilter}\nJ(normalID)-->D4{fpfilter}\nD4{fpfilter}-->Q((radiaVCF))\nD4{fpfilter}-->L((somaticsniperVCF))\nD4{fpfilter}-->M((varscansVCF))\nD4{fpfilter}-->O((museVCF))\nD4{fpfilter}-->K((pindelVCF))\nD4{fpfilter}-->R((indelocatorVCF))"},"evals":[],"jsHooks":[]}</script>
 <ol start="2" style="list-style-type: decimal">
 <li><code>covert</code>: To merge VCFs and convert to MAF:</li>
 </ol>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="application.html#cb130-1"></a>conv &lt;-<span class="st"> </span><span class="kw">readCWL</span>(<span class="kw">runs</span>(mc3)<span class="op">$</span>convert)</span>
 <span id="cb130-2"><a href="application.html#cb130-2"></a><span class="kw">plotCWL</span>(conv)</span></code></pre></div>
-<div id="htmlwidget-bc50b9fcfeed929e8158" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bc50b9fcfeed929e8158">{"x":{"diagram":"graph TB\nC(museVCF)-->W{sort_muse}\nW{sort_muse}-->|output_vcf|X{standardize_muse}\nK(refFasta)-->X{standardize_muse}\nB(tumorID)-->X{standardize_muse}\nA(normalID)-->X{standardize_muse}\nD(mutectVCF)-->Y{sort_mutect}\nY{sort_mutect}-->|output_vcf|Z{standardize_mutect}\nK(refFasta)-->Z{standardize_mutect}\nB(tumorID)-->Z{standardize_mutect}\nA(normalID)-->Z{standardize_mutect}\nE(somaticsniperVCF)-->A1{sort_somaticsniper}\nA1{sort_somaticsniper}-->|output_vcf|B2{standardize_somaticsniper}\nK(refFasta)-->B2{standardize_somaticsniper}\nB(tumorID)-->B2{standardize_somaticsniper}\nA(normalID)-->B2{standardize_somaticsniper}\nF(varscansVCF)-->C3{sort_varscans}\nC3{sort_varscans}-->|output_vcf|D4{standardize_varscans}\nK(refFasta)-->D4{standardize_varscans}\nB(tumorID)-->D4{standardize_varscans}\nA(normalID)-->D4{standardize_varscans}\nG(varscaniVCF)-->E5{sort_varscani}\nE5{sort_varscani}-->|output_vcf|F6{standardize_varscani}\nK(refFasta)-->F6{standardize_varscani}\nB(tumorID)-->F6{standardize_varscani}\nA(normalID)-->F6{standardize_varscani}\nH(radiaVCF)-->G7{sort_radia}\nG7{sort_radia}-->|output_vcf|H8{standardize_radia}\nK(refFasta)-->H8{standardize_radia}\nB(tumorID)-->H8{standardize_radia}\nA(normalID)-->H8{standardize_radia}\nJ(indelocatorVCF)-->I9{sort_indelocator}\nI9{sort_indelocator}-->|output_vcf|J10{standardize_indelocator}\nK(refFasta)-->J10{standardize_indelocator}\nB(tumorID)-->J10{standardize_indelocator}\nA(normalID)-->J10{standardize_indelocator}\nI(pindelVCF)-->K11{sort_pindel}\nK11{sort_pindel}-->|output_vcf|L12{standardize_pindel}\nK(refFasta)-->L12{standardize_pindel}\nB(tumorID)-->L12{standardize_pindel}\nA(normalID)-->L12{standardize_pindel}\nX{standardize_muse}-->|vcf|M13{rehead_vcfs}\nZ{standardize_mutect}-->|vcf|M13{rehead_vcfs}\nB2{standardize_somaticsniper}-->|vcf|M13{rehead_vcfs}\nF6{standardize_varscani}-->|vcf|M13{rehead_vcfs}\nD4{standardize_varscans}-->|vcf|M13{rehead_vcfs}\nH8{standardize_radia}-->|vcf|M13{rehead_vcfs}\nL12{standardize_pindel}-->|vcf|M13{rehead_vcfs}\nJ10{standardize_indelocator}-->|vcf|M13{rehead_vcfs}\nM(tumor_analysis_uuid)-->M13{rehead_vcfs}\nN(tumor_bam_name)-->M13{rehead_vcfs}\nO(tumor_aliquot_uuid)-->M13{rehead_vcfs}\nB(tumorID)-->M13{rehead_vcfs}\nP(normal_analysis_uuid)-->M13{rehead_vcfs}\nQ(normal_bam_name)-->M13{rehead_vcfs}\nR(normal_aliquot_uuid)-->M13{rehead_vcfs}\nA(normalID)-->M13{rehead_vcfs}\nS(platform)-->M13{rehead_vcfs}\nT(center)-->M13{rehead_vcfs}\nM13{rehead_vcfs}-->|reheaded_muse|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_mutect|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_somsniper|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_varscans|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_varscani|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_radia|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_indelocator|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_pindel|N14{merge_vcf}\nN14{merge_vcf}-->|output_vcf|O15{vcf2maf}\nK(refFasta)-->O15{vcf2maf}\nL(vepData)-->O15{vcf2maf}\nB(tumorID)-->O15{vcf2maf}\nA(normalID)-->O15{vcf2maf}\nO15{vcf2maf}-->U((outmaf))\nO15{vcf2maf}-->V((vepvcf))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f5481281eadc8989edb1" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f5481281eadc8989edb1">{"x":{"diagram":"graph TB\nC(museVCF)-->W{sort_muse}\nW{sort_muse}-->|output_vcf|X{standardize_muse}\nK(refFasta)-->X{standardize_muse}\nB(tumorID)-->X{standardize_muse}\nA(normalID)-->X{standardize_muse}\nD(mutectVCF)-->Y{sort_mutect}\nY{sort_mutect}-->|output_vcf|Z{standardize_mutect}\nK(refFasta)-->Z{standardize_mutect}\nB(tumorID)-->Z{standardize_mutect}\nA(normalID)-->Z{standardize_mutect}\nE(somaticsniperVCF)-->A1{sort_somaticsniper}\nA1{sort_somaticsniper}-->|output_vcf|B2{standardize_somaticsniper}\nK(refFasta)-->B2{standardize_somaticsniper}\nB(tumorID)-->B2{standardize_somaticsniper}\nA(normalID)-->B2{standardize_somaticsniper}\nF(varscansVCF)-->C3{sort_varscans}\nC3{sort_varscans}-->|output_vcf|D4{standardize_varscans}\nK(refFasta)-->D4{standardize_varscans}\nB(tumorID)-->D4{standardize_varscans}\nA(normalID)-->D4{standardize_varscans}\nG(varscaniVCF)-->E5{sort_varscani}\nE5{sort_varscani}-->|output_vcf|F6{standardize_varscani}\nK(refFasta)-->F6{standardize_varscani}\nB(tumorID)-->F6{standardize_varscani}\nA(normalID)-->F6{standardize_varscani}\nH(radiaVCF)-->G7{sort_radia}\nG7{sort_radia}-->|output_vcf|H8{standardize_radia}\nK(refFasta)-->H8{standardize_radia}\nB(tumorID)-->H8{standardize_radia}\nA(normalID)-->H8{standardize_radia}\nJ(indelocatorVCF)-->I9{sort_indelocator}\nI9{sort_indelocator}-->|output_vcf|J10{standardize_indelocator}\nK(refFasta)-->J10{standardize_indelocator}\nB(tumorID)-->J10{standardize_indelocator}\nA(normalID)-->J10{standardize_indelocator}\nI(pindelVCF)-->K11{sort_pindel}\nK11{sort_pindel}-->|output_vcf|L12{standardize_pindel}\nK(refFasta)-->L12{standardize_pindel}\nB(tumorID)-->L12{standardize_pindel}\nA(normalID)-->L12{standardize_pindel}\nX{standardize_muse}-->|vcf|M13{rehead_vcfs}\nZ{standardize_mutect}-->|vcf|M13{rehead_vcfs}\nB2{standardize_somaticsniper}-->|vcf|M13{rehead_vcfs}\nF6{standardize_varscani}-->|vcf|M13{rehead_vcfs}\nD4{standardize_varscans}-->|vcf|M13{rehead_vcfs}\nH8{standardize_radia}-->|vcf|M13{rehead_vcfs}\nL12{standardize_pindel}-->|vcf|M13{rehead_vcfs}\nJ10{standardize_indelocator}-->|vcf|M13{rehead_vcfs}\nM(tumor_analysis_uuid)-->M13{rehead_vcfs}\nN(tumor_bam_name)-->M13{rehead_vcfs}\nO(tumor_aliquot_uuid)-->M13{rehead_vcfs}\nB(tumorID)-->M13{rehead_vcfs}\nP(normal_analysis_uuid)-->M13{rehead_vcfs}\nQ(normal_bam_name)-->M13{rehead_vcfs}\nR(normal_aliquot_uuid)-->M13{rehead_vcfs}\nA(normalID)-->M13{rehead_vcfs}\nS(platform)-->M13{rehead_vcfs}\nT(center)-->M13{rehead_vcfs}\nM13{rehead_vcfs}-->|reheaded_muse|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_mutect|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_somsniper|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_varscans|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_varscani|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_radia|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_indelocator|N14{merge_vcf}\nM13{rehead_vcfs}-->|reheaded_pindel|N14{merge_vcf}\nN14{merge_vcf}-->|output_vcf|O15{vcf2maf}\nK(refFasta)-->O15{vcf2maf}\nL(vepData)-->O15{vcf2maf}\nB(tumorID)-->O15{vcf2maf}\nA(normalID)-->O15{vcf2maf}\nO15{vcf2maf}-->U((outmaf))\nO15{vcf2maf}-->V((vepvcf))"},"evals":[],"jsHooks":[]}</script>
 <p>The merged VCF and converted MAF files will be collected to the output
 folder:</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="application.html#cb131-1"></a><span class="kw">outputs</span>(mc3)</span></code></pre></div>
@@ -1241,16 +1249,18 @@ of germline variants will be generated.</p>
         </div>
       </div>
 <a href="run-approaches.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="variant-calling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dna-seq-variant-calling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

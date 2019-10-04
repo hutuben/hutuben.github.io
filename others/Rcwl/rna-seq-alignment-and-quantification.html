@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 RNA-Seq alignment and quantification | Bioinformatics tools and pipelines using R and CWL</title>
   <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 RNA-Seq alignment and quantification | Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -25,14 +25,14 @@
 <meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-09-26" />
+<meta name="date" content="2019-10-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="variant-calling.html"/>
+<link rel="prev" href="dna-seq-variant-calling.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -41,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -199,19 +202,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.3" data-path="application.html"><a href="application.html#joint-discovery"><i class="fa fa-check"></i><b>5.6.3</b> Joint Discovery</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="variant-calling.html"><a href="variant-calling.html"><i class="fa fa-check"></i><b>6</b> Variant calling</a><ul>
-<li class="chapter" data-level="6.1" data-path="variant-calling.html"><a href="variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
-<li class="chapter" data-level="6.2" data-path="variant-calling.html"><a href="variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
-<li class="chapter" data-level="6.3" data-path="variant-calling.html"><a href="variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="variant-calling.html"><a href="variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
-<li class="chapter" data-level="6.3.2" data-path="variant-calling.html"><a href="variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
-<li class="chapter" data-level="6.3.3" data-path="variant-calling.html"><a href="variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
-<li class="chapter" data-level="6.3.4" data-path="variant-calling.html"><a href="variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
-<li class="chapter" data-level="6.3.5" data-path="variant-calling.html"><a href="variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
-<li class="chapter" data-level="6.3.6" data-path="variant-calling.html"><a href="variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
-<li class="chapter" data-level="6.3.7" data-path="variant-calling.html"><a href="variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
-<li class="chapter" data-level="6.3.8" data-path="variant-calling.html"><a href="variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
-<li class="chapter" data-level="6.3.9" data-path="variant-calling.html"><a href="variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+<li class="chapter" data-level="6" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html"><i class="fa fa-check"></i><b>6</b> DNA-Seq Variant calling</a><ul>
+<li class="chapter" data-level="6.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
+<li class="chapter" data-level="6.3" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
+<li class="chapter" data-level="6.3.2" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
+<li class="chapter" data-level="6.3.3" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
+<li class="chapter" data-level="6.3.4" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
+<li class="chapter" data-level="6.3.5" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
+<li class="chapter" data-level="6.3.6" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
+<li class="chapter" data-level="6.3.7" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
+<li class="chapter" data-level="6.3.8" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
+<li class="chapter" data-level="6.3.9" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+<li class="chapter" data-level="6.3.10" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#combined-somatic-caller-pipeline"><i class="fa fa-check"></i><b>6.3.10</b> Combined somatic caller pipeline</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html"><i class="fa fa-check"></i><b>7</b> RNA-Seq alignment and quantification</a><ul>
@@ -246,9 +250,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="rna-seq-alignment-and-quantification" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> RNA-Seq alignment and quantification</h1>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="rna-seq-alignment-and-quantification.html#cb183-1"></a><span class="kw">library</span>(RcwlPipelines)</span>
-<span id="cb183-2"><a href="rna-seq-alignment-and-quantification.html#cb183-2"></a><span class="kw">library</span>(BiocParallel)</span>
-<span id="cb183-3"><a href="rna-seq-alignment-and-quantification.html#cb183-3"></a><span class="kw">library</span>(fs)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="rna-seq-alignment-and-quantification.html#cb218-1"></a><span class="kw">library</span>(RcwlPipelines)</span>
+<span id="cb218-2"><a href="rna-seq-alignment-and-quantification.html#cb218-2"></a><span class="kw">library</span>(BiocParallel)</span>
+<span id="cb218-3"><a href="rna-seq-alignment-and-quantification.html#cb218-3"></a><span class="kw">library</span>(fs)</span></code></pre></div>
 <div id="bulk-mrna" class="section level2">
 <h2><span class="header-section-number">7.1</span> bulk mRNA</h2>
 </div>
@@ -261,12 +265,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mirna" class="section level2">
 <h2><span class="header-section-number">7.4</span> miRNA</h2>
 <p>The <code>miRDeep2</code> is one of the popular tools for discovering known and novel miRNAs from small RNA sequencing data. We wrapped the mapping and quantification steps into <code>miRDeep2PL</code>. Here is the instructions for <code>miRDeep2</code>: <a href="https://github.com/rajewsky-lab/mirdeep2" class="uri">https://github.com/rajewsky-lab/mirdeep2</a>.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="rna-seq-alignment-and-quantification.html#cb184-1"></a><span class="kw">plotCWL</span>(miRDeep2PL)</span></code></pre></div>
-<div id="htmlwidget-3aa5173a307f2e99b8d9" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3aa5173a307f2e99b8d9">{"x":{"diagram":"graph TB\nA(reads)-->R{Mapper}\nB(format)-->R{Mapper}\nC(adapter)-->R{Mapper}\nE(genome)-->R{Mapper}\nR{Mapper}-->P((preads))\nR{Mapper}-->Q((arf))\nP((preads))-->S{miRDeep2}\nE(genome)-->S{miRDeep2}\nQ((arf))-->S{miRDeep2}\nF(miRef)-->S{miRDeep2}\nG(miOther)-->S{miRDeep2}\nH(precursors)-->S{miRDeep2}\nI(species)-->S{miRDeep2}\nS{miRDeep2}-->J((csvfiles))\nS{miRDeep2}-->K((htmls))\nS{miRDeep2}-->L((bed))\nS{miRDeep2}-->M((expression))\nS{miRDeep2}-->N((mirna_results))\nS{miRDeep2}-->O((pdfs))"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="rna-seq-alignment-and-quantification.html#cb219-1"></a><span class="kw">plotCWL</span>(miRDeep2PL)</span></code></pre></div>
+<div id="htmlwidget-958121800c921e741fbe" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-958121800c921e741fbe">{"x":{"diagram":"graph TB\nA(reads)-->R{Mapper}\nB(format)-->R{Mapper}\nC(adapter)-->R{Mapper}\nE(genome)-->R{Mapper}\nR{Mapper}-->P((preads))\nR{Mapper}-->Q((arf))\nP((preads))-->S{miRDeep2}\nE(genome)-->S{miRDeep2}\nQ((arf))-->S{miRDeep2}\nF(miRef)-->S{miRDeep2}\nG(miOther)-->S{miRDeep2}\nH(precursors)-->S{miRDeep2}\nI(species)-->S{miRDeep2}\nS{miRDeep2}-->J((csvfiles))\nS{miRDeep2}-->K((htmls))\nS{miRDeep2}-->L((bed))\nS{miRDeep2}-->M((expression))\nS{miRDeep2}-->N((mirna_results))\nS{miRDeep2}-->O((pdfs))"},"evals":[],"jsHooks":[]}</script>
 <p>We use the data from <code>mirdeep2</code> github repository as an example.
 <a href="https://github.com/rajewsky-lab/mirdeep2/tree/master/tutorial_dir" class="uri">https://github.com/rajewsky-lab/mirdeep2/tree/master/tutorial_dir</a></p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="rna-seq-alignment-and-quantification.html#cb185-1"></a><span class="kw">list.files</span>(<span class="st">&quot;apps/miRNA/tutorial_dir&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="rna-seq-alignment-and-quantification.html#cb220-1"></a><span class="kw">list.files</span>(<span class="st">&quot;apps/miRNA/tutorial_dir&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;cel_cluster.fa&quot;                 &quot;mature_ref_other_species.fa&quot;   
 ## [3] &quot;mature_ref_this_species.fa&quot;     &quot;precursors_ref_this_species.fa&quot;
 ## [5] &quot;reads_collapsed.fa&quot;             &quot;reads.fa&quot;                      
@@ -274,12 +278,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="prepare-reference" class="section level3">
 <h3><span class="header-section-number">7.4.1</span> Prepare reference</h3>
 <p>First, we need to build indexes for the miRNA reference with <code>bowtie-build</code>. This is only required to be performed once for each refernce genome.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="rna-seq-alignment-and-quantification.html#cb187-1"></a>bowtie_build<span class="op">$</span>ref &lt;-<span class="st"> &quot;apps/miRNA/tutorial_dir/cel_cluster.fa&quot;</span></span>
-<span id="cb187-2"><a href="rna-seq-alignment-and-quantification.html#cb187-2"></a>bowtie_build<span class="op">$</span>outPrefix &lt;-<span class="st"> &quot;cel_cluster&quot;</span></span>
-<span id="cb187-3"><a href="rna-seq-alignment-and-quantification.html#cb187-3"></a>idxRes &lt;-<span class="st"> </span><span class="kw">runCWL</span>(bowtie_build, <span class="dt">outdir =</span> <span class="st">&quot;apps/miRNA/output/genome&quot;</span>, <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb187-4"><a href="rna-seq-alignment-and-quantification.html#cb187-4"></a><span class="kw">file.copy</span>(<span class="st">&quot;apps/miRNA/tutorial_dir/cel_cluster.fa&quot;</span>, <span class="st">&quot;apps/miRNA/output/genome/cel_cluster.fa&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="rna-seq-alignment-and-quantification.html#cb222-1"></a>bowtie_build<span class="op">$</span>ref &lt;-<span class="st"> &quot;apps/miRNA/tutorial_dir/cel_cluster.fa&quot;</span></span>
+<span id="cb222-2"><a href="rna-seq-alignment-and-quantification.html#cb222-2"></a>bowtie_build<span class="op">$</span>outPrefix &lt;-<span class="st"> &quot;cel_cluster&quot;</span></span>
+<span id="cb222-3"><a href="rna-seq-alignment-and-quantification.html#cb222-3"></a>idxRes &lt;-<span class="st"> </span><span class="kw">runCWL</span>(bowtie_build, <span class="dt">outdir =</span> <span class="st">&quot;apps/miRNA/output/genome&quot;</span>, <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb222-4"><a href="rna-seq-alignment-and-quantification.html#cb222-4"></a><span class="kw">file.copy</span>(<span class="st">&quot;apps/miRNA/tutorial_dir/cel_cluster.fa&quot;</span>, <span class="st">&quot;apps/miRNA/output/genome/cel_cluster.fa&quot;</span>)</span></code></pre></div>
 <p>Here are the indexed reference files.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="rna-seq-alignment-and-quantification.html#cb188-1"></a><span class="kw">dir_info</span>(<span class="st">&quot;apps/miRNA/output/genome&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(path, size)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="rna-seq-alignment-and-quantification.html#cb223-1"></a><span class="kw">dir_info</span>(<span class="st">&quot;apps/miRNA/output/genome&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(path, size)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 2
 ##   path                                                   size
 ##   &lt;fs::path&gt;                                      &lt;fs::bytes&gt;
@@ -294,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="run-mirdeep2-pipeline" class="section level3">
 <h3><span class="header-section-number">7.4.2</span> Run miRDeep2 pipeline</h3>
 <p>First we need to prepare the inputs into ‘inputList’ and ‘paramList’ for parallel execution.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="rna-seq-alignment-and-quantification.html#cb190-1"></a><span class="kw">inputs</span>(miRDeep2PL)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="rna-seq-alignment-and-quantification.html#cb225-1"></a><span class="kw">inputs</span>(miRDeep2PL)</span></code></pre></div>
 <pre><code>## inputs:
 ##   reads (File):  
 ##   format (string):  -c
@@ -306,27 +310,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   precursors  ( File|string ): 
 ##   species (string):</code></pre>
 <p>To mimic multiple samples analysis, here we just repeat to use the input reads.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="rna-seq-alignment-and-quantification.html#cb192-1"></a>reads &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/reads.fa&quot;</span>,</span>
-<span id="cb192-2"><a href="rna-seq-alignment-and-quantification.html#cb192-2"></a>              <span class="dt">sample2 =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/reads.fa&quot;</span>)</span>
-<span id="cb192-3"><a href="rna-seq-alignment-and-quantification.html#cb192-3"></a></span>
-<span id="cb192-4"><a href="rna-seq-alignment-and-quantification.html#cb192-4"></a>inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">reads =</span> reads)</span>
-<span id="cb192-5"><a href="rna-seq-alignment-and-quantification.html#cb192-5"></a>paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">adapter =</span> <span class="st">&quot;TCGTATGCCGTCTTCTGCTTGT&quot;</span>,</span>
-<span id="cb192-6"><a href="rna-seq-alignment-and-quantification.html#cb192-6"></a>                  <span class="dt">genome =</span> <span class="st">&quot;apps/miRNA/output/genome/cel_cluster.fa&quot;</span>,</span>
-<span id="cb192-7"><a href="rna-seq-alignment-and-quantification.html#cb192-7"></a>                  <span class="dt">miRef =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/mature_ref_this_species.fa&quot;</span>,</span>
-<span id="cb192-8"><a href="rna-seq-alignment-and-quantification.html#cb192-8"></a>                  <span class="dt">miOther =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/mature_ref_other_species.fa&quot;</span>,</span>
-<span id="cb192-9"><a href="rna-seq-alignment-and-quantification.html#cb192-9"></a>                  <span class="dt">precursors =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/precursors_ref_this_species.fa&quot;</span>,</span>
-<span id="cb192-10"><a href="rna-seq-alignment-and-quantification.html#cb192-10"></a>                  <span class="dt">species =</span> <span class="st">&quot;C.elegans&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="rna-seq-alignment-and-quantification.html#cb227-1"></a>reads &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/reads.fa&quot;</span>,</span>
+<span id="cb227-2"><a href="rna-seq-alignment-and-quantification.html#cb227-2"></a>              <span class="dt">sample2 =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/reads.fa&quot;</span>)</span>
+<span id="cb227-3"><a href="rna-seq-alignment-and-quantification.html#cb227-3"></a></span>
+<span id="cb227-4"><a href="rna-seq-alignment-and-quantification.html#cb227-4"></a>inputList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">reads =</span> reads)</span>
+<span id="cb227-5"><a href="rna-seq-alignment-and-quantification.html#cb227-5"></a>paramList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">adapter =</span> <span class="st">&quot;TCGTATGCCGTCTTCTGCTTGT&quot;</span>,</span>
+<span id="cb227-6"><a href="rna-seq-alignment-and-quantification.html#cb227-6"></a>                  <span class="dt">genome =</span> <span class="st">&quot;apps/miRNA/output/genome/cel_cluster.fa&quot;</span>,</span>
+<span id="cb227-7"><a href="rna-seq-alignment-and-quantification.html#cb227-7"></a>                  <span class="dt">miRef =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/mature_ref_this_species.fa&quot;</span>,</span>
+<span id="cb227-8"><a href="rna-seq-alignment-and-quantification.html#cb227-8"></a>                  <span class="dt">miOther =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/mature_ref_other_species.fa&quot;</span>,</span>
+<span id="cb227-9"><a href="rna-seq-alignment-and-quantification.html#cb227-9"></a>                  <span class="dt">precursors =</span> <span class="st">&quot;apps/miRNA/tutorial_dir/precursors_ref_this_species.fa&quot;</span>,</span>
+<span id="cb227-10"><a href="rna-seq-alignment-and-quantification.html#cb227-10"></a>                  <span class="dt">species =</span> <span class="st">&quot;C.elegans&quot;</span>)</span></code></pre></div>
 <p>Let’s run the pipeline with two computing nodes.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="rna-seq-alignment-and-quantification.html#cb193-1"></a>mirRes &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(miRDeep2PL, <span class="dt">outdir =</span> <span class="st">&quot;apps/miRNA/output/&quot;</span>, inputList, paramList,</span>
-<span id="cb193-2"><a href="rna-seq-alignment-and-quantification.html#cb193-2"></a>                      <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">2</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</span>
-<span id="cb193-3"><a href="rna-seq-alignment-and-quantification.html#cb193-3"></a>                                                <span class="dt">template =</span> <span class="st">&quot;apps/data/sge.tmpl&quot;</span>,</span>
-<span id="cb193-4"><a href="rna-seq-alignment-and-quantification.html#cb193-4"></a>                                                <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">jobname =</span> <span class="st">&quot;miRNA&quot;</span>,</span>
-<span id="cb193-5"><a href="rna-seq-alignment-and-quantification.html#cb193-5"></a>                                                                 <span class="dt">queue =</span> <span class="st">&quot;all.q&quot;</span>,</span>
-<span id="cb193-6"><a href="rna-seq-alignment-and-quantification.html#cb193-6"></a>                                                                 <span class="dt">threads =</span> <span class="dv">2</span>),</span>
-<span id="cb193-7"><a href="rna-seq-alignment-and-quantification.html#cb193-7"></a>                                                <span class="dt">log=</span><span class="ot">TRUE</span>, <span class="dt">logdir=</span><span class="st">&quot;.&quot;</span>, <span class="dt">progressbar =</span> T),</span>
-<span id="cb193-8"><a href="rna-seq-alignment-and-quantification.html#cb193-8"></a>                      <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="rna-seq-alignment-and-quantification.html#cb228-1"></a>mirRes &lt;-<span class="st"> </span><span class="kw">runCWLBatch</span>(miRDeep2PL, <span class="dt">outdir =</span> <span class="st">&quot;apps/miRNA/output/&quot;</span>, inputList, paramList,</span>
+<span id="cb228-2"><a href="rna-seq-alignment-and-quantification.html#cb228-2"></a>                      <span class="dt">BPPARAM =</span> <span class="kw">BatchtoolsParam</span>(<span class="dt">workers =</span> <span class="dv">2</span>, <span class="dt">cluster =</span> <span class="st">&quot;sge&quot;</span>,</span>
+<span id="cb228-3"><a href="rna-seq-alignment-and-quantification.html#cb228-3"></a>                                                <span class="dt">template =</span> <span class="st">&quot;apps/data/sge.tmpl&quot;</span>,</span>
+<span id="cb228-4"><a href="rna-seq-alignment-and-quantification.html#cb228-4"></a>                                                <span class="dt">resources =</span> <span class="kw">list</span>(<span class="dt">jobname =</span> <span class="st">&quot;miRNA&quot;</span>,</span>
+<span id="cb228-5"><a href="rna-seq-alignment-and-quantification.html#cb228-5"></a>                                                                 <span class="dt">queue =</span> <span class="st">&quot;all.q&quot;</span>,</span>
+<span id="cb228-6"><a href="rna-seq-alignment-and-quantification.html#cb228-6"></a>                                                                 <span class="dt">threads =</span> <span class="dv">2</span>),</span>
+<span id="cb228-7"><a href="rna-seq-alignment-and-quantification.html#cb228-7"></a>                                                <span class="dt">log=</span><span class="ot">TRUE</span>, <span class="dt">logdir=</span><span class="st">&quot;.&quot;</span>, <span class="dt">progressbar =</span> T),</span>
+<span id="cb228-8"><a href="rna-seq-alignment-and-quantification.html#cb228-8"></a>                      <span class="dt">stderr =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>Here are the results:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="rna-seq-alignment-and-quantification.html#cb194-1"></a><span class="kw">dir_info</span>(<span class="st">&quot;apps/miRNA/output/sample1&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(path, size)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="rna-seq-alignment-and-quantification.html#cb229-1"></a><span class="kw">dir_info</span>(<span class="st">&quot;apps/miRNA/output/sample1&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(path, size)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 2
 ##    path                                                                size
 ##    &lt;fs::path&gt;                                                    &lt;fs::byte&gt;
@@ -349,17 +353,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="variant-calling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dna-seq-variant-calling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

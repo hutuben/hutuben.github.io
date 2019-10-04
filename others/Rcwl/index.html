@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Bioinformatics tools and pipelines using R and CWL</title>
   <meta name="description" content="A manual to wrap Bioinformatics tools and workflows with Common Workflow Language using the Rcwl package." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Bioinformatics tools and pipelines using R and CWL" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-09-26" />
+<meta name="date" content="2019-10-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -199,19 +202,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.3" data-path="application.html"><a href="application.html#joint-discovery"><i class="fa fa-check"></i><b>5.6.3</b> Joint Discovery</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="variant-calling.html"><a href="variant-calling.html"><i class="fa fa-check"></i><b>6</b> Variant calling</a><ul>
-<li class="chapter" data-level="6.1" data-path="variant-calling.html"><a href="variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
-<li class="chapter" data-level="6.2" data-path="variant-calling.html"><a href="variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
-<li class="chapter" data-level="6.3" data-path="variant-calling.html"><a href="variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="variant-calling.html"><a href="variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
-<li class="chapter" data-level="6.3.2" data-path="variant-calling.html"><a href="variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
-<li class="chapter" data-level="6.3.3" data-path="variant-calling.html"><a href="variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
-<li class="chapter" data-level="6.3.4" data-path="variant-calling.html"><a href="variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
-<li class="chapter" data-level="6.3.5" data-path="variant-calling.html"><a href="variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
-<li class="chapter" data-level="6.3.6" data-path="variant-calling.html"><a href="variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
-<li class="chapter" data-level="6.3.7" data-path="variant-calling.html"><a href="variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
-<li class="chapter" data-level="6.3.8" data-path="variant-calling.html"><a href="variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
-<li class="chapter" data-level="6.3.9" data-path="variant-calling.html"><a href="variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+<li class="chapter" data-level="6" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html"><i class="fa fa-check"></i><b>6</b> DNA-Seq Variant calling</a><ul>
+<li class="chapter" data-level="6.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#dna-alignment"><i class="fa fa-check"></i><b>6.1</b> DNA alignment</a></li>
+<li class="chapter" data-level="6.2" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#germline-variant-calling"><i class="fa fa-check"></i><b>6.2</b> Germline variant calling</a></li>
+<li class="chapter" data-level="6.3" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#somatic-mutation-calling"><i class="fa fa-check"></i><b>6.3</b> Somatic mutation calling</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#mutect2"><i class="fa fa-check"></i><b>6.3.1</b> MuTect2</a></li>
+<li class="chapter" data-level="6.3.2" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#muse"><i class="fa fa-check"></i><b>6.3.2</b> MuSE</a></li>
+<li class="chapter" data-level="6.3.3" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#strelka2"><i class="fa fa-check"></i><b>6.3.3</b> Strelka2</a></li>
+<li class="chapter" data-level="6.3.4" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#somaticsniper"><i class="fa fa-check"></i><b>6.3.4</b> SomaticSniper</a></li>
+<li class="chapter" data-level="6.3.5" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#vardict"><i class="fa fa-check"></i><b>6.3.5</b> VarDict</a></li>
+<li class="chapter" data-level="6.3.6" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#lofreq"><i class="fa fa-check"></i><b>6.3.6</b> LoFreq</a></li>
+<li class="chapter" data-level="6.3.7" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#varscan2"><i class="fa fa-check"></i><b>6.3.7</b> VarScan2</a></li>
+<li class="chapter" data-level="6.3.8" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#lancet"><i class="fa fa-check"></i><b>6.3.8</b> Lancet</a></li>
+<li class="chapter" data-level="6.3.9" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
+<li class="chapter" data-level="6.3.10" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#combined-somatic-caller-pipeline"><i class="fa fa-check"></i><b>6.3.10</b> Combined somatic caller pipeline</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html"><i class="fa fa-check"></i><b>7</b> RNA-Seq alignment and quantification</a><ul>
@@ -248,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Bioinformatics tools and pipelines using R and CWL</h1>
 <p class="author"><em>Qiang Hu</em></p>
 <p class="author"><em>Qian Liu</em></p>
-<p class="date"><em>2019-09-26</em></p>
+<p class="date"><em>2019-10-04</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
@@ -317,45 +321,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] jsonlite_1.6         dplyr_0.8.3          bookdown_0.13       
-##  [4] BiocParallel_1.18.1  fs_1.3.1             RcwlPipelines_1.1.12
-##  [7] testthat_2.2.1       BiocFileCache_1.8.0  dbplyr_1.4.2        
-## [10] Rcwl_1.1.13          S4Vectors_0.22.1     BiocGenerics_0.30.0 
-## [13] yaml_2.2.0           devtools_2.2.1       usethis_1.5.1       
+##  [1] bookdown_0.14                          
+##  [2] RcwlPipelines_1.1.12                   
+##  [3] conflicted_1.0.4                       
+##  [4] TxDb.Hsapiens.UCSC.hg19.knownGene_3.2.2
+##  [5] GenomicFeatures_1.36.4                 
+##  [6] AnnotationDbi_1.46.1                   
+##  [7] Biobase_2.44.0                         
+##  [8] GenomicRanges_1.36.1                   
+##  [9] GenomeInfoDb_1.20.0                    
+## [10] IRanges_2.18.3                         
+## [11] testthat_2.2.1                         
+## [12] jsonlite_1.6                           
+## [13] dplyr_0.8.3                            
+## [14] fs_1.3.1                               
+## [15] BiocParallel_1.18.1                    
+## [16] devtools_2.2.1                         
+## [17] usethis_1.5.1                          
+## [18] BiocFileCache_1.8.0                    
+## [19] dbplyr_1.4.2                           
+## [20] Rcwl_1.1.13                            
+## [21] S4Vectors_0.22.1                       
+## [22] BiocGenerics_0.30.0                    
+## [23] yaml_2.2.0                             
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] colorspace_1.4-1   ellipsis_0.3.0     rprojroot_1.3-2   
-##  [4] rstudioapi_0.10    roxygen2_6.1.1     remotes_2.1.0     
-##  [7] bit64_0.9-7        fansi_0.4.0        xml2_1.2.2        
-## [10] codetools_0.2-16   R.methodsS3_1.7.1  knitr_1.25        
-## [13] pkgload_1.0.2      zeallot_0.1.0      R.oo_1.22.0       
-## [16] shiny_1.3.2        DiagrammeR_1.0.1   readr_1.3.1       
-## [19] compiler_3.6.1     httr_1.4.1         backports_1.1.4   
-## [22] assertthat_0.2.1   lazyeval_0.2.2     cli_1.1.0         
-## [25] later_0.8.0        visNetwork_2.0.8   htmltools_0.3.6   
-## [28] prettyunits_1.0.2  tools_3.6.1        igraph_1.2.4.1    
-## [31] gtable_0.3.0       glue_1.3.1         batchtools_0.9.11 
-## [34] rappdirs_0.3.1     Rcpp_1.0.2         rgexf_0.15.3      
-## [37] xopen_1.0.0        vctrs_0.2.0        xfun_0.9          
-## [40] stringr_1.4.0      ps_1.3.0           mime_0.7          
-## [43] lifecycle_0.1.0    XML_3.98-1.20      scales_1.0.0      
-## [46] hms_0.5.1          promises_1.0.1     RColorBrewer_1.1-2
-## [49] curl_4.2           memoise_1.1.0      gridExtra_2.3     
-## [52] ggplot2_3.2.1      downloader_0.4     rcmdcheck_1.3.3   
-## [55] stringi_1.4.3      RSQLite_2.1.2      highr_0.8         
-## [58] Rook_1.1-1         desc_1.2.0         checkmate_1.9.4   
-## [61] pkgbuild_1.0.5     rlang_0.4.0        pkgconfig_2.0.3   
-## [64] commonmark_1.7     evaluate_0.14      purrr_0.3.2       
-## [67] htmlwidgets_1.3    bit_1.1-14         processx_3.4.1    
-## [70] tidyselect_0.2.5   magrittr_1.5       R6_2.4.0          
-## [73] base64url_1.4      DBI_1.0.0          pillar_1.4.2      
-## [76] withr_2.1.2        tibble_2.1.3       crayon_1.3.4      
-## [79] utf8_1.1.4         rmarkdown_1.15     viridis_0.5.1     
-## [82] progress_1.2.2     grid_3.6.1         data.table_1.12.2 
-## [85] blob_1.2.0         callr_3.3.2        influenceR_0.1.0  
-## [88] digest_0.6.21      xtable_1.8-4       tidyr_1.0.0       
-## [91] httpuv_1.5.2       brew_1.0-6         R.utils_2.9.0     
-## [94] munsell_0.5.0      viridisLite_0.3.0  sessioninfo_1.1.1</code></pre>
+##   [1] backports_1.1.4             igraph_1.2.4.1             
+##   [3] lazyeval_0.2.2              ggplot2_3.2.1              
+##   [5] digest_0.6.21               htmltools_0.3.6            
+##   [7] viridis_0.5.1               fansi_0.4.0                
+##   [9] magrittr_1.5                checkmate_1.9.4            
+##  [11] memoise_1.1.0               base64url_1.4              
+##  [13] remotes_2.1.0               Biostrings_2.52.0          
+##  [15] readr_1.3.1                 matrixStats_0.55.0         
+##  [17] R.utils_2.9.0               prettyunits_1.0.2          
+##  [19] colorspace_1.4-1            blob_1.2.0                 
+##  [21] rappdirs_0.3.1              xfun_0.10                  
+##  [23] callr_3.3.2                 crayon_1.3.4               
+##  [25] RCurl_1.95-4.12             roxygen2_6.1.1             
+##  [27] zeallot_0.1.0               brew_1.0-6                 
+##  [29] glue_1.3.1                  gtable_0.3.0               
+##  [31] zlibbioc_1.30.0             XVector_0.24.0             
+##  [33] DelayedArray_0.10.0         pkgbuild_1.0.5             
+##  [35] Rook_1.1-1                  scales_1.0.0               
+##  [37] DBI_1.0.0                   Rcpp_1.0.2                 
+##  [39] viridisLite_0.3.0           xtable_1.8-4               
+##  [41] progress_1.2.2              bit_1.1-14                 
+##  [43] htmlwidgets_1.3             httr_1.4.1                 
+##  [45] DiagrammeR_1.0.1            RColorBrewer_1.1-2         
+##  [47] ellipsis_0.3.0              pkgconfig_2.0.3            
+##  [49] XML_3.98-1.20               R.methodsS3_1.7.1          
+##  [51] utf8_1.1.4                  tidyselect_0.2.5           
+##  [53] rlang_0.4.0                 later_0.8.0                
+##  [55] munsell_0.5.0               tools_3.6.1                
+##  [57] visNetwork_2.0.8            downloader_0.4             
+##  [59] cli_1.1.0                   RSQLite_2.1.2              
+##  [61] evaluate_0.14               stringr_1.4.0              
+##  [63] knitr_1.25                  processx_3.4.1             
+##  [65] bit64_0.9-7                 purrr_0.3.2                
+##  [67] mime_0.7                    R.oo_1.22.0                
+##  [69] xml2_1.2.2                  biomaRt_2.40.4             
+##  [71] compiler_3.6.1              rstudioapi_0.10            
+##  [73] curl_4.2                    rgexf_0.15.3               
+##  [75] tibble_2.1.3                stringi_1.4.3              
+##  [77] ps_1.3.0                    desc_1.2.0                 
+##  [79] lattice_0.20-38             Matrix_1.2-17              
+##  [81] commonmark_1.7              vctrs_0.2.0                
+##  [83] pillar_1.4.2                lifecycle_0.1.0            
+##  [85] BiocManager_1.30.4          data.table_1.12.2          
+##  [87] bitops_1.0-6                httpuv_1.5.2               
+##  [89] rtracklayer_1.44.4          R6_2.4.0                   
+##  [91] promises_1.0.1              gridExtra_2.3              
+##  [93] sessioninfo_1.1.1           codetools_0.2-16           
+##  [95] assertthat_0.2.1            pkgload_1.0.2              
+##  [97] SummarizedExperiment_1.14.1 rprojroot_1.3-2            
+##  [99] withr_2.1.2                 GenomicAlignments_1.20.1   
+## [101] batchtools_0.9.11           Rsamtools_2.0.1            
+## [103] GenomeInfoDbData_1.2.1      hms_0.5.1                  
+## [105] influenceR_0.1.0            grid_3.6.1                 
+## [107] tidyr_1.0.0                 rmarkdown_1.16             
+## [109] shiny_1.3.2</code></pre>
 
 
 </div>
@@ -371,11 +416,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

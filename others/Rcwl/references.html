@@ -25,14 +25,14 @@
 <meta name="author" content="Qian Liu" />
 
 
-<meta name="date" content="2019-10-04" />
+<meta name="date" content="2019-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rna-seq-alignment-and-quantification.html"/>
+<link rel="prev" href="other-sequencing-pipelines.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -217,15 +217,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.9" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#neusomatic"><i class="fa fa-check"></i><b>6.3.9</b> Neusomatic</a></li>
 <li class="chapter" data-level="6.3.10" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#combined-somatic-caller-pipeline"><i class="fa fa-check"></i><b>6.3.10</b> Combined somatic caller pipeline</a></li>
 </ul></li>
+<li class="chapter" data-level="6.4" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#structural-variation"><i class="fa fa-check"></i><b>6.4</b> Structural variation</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#structural-variation-engine"><i class="fa fa-check"></i><b>6.4.1</b> Structural variation Engine</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#copy-number-variation"><i class="fa fa-check"></i><b>6.5</b> Copy number variation</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="dna-seq-variant-calling.html"><a href="dna-seq-variant-calling.html#cnvkit"><i class="fa fa-check"></i><b>6.5.1</b> cnvkit</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html"><i class="fa fa-check"></i><b>7</b> RNA-Seq alignment and quantification</a><ul>
-<li class="chapter" data-level="7.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#bulk-mrna"><i class="fa fa-check"></i><b>7.1</b> bulk mRNA</a></li>
-<li class="chapter" data-level="7.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#transcriptome-quantification"><i class="fa fa-check"></i><b>7.2</b> transcriptome quantification</a></li>
+<li class="chapter" data-level="7.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#bulk-mrna"><i class="fa fa-check"></i><b>7.1</b> bulk mRNA</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#prepare-data-3"><i class="fa fa-check"></i><b>7.1.1</b> Prepare data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#submit-pipeline-with-sge-1"><i class="fa fa-check"></i><b>7.1.2</b> Submit pipeline with SGE</a></li>
+<li class="chapter" data-level="7.1.3" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#qc-summary"><i class="fa fa-check"></i><b>7.1.3</b> QC Summary</a></li>
+<li class="chapter" data-level="7.1.4" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#abundances-summary"><i class="fa fa-check"></i><b>7.1.4</b> Abundances summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#transcriptome-quantification"><i class="fa fa-check"></i><b>7.2</b> transcriptome quantification</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#kallisto"><i class="fa fa-check"></i><b>7.2.1</b> Kallisto</a></li>
+</ul></li>
 <li class="chapter" data-level="7.3" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#single-cell-rnaseq"><i class="fa fa-check"></i><b>7.3</b> single cell RNAseq</a></li>
 <li class="chapter" data-level="7.4" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#mirna"><i class="fa fa-check"></i><b>7.4</b> miRNA</a><ul>
 <li class="chapter" data-level="7.4.1" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#prepare-reference"><i class="fa fa-check"></i><b>7.4.1</b> Prepare reference</a></li>
 <li class="chapter" data-level="7.4.2" data-path="rna-seq-alignment-and-quantification.html"><a href="rna-seq-alignment-and-quantification.html#run-mirdeep2-pipeline"><i class="fa fa-check"></i><b>7.4.2</b> Run miRDeep2 pipeline</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html"><i class="fa fa-check"></i><b>8</b> Neoantigen prediction</a><ul>
+<li class="chapter" data-level="8.1" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#input-file-preparation"><i class="fa fa-check"></i><b>8.1</b> Input file preparation</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#annotating-vcf"><i class="fa fa-check"></i><b>8.1.1</b> Annotating VCF</a></li>
+<li class="chapter" data-level="8.1.2" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#adding-coverage"><i class="fa fa-check"></i><b>8.1.2</b> Adding coverage</a></li>
+<li class="chapter" data-level="8.1.3" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#adding-expression"><i class="fa fa-check"></i><b>8.1.3</b> Adding expression</a></li>
+<li class="chapter" data-level="8.1.4" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#creating-a-phased-vcf"><i class="fa fa-check"></i><b>8.1.4</b> Creating a phased VCF</a></li>
+<li class="chapter" data-level="8.1.5" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#combined-vcf-preparing-pipeline"><i class="fa fa-check"></i><b>8.1.5</b> Combined VCF preparing pipeline</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#hla-typing"><i class="fa fa-check"></i><b>8.2</b> HLA typing</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#polysolver"><i class="fa fa-check"></i><b>8.2.1</b> polysolver</a></li>
+<li class="chapter" data-level="8.2.2" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#optitype"><i class="fa fa-check"></i><b>8.2.2</b> Optitype</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="neoantigen-prediction.html"><a href="neoantigen-prediction.html#neoantigen-prediction-by-pvacseq"><i class="fa fa-check"></i><b>8.3</b> Neoantigen prediction by pVACseq</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="other-sequencing-pipelines.html"><a href="other-sequencing-pipelines.html"><i class="fa fa-check"></i><b>9</b> Other Sequencing pipelines</a><ul>
+<li class="chapter" data-level="9.1" data-path="other-sequencing-pipelines.html"><a href="other-sequencing-pipelines.html#chip-seq"><i class="fa fa-check"></i><b>9.1</b> ChiP-Seq</a></li>
+<li class="chapter" data-level="9.2" data-path="other-sequencing-pipelines.html"><a href="other-sequencing-pipelines.html#atac-seq"><i class="fa fa-check"></i><b>9.2</b> ATAC-Seq</a></li>
+<li class="chapter" data-level="9.3" data-path="other-sequencing-pipelines.html"><a href="other-sequencing-pipelines.html#microbiome-sequencing"><i class="fa fa-check"></i><b>9.3</b> Microbiome Sequencing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -257,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="rna-seq-alignment-and-quantification.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="other-sequencing-pipelines.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

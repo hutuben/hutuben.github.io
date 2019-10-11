@@ -333,30 +333,30 @@ environments.”</p>
 ## names(3): command output logs</code></pre>
 <p>Here we can check the output to ensure the code did what we expected.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro.html#cb13-1"></a>r1<span class="op">$</span>output</span></code></pre></div>
-<pre><code>## [1] &quot;/tmp/RtmpUUoKWb/4b9015f799753df6f4c9efba35280b12cf46f96f&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmpgQiSSu/221c05daf0b429613fd6be335f6617718931e825&quot;</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="intro.html#cb15-1"></a><span class="kw">readLines</span>(r1<span class="op">$</span>output)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello World!&quot;</code></pre>
 <p>The executed command was returned in the result list. It shows the command that we have defined to execute.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="intro.html#cb17-1"></a>r1<span class="op">$</span>command</span></code></pre></div>
-<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job filebf89236375c7.cwl] /tmp/x5jiifj6$ echo \\&quot;    
-## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/x5jiifj6/4b9015f799753df6f4c9efba35280b12cf46f96f&quot;</code></pre>
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file33e1eacf49.cwl] /tmp/78s483pw$ echo \\&quot;      
+## [2] &quot;    &#39;Hello World!&#39; &gt; /tmp/78s483pw/221c05daf0b429613fd6be335f6617718931e825&quot;</code></pre>
 <p>The log shows the details of how the <code>cwltool</code> works with CWL scripts.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="intro.html#cb19-1"></a>r1<span class="op">$</span>log</span></code></pre></div>
-<pre><code>##  [1] &quot;\033[1;30mINFO\033[0m /home/qhu/.linuxbrew/bin/cwltool 1.0.20190815141648&quot;                                             
-##  [2] &quot;\033[1;30mINFO\033[0m Resolved &#39;/tmp/RtmpUUoKWb/filebf89236375c7.cwl&#39; to &#39;file:///tmp/RtmpUUoKWb/filebf89236375c7.cwl&#39;&quot;
-##  [3] &quot;\033[1;30mINFO\033[0m [job filebf89236375c7.cwl] /tmp/x5jiifj6$ echo \\&quot;                                               
-##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/x5jiifj6/4b9015f799753df6f4c9efba35280b12cf46f96f&quot;                                           
-##  [5] &quot;\033[1;30mINFO\033[0m [job filebf89236375c7.cwl] completed success&quot;                                                    
-##  [6] &quot;{&quot;                                                                                                                     
-##  [7] &quot;    \&quot;output\&quot;: {&quot;                                                                                                     
-##  [8] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/RtmpUUoKWb/4b9015f799753df6f4c9efba35280b12cf46f96f\&quot;,&quot;                            
-##  [9] &quot;        \&quot;basename\&quot;: \&quot;4b9015f799753df6f4c9efba35280b12cf46f96f\&quot;,&quot;                                                   
-## [10] &quot;        \&quot;class\&quot;: \&quot;File\&quot;,&quot;                                                                                          
-## [11] &quot;        \&quot;checksum\&quot;: \&quot;sha1$a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b\&quot;,&quot;                                              
-## [12] &quot;        \&quot;size\&quot;: 13,&quot;                                                                                                 
-## [13] &quot;        \&quot;path\&quot;: \&quot;/tmp/RtmpUUoKWb/4b9015f799753df6f4c9efba35280b12cf46f96f\&quot;&quot;                                        
-## [14] &quot;    }&quot;                                                                                                                 
-## [15] &quot;}&quot;                                                                                                                     
+<pre><code>##  [1] &quot;\033[1;30mINFO\033[0m /home/qhu/.linuxbrew/bin/cwltool 1.0.20190815141648&quot;                                         
+##  [2] &quot;\033[1;30mINFO\033[0m Resolved &#39;/tmp/RtmpgQiSSu/file33e1eacf49.cwl&#39; to &#39;file:///tmp/RtmpgQiSSu/file33e1eacf49.cwl&#39;&quot;
+##  [3] &quot;\033[1;30mINFO\033[0m [job file33e1eacf49.cwl] /tmp/78s483pw$ echo \\&quot;                                             
+##  [4] &quot;    &#39;Hello World!&#39; &gt; /tmp/78s483pw/221c05daf0b429613fd6be335f6617718931e825&quot;                                       
+##  [5] &quot;\033[1;30mINFO\033[0m [job file33e1eacf49.cwl] completed success&quot;                                                  
+##  [6] &quot;{&quot;                                                                                                                 
+##  [7] &quot;    \&quot;output\&quot;: {&quot;                                                                                                 
+##  [8] &quot;        \&quot;location\&quot;: \&quot;file:///tmp/RtmpgQiSSu/221c05daf0b429613fd6be335f6617718931e825\&quot;,&quot;                        
+##  [9] &quot;        \&quot;basename\&quot;: \&quot;221c05daf0b429613fd6be335f6617718931e825\&quot;,&quot;                                               
+## [10] &quot;        \&quot;class\&quot;: \&quot;File\&quot;,&quot;                                                                                      
+## [11] &quot;        \&quot;checksum\&quot;: \&quot;sha1$a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b\&quot;,&quot;                                          
+## [12] &quot;        \&quot;size\&quot;: 13,&quot;                                                                                             
+## [13] &quot;        \&quot;path\&quot;: \&quot;/tmp/RtmpgQiSSu/221c05daf0b429613fd6be335f6617718931e825\&quot;&quot;                                    
+## [14] &quot;    }&quot;                                                                                                             
+## [15] &quot;}&quot;                                                                                                                 
 ## [16] &quot;\033[1;30mINFO\033[0m Final process status is success&quot;</code></pre>
 <p>The <code>runCWL</code> generated two scripts with the default <code>tempfile</code> prefix, the tool wrapper CWL file and the input YML file. The <code>cwltool</code> parses the two scripts and translates them into the command shown before. The output is not defined in the <code>cwlParam</code> object, so the command output was returned to <strong>stdout</strong> by default.</p>
 

@@ -302,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb56-2"><a href="writing-pipeline.html#cb56-2"></a>tres &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Rs, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="writing-pipeline.html#cb58-1"></a><span class="kw">readLines</span>(tres<span class="op">$</span>output)</span></code></pre></div>
-<pre><code>## [1] &quot;[1]  7  1  2  8 10&quot;</code></pre>
+<pre><code>## [1] &quot;[1] 3 5 1 6 2&quot;</code></pre>
 <p>The pipeline includes two steps, decompressed by <code>GZ</code> and compiled by <code>Rs</code>. The input file is a compressed file and the output file would be the output <code>Rout</code> from <code>Rs</code>.</p>
 <p>First we need to define the direct inputs and outputs from <code>GZ</code> and <code>Rs</code>, respectively:</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="writing-pipeline.html#cb60-1"></a>i1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;cwl_zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</span>
@@ -340,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb63-2"><a href="writing-pipeline.html#cb63-2"></a>r7 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="writing-pipeline.html#cb65-1"></a><span class="kw">readLines</span>(r7<span class="op">$</span>output)</span></code></pre></div>
-<pre><code>## [1] &quot;[1] 5 3 4 2 6&quot;</code></pre>
+<pre><code>## [1] &quot;[1] 3 1 6 7 4&quot;</code></pre>
 <div id="scattering-pipeline" class="section level2">
 <h2><span class="header-section-number">3.1</span> Scattering pipeline</h2>
 <p>The scattering feature can specify the associated workflow steps or subworkflows to execute separately over a list of input elements. To use this feature, <code>ScatterFeatureRequirement</code> must be specified in the workflow requirement. Different <code>scatter</code> methods can be used in the associated steps to decompose the input into a discrete set of jobs. More details can be found at: <a href="https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep" class="uri">https://www.commonwl.org/v1.0/Workflow.html#WorkflowStep</a>.</p>
@@ -379,15 +379,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb69-2"><a href="writing-pipeline.html#cb69-2"></a>r8 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(cwl2, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="writing-pipeline.html#cb71-1"></a>r8<span class="op">$</span>output</span></code></pre></div>
-<pre><code>## [1] &quot;/tmp/RtmpUUoKWb/a3ee6e3ad71ed7897c09855447df51f92c0d2e40&quot;
-## [2] &quot;/tmp/RtmpUUoKWb/a3ee6e3ad71ed7897c09855447df51f92c0d2e40&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmpgQiSSu/5b8b39b99438145148ef01b46591c55f3a0be9ed&quot;
+## [2] &quot;/tmp/RtmpgQiSSu/5b8b39b99438145148ef01b46591c55f3a0be9ed&quot;</code></pre>
 </div>
 <div id="pipeline-plot" class="section level2">
 <h2><span class="header-section-number">3.2</span> Pipeline plot</h2>
 <p>The function <code>plotCWL</code> can be used to visualize the relationship of inputs, outputs and the components for a tool or pipeline:</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="writing-pipeline.html#cb73-1"></a><span class="kw">plotCWL</span>(cwl)</span></code></pre></div>
-<div id="htmlwidget-e59afe53b16967b1810b" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e59afe53b16967b1810b">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e020a39415106beecf67" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e020a39415106beecf67">{"x":{"diagram":"graph TB\nA(cwl_zfile)-->C{Uncomp}\nC{Uncomp}-->|rfile|D{Compile}\nD{Compile}-->B((cwl_cout))"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>

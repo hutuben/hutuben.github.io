@@ -308,13 +308,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb22-9"><a href="components.html#cb22-9"></a>r2 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoA, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="components.html#cb24-1"></a>r2<span class="op">$</span>command</span></code></pre></div>
-<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job filebf8922af7ef9.cwl] /tmp/445arddp$ echo \\&quot;                
-## [2] &quot;    --file=/tmp/tmpjh5yqbch/stga4f6e661-1770-41cc-a7ef-0129f6982c22/filebf892819cc68 \\&quot;
-## [3] &quot;    -f \\&quot;                                                                              
-## [4] &quot;    -i \\&quot;                                                                              
-## [5] &quot;    1 \\&quot;                                                                               
-## [6] &quot;    -s \\&quot;                                                                              
-## [7] &quot;    Hello &gt; /tmp/445arddp/output.txt&quot;</code></pre>
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file33e119137d.cwl] /tmp/jy5_17oh$ echo \\&quot;                 
+## [2] &quot;    --file=/tmp/tmpfps825wz/stgda42f59e-bf3b-42da-a72b-3acfaad10160/file33e71c79690 \\&quot;
+## [3] &quot;    -f \\&quot;                                                                             
+## [4] &quot;    -i \\&quot;                                                                             
+## [5] &quot;    1 \\&quot;                                                                              
+## [6] &quot;    -s \\&quot;                                                                             
+## [7] &quot;    Hello &gt; /tmp/jy5_17oh/output.txt&quot;</code></pre>
 </div>
 <div id="array-inputs" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Array Inputs</h3>
@@ -349,15 +349,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="components.html#cb29-1"></a>r3 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(echoB, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="components.html#cb31-1"></a>r3<span class="op">$</span>command</span></code></pre></div>
-<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job filebf893eb9a623.cwl] /tmp/xqfbzkvp$ echo \\&quot;
-## [2] &quot;    -A \\&quot;                                                              
-## [3] &quot;    a \\&quot;                                                               
-## [4] &quot;    b \\&quot;                                                               
-## [5] &quot;    c \\&quot;                                                               
-## [6] &quot;    -B=d \\&quot;                                                            
-## [7] &quot;    -B=e \\&quot;                                                            
-## [8] &quot;    -B=f \\&quot;                                                            
-## [9] &quot;    -C=g,h,i &gt; /tmp/xqfbzkvp/ef92a1f8158f70ee3eeb3083dd19670f7b94b331&quot;</code></pre>
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file33e70b7881b.cwl] /tmp/y5c0n6ey$ echo \\&quot;
+## [2] &quot;    -A \\&quot;                                                             
+## [3] &quot;    a \\&quot;                                                              
+## [4] &quot;    b \\&quot;                                                              
+## [5] &quot;    c \\&quot;                                                              
+## [6] &quot;    -B=d \\&quot;                                                           
+## [7] &quot;    -B=e \\&quot;                                                           
+## [8] &quot;    -B=f \\&quot;                                                           
+## [9] &quot;    -C=g,h,i &gt; /tmp/y5c0n6ey/a42ab676393b853fed6cc21e1e301b73e8d537b9&quot;</code></pre>
 </div>
 </div>
 <div id="output-parameters" class="section level2">
@@ -387,7 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb35-4"><a href="components.html#cb35-4"></a>r4 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(gz, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="components.html#cb37-1"></a>r4<span class="op">$</span>output</span></code></pre></div>
-<pre><code>## [1] &quot;/tmp/RtmpUUoKWb/sample.R&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmpgQiSSu/sample.R&quot;</code></pre>
 <p>Or we can use <code>arguments</code> to set some default parameters:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="components.html#cb39-1"></a>z1 &lt;-<span class="st"> </span><span class="kw">InputParam</span>(<span class="dt">id =</span> <span class="st">&quot;zfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>)</span>
 <span id="cb39-2"><a href="components.html#cb39-2"></a>o1 &lt;-<span class="st"> </span><span class="kw">OutputParam</span>(<span class="dt">id =</span> <span class="st">&quot;rfile&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;File&quot;</span>, <span class="dt">glob =</span> ofile)</span>
@@ -438,7 +438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb46-5"><a href="components.html#cb46-5"></a>r5 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(touch, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="components.html#cb48-1"></a>r5<span class="op">$</span>output</span></code></pre></div>
-<pre><code>## [1] &quot;/tmp/RtmpUUoKWb/a.txt&quot; &quot;/tmp/RtmpUUoKWb/c.txt&quot;</code></pre>
+<pre><code>## [1] &quot;/tmp/RtmpgQiSSu/a.txt&quot; &quot;/tmp/RtmpgQiSSu/c.txt&quot;</code></pre>
 </div>
 <div id="standard-output" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Standard output</h3>
@@ -467,9 +467,9 @@ the output, with the name passed from the input parameter “p2”:</p>
 <span id="cb50-15"><a href="components.html#cb50-15"></a>r6 &lt;-<span class="st"> </span><span class="kw">runCWL</span>(Cat, <span class="dt">outdir =</span> <span class="kw">tempdir</span>())</span></code></pre></div>
 <pre><code>## [1;30mINFO[0m Final process status is success</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="components.html#cb52-1"></a>r6<span class="op">$</span>command</span></code></pre></div>
-<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job filebf8914efd8d2.cwl] /tmp/4lvyb1n6$ cat \\&quot;                       
-## [2] &quot;    /tmp/tmp13ywmv_h/stg119f71d4-a4cd-4416-9004-0350e450f1ee/a.txt \\&quot;                        
-## [3] &quot;    /tmp/tmp13ywmv_h/stg1855740f-3674-4632-9ede-afbf93602633/b.txt &gt; /tmp/4lvyb1n6/catout.txt&quot;</code></pre>
+<pre><code>## [1] &quot;\033[1;30mINFO\033[0m [job file33e6dd5ea8c.cwl] /tmp/cw55z3so$ cat \\&quot;                        
+## [2] &quot;    /tmp/tmpzpsel0g3/stgb15a5507-711c-4333-b2eb-631c6dc3f57c/a.txt \\&quot;                        
+## [3] &quot;    /tmp/tmpzpsel0g3/stg63b35434-34ca-43fe-96a7-98738e8efc65/b.txt &gt; /tmp/cw55z3so/catout.txt&quot;</code></pre>
 
 <div class="tips">
 <p>In this example, we used the parameter “p2” to pass the name to the

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>R fun package: cowsay 💃 📦 | Take Home Message</title>
+    <meta name="description" content="A tips/notes collection">
+    
+    <meta property="article:published_time" content="Sat Dec 14 2019 00:00:00 GMT-0500 (EST)"><meta property="og:site_name" content="Take Home Message"><meta property="og:title" content="R fun package: cowsay 💃 📦"><meta property="og:type" content="website"><meta property="og:url" content="/2019/12/14/r-package-cowsay/"><meta name="twitter:title" content="R fun package: cowsay 💃 📦"><meta name="twitter:url" content="/2019/12/14/r-package-cowsay/"><meta name="twitter:card" content="summary_large_image">
+    <link rel="preload" href="/assets/css/0.styles.8e75137f.css" as="style"><link rel="preload" href="/assets/js/app.286f0d36.js" as="script"><link rel="preload" href="/assets/js/5.d502765b.js" as="script"><link rel="preload" href="/assets/js/4.25bae0af.js" as="script"><link rel="preload" href="/assets/js/24.320f3ffc.js" as="script"><link rel="prefetch" href="/assets/js/1.ebf4bc5a.js"><link rel="prefetch" href="/assets/js/10.8c72ef16.js"><link rel="prefetch" href="/assets/js/11.eafe1b75.js"><link rel="prefetch" href="/assets/js/12.9da10ab5.js"><link rel="prefetch" href="/assets/js/13.f79cadd1.js"><link rel="prefetch" href="/assets/js/14.6d96bb00.js"><link rel="prefetch" href="/assets/js/15.b4cc5f80.js"><link rel="prefetch" href="/assets/js/16.e7c8c065.js"><link rel="prefetch" href="/assets/js/17.7e3b6739.js"><link rel="prefetch" href="/assets/js/18.e5732c98.js"><link rel="prefetch" href="/assets/js/19.9bcda7cc.js"><link rel="prefetch" href="/assets/js/20.f713faad.js"><link rel="prefetch" href="/assets/js/21.f16659e1.js"><link rel="prefetch" href="/assets/js/22.e9bb6f3f.js"><link rel="prefetch" href="/assets/js/23.c0fd5e95.js"><link rel="prefetch" href="/assets/js/25.4dba68f3.js"><link rel="prefetch" href="/assets/js/26.4e42466b.js"><link rel="prefetch" href="/assets/js/27.27d927d6.js"><link rel="prefetch" href="/assets/js/28.cfaa6b59.js"><link rel="prefetch" href="/assets/js/29.2ef24ed4.js"><link rel="prefetch" href="/assets/js/30.0f748ff3.js"><link rel="prefetch" href="/assets/js/31.d5224510.js"><link rel="prefetch" href="/assets/js/32.eb07515b.js"><link rel="prefetch" href="/assets/js/33.cac56360.js"><link rel="prefetch" href="/assets/js/34.88cd72e6.js"><link rel="prefetch" href="/assets/js/35.0d1cf3a8.js"><link rel="prefetch" href="/assets/js/36.264720a7.js"><link rel="prefetch" href="/assets/js/6.67505ad2.js"><link rel="prefetch" href="/assets/js/7.a508c8fe.js"><link rel="prefetch" href="/assets/js/8.b36d945c.js"><link rel="prefetch" href="/assets/js/9.e4af9b16.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.180d8c0c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8e75137f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuperess-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">Take Home Message
+        </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/" class="nav-link">Blog</a></li><li class="nav-item"><a href="/tag/" class="nav-link">Tags</a></li><li class="nav-item"><a href="/about/" class="nav-link">About</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">Take Home Message
+      </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="/tag/" class="nav-link">Tags</a></li><li class="mobile-nav-item"><a href="/about/" class="nav-link">About</a></li></ul></div></div></div> <div class="content-wrapper"><div id="vuperess-theme-blog__post-layout"><div class="vuepress-blog-theme-content"><div class="content__default"><h1 id="r-fun-package-cowsay-💃-📦"><a href="#r-fun-package-cowsay-💃-📦" class="header-anchor">#</a> R fun package: cowsay 💃 📦</h1> <div class="language-r extra-class"><pre class="language-r"><code>library<span class="token punctuation">(</span>cowsay<span class="token punctuation">)</span>
+say<span class="token punctuation">(</span><span class="token string">&quot;fortune&quot;</span><span class="token punctuation">,</span> by <span class="token operator">=</span> <span class="token string">&quot;cow&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>##  ----- 
+## Can one be a good data analyst without being a half-good programmer? The short answer to that is, 'No.' The long answer to that is, 'No.'
+##  Frank Harrell
+##  1999 S-PLUS User Conference, New Orleans
+##  October 1999 
+##  ------ 
+##     \   ^__^ 
+##      \  (oo)\ ________ 
+##         (__)\         )\ /\ 
+##              ||------w|
+##              ||      ||
+</code></pre></div><p>Similar in bash</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token variable">$fortune</span> <span class="token operator">|</span> cowsay
+ ________________________________
+/ question <span class="token operator">=</span> <span class="token punctuation">(</span> to <span class="token punctuation">)</span> ? be <span class="token builtin class-name">:</span> <span class="token operator">!</span> be<span class="token punctuation">;</span> <span class="token punctuation">\</span>
+<span class="token operator">|</span>                                <span class="token operator">|</span>
+<span class="token punctuation">\</span> -- Wm. Shakespeare             /
+ --------------------------------
+        <span class="token punctuation">\</span>   ^__^
+         <span class="token punctuation">\</span>  <span class="token punctuation">(</span>oo<span class="token punctuation">)</span><span class="token punctuation">\</span>_______
+            <span class="token punctuation">(</span>__<span class="token punctuation">)</span><span class="token punctuation">\</span>       <span class="token punctuation">)</span><span class="token punctuation">\</span>/<span class="token punctuation">\</span>
+                <span class="token operator">||</span>----w <span class="token operator">|</span>
+                <span class="token operator">||</span>     <span class="token operator">||</span>
+
+</code></pre></div><p>Use <a href="/2019/12/13/rvest-index-blog-topics/"><code>howto</code></a> function.</p> <div class="language-r extra-class"><pre class="language-r"><code>say<span class="token punctuation">(</span>paste<span class="token punctuation">(</span><span class="token string">&quot;Q: How to use javascript emoji?\nA: &quot;</span><span class="token punctuation">,</span>
+          howto<span class="token punctuation">(</span><span class="token string">&quot;javascript emoji&quot;</span><span class="token punctuation">,</span> cutoff<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>## 
+##  -------------- 
+</code></pre></div><p>Q: How to use javascript emoji?</p> <p>A:  <a href="/2019/12/10/r-package-v8/">Have some fun with JavaScript emoji library using the V8 R package.</a></p> <div class="language- extra-class"><pre class="language-text"><code>##  --------------
+##     \
+##       \
+##         \
+##             |\___/|
+##           ==) ^Y^ (==
+##             \  ^  /
+##              )=*=(
+##             /     \
+##             |     |
+##            /| | | |\
+##            \| | |_|/\
+##       jgs  //_// ___/
+##                \_)
+## 
+
+</code></pre></div></div> <hr> <!----></div> <!----></div></div> <footer class="footer" data-v-6fb25269><div class="footer-left-wrap" data-v-6fb25269><ul class="contact" data-v-6fb25269><li class="contact-item" data-v-6fb25269><a href="https://github.com/hubentu" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-6fb25269><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github" data-v-6fb25269><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-v-6fb25269></path></svg>
+          
+        </a></li><li class="contact-item" data-v-6fb25269><a href="https://twitter.com/hubentu" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-6fb25269><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter" data-v-6fb25269><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" data-v-6fb25269></path></svg>
+          
+        </a></li><li class="contact-item" data-v-6fb25269><a href="https://hubentu.github.io/Rcwl/" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-6fb25269><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe" data-v-6fb25269><circle cx="12" cy="12" r="10" data-v-6fb25269></circle><line x1="2" y1="12" x2="22" y2="12" data-v-6fb25269></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" data-v-6fb25269></path></svg>
+          
+        </a></li></ul></div> <div class="footer-right-wrap" data-v-6fb25269><ul class="copyright" data-v-6fb25269><li class="copyright-item" data-v-6fb25269><a href="https://policies.google.com/privacy?hl=en-US" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-6fb25269>Privacy Policy</a></li><li class="copyright-item" data-v-6fb25269><a href="/2019/12/14/r-package-cowsay/.html" class="nav-link" data-v-6fb25269>MIT Licensed | Copyright © 2019-present | takehomessage.com</a></li></ul></div></footer></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.286f0d36.js" defer></script><script src="/assets/js/5.d502765b.js" defer></script><script src="/assets/js/4.25bae0af.js" defer></script><script src="/assets/js/24.320f3ffc.js" defer></script>
+  </body>
+</html>
